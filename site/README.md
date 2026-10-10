@@ -52,8 +52,30 @@ ES modules need a web server (opening `index.html` from disk won't work):
 npx serve site          # from the repo root, then open the printed URL on your phone
 ```
 
-Any static host works for deployment: GitHub Pages, Netlify, Vercel or Cloudflare Pages. Point it
-at the `site/` folder.
+## Deploying to Vercel
+
+`vercel.json` serves this folder as a static site (no build step), with
+long-lived caching for fonts, a one-day cache for media, and fresh
+`content.js` / JS / CSS on every visit, so text edits show up immediately.
+
+**From the CLI** (needs a token from vercel.com/account/tokens):
+
+```sh
+cd site
+npx vercel deploy --prod --yes --token "$VERCEL_TOKEN"
+```
+
+The first run creates the project and prints the URL.
+
+**Or from GitHub:** in Vercel, choose *Add New → Project*, import this repository
+and set **Root Directory** to `site`. Leave the framework preset at *Other*.
+Every push to the production branch then redeploys.
+
+After the first deploy, put the full URL into `og:image` in `index.html`
+(for example `https://your-site.vercel.app/assets/images/curtain-closed.jpg`)
+so WhatsApp and iMessage show the preview image.
+
+Any other static host works too: point it at the `site/` folder.
 
 ## How it's put together
 
