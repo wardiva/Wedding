@@ -1,10 +1,13 @@
 """Dress the walking couple in the venue clip in the reference outfits.
 
-Groom: cream sherwani -> deep navy suit. Bride: ivory/gold lehenga and veil ->
-pale ice-blue / mint-sage with silvery embroidery. The venue, lighting, motion
-and the couple's hair/skin are untouched. Colour targets were measured from
-the reference photos (navy Lab ≈ 9/3/-10, lehenga ≈ 64-68/-3..-8/-1) and nudged
-for the venue's warm light.
+Looks (--look):
+  maroon  (default) bride's ivory lehenga and veil -> deep maroon with gold
+          embroidery; groom keeps his cream sherwani (matches the beige
+          brocade sherwani in references/walima/couple-reference.jpg).
+          Maroon measured from that reference: Lab ≈ 15/31/10.
+  navy    groom -> deep navy suit (Lab ≈ 9/3/-10), bride -> pale ice-blue /
+          mint-sage with silvery embroidery (≈ 64-68/-3..-8/-1).
+The venue, lighting, motion and the couple's hair/skin are untouched.
 
 Inputs
   frames/  f_0001.png …  source frames (1008x1600)
@@ -12,7 +15,7 @@ Inputs
            npx hyperframes remove-background venue.mp4 -o people.mov
            ffmpeg -i people.mov -vf alphaextract alpha/a_%04d.png
 
-usage: python recolor_outfits.py <frames> <alpha> <out_dir> [--preview 1,82,162] [--debug dir]
+usage: python recolor_outfits.py <frames> <alpha> <out_dir> [--look maroon|navy] [--preview 1,82,162] [--debug dir]
 """
 import argparse
 import glob
@@ -21,9 +24,11 @@ import os
 import cv2
 import numpy as np
 
-# ---- look (OpenCV float Lab: L 0..100) --------------------------------------
+# ---- looks (OpenCV float Lab: L 0..100) -------------------------------------
 NAVY = np.array([13.0, 2.5, -13.0])   # deep navy suit under warm light
 ICE_AB = np.array([-5.5, -1.0])       # pale ice-blue / mint-sage lehenga
+MAROON = np.array([17.0, 33.0, 12.0]) # deep maroon lehenga / dupatta
+GOLD = np.array([62.0, 9.0, 36.0])    # gold zari embroidery highlights
 GROOM_SHADE_GAMMA = 0.85              # <1 compresses the backlit shoulders
 BRIDE_DARKEN = 0.95                   # pale blue-grey reads a touch darker than ivory
 TEXTURE_KEEP = 0.25                   # fraction of original chroma variation kept
@@ -276,11 +281,39 @@ def recolour_bride(lab, w):
     return out
 
 
+def recolour_bride_maroon(lab, w):
+    """Ivory -> maroon, keeping the fabric's shading; the embroidery's bright
+    flecks (brighter than their surroundings) become gold zari."""
+    L = lab[..., 0]
+    ref = wmean(L, w) if w.sum() > 50 else 70.0
+    local = cv2.GaussianBlur(L, (0, 0), 6)
+    zari = np.clip((L - local - 4.0) / 8.0, 0, 1) * np.clip((L - 45.0) / 15.0, 0, 1)
+    shade = np.clip(L / max(ref, 1e-3), 0.25, 1.7) ** 1.1
+    out = lab.copy()
+    out[..., 0] = MAROON[0] * shade
+    out[..., 1] = MAROON[1] * np.clip(shade, 0.5, 1.2)
+    out[..., 2] = MAROON[2] * np.clip(shade, 0.5, 1.2)
+    gold = GOLD.copy()
+    gold_L = np.clip(GOLD[0] * (L / max(ref, 1e-3)), 35, 85)
+    out[..., 0] = out[..., 0] * (1 - zari) + gold_L * zari
+    out[..., 1] = out[..., 1] * (1 - zari) + gold[1] * zari
+    out[..., 2] = out[..., 2] * (1 - zari) + gold[2] * zari
+    # the dupatta is sheer: where the fabric is smooth (veil, not the
+    # embroidered gown) let the scene behind show through, tinted maroon
+    tex = cv2.GaussianBlur(texture_map(L * 2.55), (0, 0), 4)
+    sheer = 0.45 * np.clip((9.0 - tex) / 5.0, 0, 1)
+    out[..., 0] = out[..., 0] * (1 - sheer) + (L * 0.62) * sheer
+    out[..., 1] = out[..., 1] * (1 - sheer) + (MAROON[1] * 0.75 + lab[..., 1] * 0.25) * sheer
+    out[..., 2] = out[..., 2] * (1 - sheer) + (MAROON[2] * 0.75 + lab[..., 2] * 0.25) * sheer
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("frames")
     ap.add_argument("alpha")
     ap.add_argument("out")
+    ap.add_argument("--look", choices=["maroon", "navy"], default="maroon")
     ap.add_argument("--preview", help="comma-separated 1-based frames to render only")
     ap.add_argument("--debug")
     a = ap.parse_args()
@@ -339,8 +372,11 @@ def main():
         # (the sheer veil's own alpha already carries how much is background)
         fab_b = np.clip((lab[..., 0] - 10.0) / 12.0, 0, 1)
         wb = (b * fab_b * (1 - skin))[..., None]
-        out = lab * (1 - wg) + recolour_groom(lab, wg[..., 0]) * wg
-        out = out * (1 - wb) + recolour_bride(lab, wb[..., 0]) * wb
+        if a.look == "navy":
+            out = lab * (1 - wg) + recolour_groom(lab, wg[..., 0]) * wg
+            out = out * (1 - wb) + recolour_bride(lab, wb[..., 0]) * wb
+        else:  # maroon: he keeps his cream sherwani
+            out = lab * (1 - wb) + recolour_bride_maroon(lab, wb[..., 0]) * wb
         cv2.imwrite(f"{a.out}/f_{i + 1:04d}.png", from_lab(out))
         if a.debug:
             os.makedirs(a.debug, exist_ok=True)

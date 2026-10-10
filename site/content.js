@@ -160,8 +160,10 @@ export default {
     // and countdown screens.
     tentLight: "assets/images/tent-light.jpg",
     floralTent: "assets/images/floral-tent.jpg",
-    venueVideo: "assets/video/venue-walk.mp4", // 1008x1600, plays once when reached (H.264)
-    venueVideoWebm: "assets/video/venue-walk.webm", // same clip, VP9 fallback
-    venuePoster: "assets/images/venue-walk.jpg",
+    // Walima section: the couple walking down the aisle (Remotion composition
+    // `WalimaVenue` in /video). Plays once when reached, then holds.
+    venueVideo: "assets/video/walima-couple.mp4", // 1008x1600, 5.4s, silent (H.264)
+    venueVideoWebm: "assets/video/walima-couple.webm", // same clip, VP9 fallback
+    venuePoster: "assets/images/walima-couple.jpg", // first frame of the clip
   },
 };

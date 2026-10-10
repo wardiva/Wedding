@@ -44,3 +44,26 @@ final photography or footage is supplied.
 3. **Web encodes** (H.264 + VP9, see `site/README.md`). The poster stills are
    the first and last frames of the opening master, so the site's hand-offs
    are pixel-identical.
+
+## Walima section clip (couple walking)
+
+`site/assets/video/walima-couple.*` is the venue walk above with the bride's
+outfit recoloured to the client's reference (`references/walima/couple-reference.jpg`):
+maroon lehenga and sheer dupatta with gold embroidery; the groom keeps his cream
+sherwani.
+
+```sh
+# 1. person mattes for every frame (local u2net model)
+cd hyperframes && npx hyperframes remove-background renders/venue.mp4 -o people.mov
+ffmpeg -i people.mov -vf alphaextract alpha/a_%04d.png
+ffmpeg -i renders/venue.mp4 frames/f_%04d.png
+# 2. split groom/bride per frame and recolour (--look navy = navy suit + ice-blue lehenga)
+python recolor_outfits.py frames alpha out --look maroon
+# 3. source clip for Remotion, then render the WalimaVenue composition
+ffmpeg -framerate 30 -i out/f_%04d.png -c:v libx264 -crf 10 -pix_fmt yuv420p ../../video/public/walima/couple-walk-maroon.mp4
+cd ../../video && npm run render:walima      # -> out/walima-venue.mp4
+```
+
+Then encode the web versions (see `site/README.md`). No AI video generator was
+used: an AI-generated clip from `references/walima/BRIEF.md` (e.g. with Kling)
+can replace it later.
