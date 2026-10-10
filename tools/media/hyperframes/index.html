@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1008, height=1600" />
+    <title>Curtain Opening</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      body { margin: 0; background: #efe7da; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+      /* Source frames are 1008x1608; anchoring to the bottom trims the
+         recording's dark status line from the top edge. */
+      #curtain {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; object-position: 50% 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Bow unties, the drapes part and the tented venue is revealed.
+         Frame 0 doubles as the site's "Tap to Open" poster and the final
+         frame as the invitation backdrop, so the timeline is a straight
+         play-through with no added fades (the site cross-fades its own wash). -->
+    <div id="root" data-composition-id="opening" data-start="0"
+         data-width="1008" data-height="1600" data-duration="4.7" data-fps="30">
+      <video id="curtain" class="clip" src="assets/opening_src.mp4" muted playsinline
+             data-start="0" data-duration="4.7" data-track-index="0"></video>
+    </div>
+    <script>
+      window.__timelines["opening"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

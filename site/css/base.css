@@ -1,0 +1,199 @@
+/* ───────────────────────── Tokens ───────────────────────── */
+:root {
+  /* Palette sampled from the reference */
+  --ink: #3a2f28;            /* deep brown body / script start */
+  --ink-2: #5a4a3e;          /* softer body text */
+  --ink-3: #7a6a5e;          /* muted answers, secondary lines */
+  --gold: #a68657;           /* small caps, ornaments */
+  --gold-2: #b8955c;
+  --gold-deep: #8b6a3d;
+  --gold-light: #d8bf8c;
+  --cream: #f0ebe5;          /* couple / dress code / FAQ paper */
+  --cream-2: #f6f2ec;
+  --glass: rgba(255, 252, 247, 0.5);
+  --glass-line: rgba(255, 255, 255, 0.65);
+  --glass-inner: rgba(181, 149, 103, 0.35);
+  --night-glass: rgba(34, 27, 22, 0.42);
+  --pill-dark-1: #5d5148;
+  --pill-dark-2: #3d342e;
+
+  /* Script names fade from deep brown into gold across the word */
+  --script-grad: linear-gradient(90deg, #3e342a 0%, #483d31 34%, #6c5a42 52%, #937a55 72%, #9a7f57 86%, #84694a 100%);
+  --gold-grad: linear-gradient(90deg, #93733f 0%, #a8874f 32%, #c0a574 58%, #a3865a 82%, #94764a 100%);
+  --metal-grad: linear-gradient(115deg, #b8955a 0%, #e9d6a6 22%, #c8a568 40%, #f2e3bb 55%, #b38f55 74%, #d9bf86 100%);
+
+  --font-script: "Great Vibes", "Pinyon Script", cursive;
+  --font-serif: "Cormorant Garamond", "Cormorant", Garamond, Georgia, serif;
+  --font-sans: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+  --font-arabic: "Amiri", "Scheherazade New", "Traditional Arabic", serif;
+
+  /* Layout unit: 1 reference pixel. The reference viewport is 504×804, so
+     every measurement taken from it is written as calc(N * var(--u)).
+     Width-driven on phones, capped by height so short screens still fit. */
+  --app-w: min(100vw, 480px);
+  --app-h: 100vh;
+  --u: min(calc(var(--app-w) / 504), calc(var(--app-h) / 760));
+
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-t: env(safe-area-inset-top, 0px);
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+}
+@supports (height: 100dvh) {
+  :root { --app-h: 100dvh; }
+}
+
+/* ───────────────────────── Reset / shell ───────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;            /* the inner scroller owns scrolling */
+  background: #e9e1d5;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+img, video, canvas { display: block; }
+
+/* Desktop: the invitation is a phone-shaped column over a soft backdrop */
+.backdrop {
+  position: fixed; inset: -40px;
+  background: #e9e1d5 center / cover no-repeat;
+  filter: blur(26px) saturate(0.9);
+  transform: scale(1.06);
+}
+.backdrop::after { content: ""; position: absolute; inset: 0; background: rgba(233, 225, 213, 0.55); }
+
+.app {
+  position: fixed;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: var(--app-w);
+  transform: translateX(-50%);
+  overflow: hidden;
+  background: #efe7da;
+  isolation: isolate;
+  touch-action: manipulation; /* no double-tap zoom; still allows the events carousel to swipe */
+}
+@media (min-width: 520px) {
+  .app { box-shadow: 0 0 0 1px rgba(120, 95, 60, 0.12), 0 30px 80px rgba(60, 45, 30, 0.25); }
+}
+
+.scroller {
+  position: absolute; inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.scroller::-webkit-scrollbar { display: none; }
+.scroller.is-locked { overflow: hidden; }
+
+/* Every screen fills the visible viewport and snaps */
+.section {
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(24 * var(--u) + var(--safe-t)) calc(25 * var(--u)) calc(118 * var(--u) + var(--safe-b));
+}
+.section--tall { height: auto; }
+
+/* Backdrop layers */
+.bg, .bg > img, .bg > video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+.bg { z-index: -2; background: #e8dfd2 center / cover no-repeat; }
+.wash {
+  position: absolute; inset: 0; z-index: -1;
+  opacity: 0;
+  transition: opacity 0.9s var(--ease-soft);
+  pointer-events: none;
+}
+.section.is-active .wash { opacity: 1; }
+
+/* ───────────────────────── Type helpers ───────────────────────── */
+.script {
+  display: inline-block;
+  font-family: var(--font-script);
+  font-weight: 400;
+  line-height: 1.25;
+  /* swashes overhang the box; pad so background-clip doesn't cut them */
+  padding: 0 0.22em 0.08em;
+  margin: 0 -0.22em;
+  background: var(--script-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+}
+.script--gold { background-image: var(--gold-grad); }
+.script--light { background: none; color: #fbf6ee; -webkit-text-fill-color: #fbf6ee; }
+
+.caps {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-right: -0.3em; /* optically centre tracked text */
+}
+.serif { font-family: var(--font-serif); }
+.arabic { font-family: var(--font-arabic); direction: rtl; unicode-bidi: isolate; }
+
+/* Gold line · diamond · line divider */
+.divider {
+  display: block;
+  width: calc(156 * var(--u));
+  height: calc(14 * var(--u));
+  color: var(--gold);
+}
+
+/* ───────────────────────── Reveal choreography ─────────────────────────
+   Elements fade up with a soft blur when their section becomes active.
+   --i sets the stagger step (0.12s each). */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, calc(14 * var(--u)), 0);
+  filter: blur(5px);
+  transition:
+    opacity 0.9s var(--ease-out),
+    transform 1s var(--ease-out),
+    filter 0.9s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 0.12s + var(--base-delay, 0.1s));
+  will-change: opacity, transform;
+}
+[data-reveal="fade"] { transform: none; }
+[data-reveal="card"] { transform: translate3d(0, calc(10 * var(--u)), 0) scale(0.985); filter: none; }
+.section.is-active [data-reveal] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { transform: none !important; filter: none !important; transition-duration: 0.4s; transition-delay: 0s; }
+  .wash { transition-duration: 0.3s; }
+}
+
+.noscript { position: fixed; inset: auto 0 40%; text-align: center; font-size: 18px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
