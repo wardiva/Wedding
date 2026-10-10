@@ -5,3 +5,7 @@ dist
 
 # Ignore the output video from Git but not videos you import into src/.
 out
+
+# Large binary source clips (copied in locally, not committed)
+public/walima/
+out/
