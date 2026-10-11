@@ -35,13 +35,13 @@
   /* its lowercase is tiny next to its capitals; scaled so names and titles read at their designed size */
   size-adjust: 150%;
 }
-/* Bleury Saint by Heinzel Std (freeware, non-commercial) — the hero names only */
+/* Silver Brown (fontspace, freeware, non-commercial) — the hero names only */
 @font-face {
-  font-family: 'Bleury Saint';
+  font-family: 'Silver Brown';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../assets/fonts/bleury-saint-400.woff2) format('woff2');
+  src: url(../assets/fonts/silver-brown-400.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Great Vibes';
