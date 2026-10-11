@@ -212,7 +212,7 @@ function closing(c) {
 }
 
 export function renderSections(c) {
-  return [opening, invitation, countdown, venue, schedule, dressCode, letter, closing]
+  return [opening, letter, invitation, countdown, venue, schedule, dressCode, closing]
     .map((fn) => fn(c))
     .join("");
 }

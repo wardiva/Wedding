@@ -6,15 +6,15 @@
  *  Grand Heaven, Sargodha.
  *
  *  Page order (one full screen each):
- *    1. Opening   — closed curtain, "Tap to Open", the curtains part, then the
- *                   same screen becomes the HERO: the couple video with the
- *                   names and date over the canopy.
- *    2. Invitation — Bismillah, invitation wording, names, date and time.
- *    3. Countdown  — live countdown with scratch-to-reveal cards and petals.
- *    4. Venue      — arch card with Open Location and Add to Calendar.
- *    5. Schedule   — timeline built from the `schedule.items` list.
- *    6. Dress code — groom and bride illustrations with a guidance line.
- *    7. Letter     — a note to guests.
+ *    1. Opening   — closed curtain, "Tap to Open", the drapes part over the
+ *                   couple video, which carries on as the HERO with the names
+ *                   and "Are saying “Qabool Hai”" over the canopy.
+ *    2. Letter     — a note to guests.
+ *    3. Invitation — Bismillah, invitation wording, names, date and time.
+ *    4. Countdown  — live countdown with scratch-to-reveal cards and petals.
+ *    5. Venue      — arch card with Open Location and Add to Calendar.
+ *    6. Schedule   — timeline built from the `schedule.items` list.
+ *    7. Dress code — groom and bride illustrations with a guidance line.
  *    8. Closing    — names and a Quranic verse.
  *
  *  • Text supports plain strings only (no HTML).
@@ -38,7 +38,7 @@ export default {
     joiner: "&",
   },
 
-  /* 1 — Closed curtain screen ("Tap to Open"). The names above come from `couple`. */
+  /* 1 — Closed curtain screen ("Tap to Open"). */
   intro: {
     tapToOpen: "Tap to Open",
   },
@@ -50,7 +50,7 @@ export default {
     vow: "“Qabool Hai”",
   },
 
-  /* 2 — Invitation (plain paper card) */
+  /* 3 — Invitation (plain paper card) */
   invitation: {
     bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
     // Each entry is one line of the lead-in.
@@ -65,7 +65,7 @@ export default {
     timeLine: "1 PM – 4 PM",
   },
 
-  /* 3 — Countdown with scratch-to-reveal */
+  /* 4 — Countdown with scratch-to-reveal */
   countdown: {
     eyebrow: "Until Barat",
     title: "Countdown",
@@ -76,7 +76,7 @@ export default {
     labels: { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds" },
   },
 
-  /* 4 — Venue */
+  /* 5 — Venue */
   venue: {
     eyebrow: "The Venue",
     name: "Grand Heaven", // large script; wraps onto two lines
@@ -95,7 +95,7 @@ export default {
     },
   },
 
-  /* 5 — Schedule. Add, remove or reorder rows freely.
+  /* 6 — Schedule. Add, remove or reorder rows freely.
          time + period → "1:00" over "PM"; `note` is an optional smaller second
          line; `highlight: true` marks the key moment with a solid gold node. */
   schedule: {
@@ -110,7 +110,7 @@ export default {
     ],
   },
 
-  /* 6 — Dress code */
+  /* 7 — Dress code */
   dressCode: {
     eyebrow: "Dress Code",
     title: "Formal Wear", // large script
@@ -121,7 +121,7 @@ export default {
     brideArt: "assets/images/bride.webp", // transparent cut-out, ~1:1.6
   },
 
-  /* 7 — Letter to guests. Header reads "HAMZA ♥ KOMAL". */
+  /* 2 — Letter to guests, right after the hero. Header reads "HAMZA ♥ KOMAL". */
   letter: {
     from: ["Hamza", "Komal"],
     salutation: "Dear Family & Friends,",

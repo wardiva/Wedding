@@ -2,10 +2,10 @@
 
 A cinematic, phone-first digital invitation for the Barat of Hamza Shafi &
 Komal Naveed: closed curtains → tap → the bow unties and the drapes part over
-the couple walking down the aisle, which carries on as the hero ("Barat
-Invitation" over the canopy) → the invitation, a scratch-to-reveal countdown with a
-petal shower, the venue, the day's schedule, the dress code, a letter to
-guests and a closing card.
+the couple walking down the aisle, which carries on as the hero (their names
+and "Are saying “Qabool Hai”" over the canopy) → a letter to guests, the
+invitation, a scratch-to-reveal countdown with a petal shower, the venue, the
+day's schedule, the dress code and a closing card.
 
 It is a static site — plain HTML, CSS and ES modules, no build step.
 
