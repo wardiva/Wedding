@@ -138,9 +138,11 @@ img, video, canvas { display: block; }
   font-family: var(--font-script);
   font-weight: 400;
   line-height: 1.25;
-  /* swashes overhang the box; pad so background-clip doesn't cut them */
-  padding: 0 0.22em 0.08em;
-  margin: 0 -0.22em;
+  /* Tall capitals, ascenders and swashes overhang the line box, and the
+     gradient (background-clip: text) only paints inside the padding box:
+     pad generously and cancel it with negative margins so layout is unchanged. */
+  padding: 0.24em 0.22em 0.3em;
+  margin: -0.24em -0.22em -0.22em;
   background: var(--script-grad);
   -webkit-background-clip: text;
   background-clip: text;

@@ -169,7 +169,8 @@
   margin-right: calc(-1 * var(--track-caps));
   color: var(--gold-deep);
 }
-.card-title { font-size: calc(72 * var(--u)); line-height: 1.1; margin: calc(2 * var(--u)) 0 calc(22 * var(--u)); font-weight: 400; }
+/* margins net of .script's glyph padding (0.24em top, 0.22em bottom) */
+.card-title { font-size: calc(72 * var(--u)); line-height: 1.1; margin: calc(10 * var(--u) - 0.24em) -0.22em calc(22 * var(--u) - 0.22em); font-weight: 400; }
 .cd-card, .sched-card { padding: calc(32 * var(--u)) calc(26 * var(--u)) calc(34 * var(--u)); }
 
 /* The date sits under scratch-off gold foil, shaped like a soft plaque */
@@ -363,7 +364,7 @@
   margin-top: var(--group-gap);
 }
 .letter-card__name { font-size: calc(60 * var(--u)); line-height: 1.12; }
-.letter-card__event + .letter-card__name { margin-top: calc(6 * var(--u)); }
+.letter-card__event + .letter-card__name { margin-top: calc(6 * var(--u) - 0.24em); }
 .letter-card__amp {
   font-family: var(--font-serif);
   font-weight: 500;
