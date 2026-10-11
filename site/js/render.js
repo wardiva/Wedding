@@ -73,7 +73,6 @@ function countdown(c) {
       <span class="cd__day" ${r(4)}>${esc(k.day)}</span>
       <span class="cd__date" ${r(5)}>${esc(k.date)}</span>
       <span class="cd__time" ${r(6)}>${esc(k.time)}</span>
-      ${fineRule(7, "fine-rule--wide")}
       <div class="cd__count" ${r(8)}>
         ${units.map((u) => `<div class="cd__cell" data-unit="${u}"><span class="cd__num" data-num>00</span><span class="cd__label">${esc(k.labels[u])}</span></div>`).join("")}
       </div>

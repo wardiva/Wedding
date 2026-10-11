@@ -198,8 +198,7 @@
   font-variant-numeric: lining-nums;
   margin-top: calc(4 * var(--u));
 }
-.fine-rule--wide { margin-top: calc(22 * var(--u)); margin-bottom: calc(20 * var(--u)); }
-.cd__count { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; }
+.cd__count { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; margin-top: calc(26 * var(--u)); }
 .cd__cell { display: flex; flex-direction: column; align-items: center; padding: calc(2 * var(--u)) 0; }
 .cd__cell + .cd__cell {
   border-left: 1px solid transparent;
