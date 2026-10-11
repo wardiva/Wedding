@@ -56,7 +56,17 @@ const bgObserver = new IntersectionObserver(
 );
 
 /* ── Hero: the couple video, continuing from the curtain clip's last frame ── */
-const hero = initHero(byName("opening"), { reducedMotion, start: content.media.heroStart });
+const hero = initHero(byName("opening"), {
+  reducedMotion,
+  start: content.media.heroStart,
+  // When the first pass of the couple video ends, move on to the letter —
+  // only if the guest is still on the video screen.
+  onFirstEnd() {
+    if (current !== byName("opening")) return;
+    const next = byName("letter");
+    scroller.scrollTo({ top: next.offsetTop, behavior: reducedMotion ? "auto" : "smooth" });
+  },
+});
 
 /* ── Active section: reveal content, manage the cue, play/pause the hero ── */
 let opened = false;      // curtain clip finished: the hero video takes over
