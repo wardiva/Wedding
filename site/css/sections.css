@@ -124,10 +124,10 @@
 /* "Hamza & Komal" on one line, the ampersand centred between the names */
 .hero__names { display: flex; align-items: center; justify-content: center; gap: calc(12 * var(--u)); white-space: nowrap; }
 .hero__name {
-  /* the hero names use their own face, Signerica */
-  font-family: "Signerica", var(--font-serif);
+  /* the hero names use their own face, Prestige Signature Script */
+  font-family: "Prestige Signature Script", var(--font-serif);
   font-weight: 400;
-  font-size: calc(40 * var(--u));
+  font-size: calc(88 * var(--u) - 2px);
   line-height: 1.05;
   background: none;
   color: #fbf3e2;
@@ -136,9 +136,9 @@
 }
 .hero__amp {
   /* same face as the names, kept gold */
-  font-family: "Signerica", var(--font-serif);
+  font-family: "Prestige Signature Script", var(--font-serif);
   font-weight: 400;
-  font-size: calc(40 * var(--u));
+  font-size: calc(88 * var(--u) - 2px);
   line-height: 1;
   margin: 0;
   color: var(--gold-light);
