@@ -148,8 +148,7 @@ function closing(c) {
     <div class="bg">${loopVideo(c.media.closingVideo, c.media.closingVideoWebm, c.media.closingPoster)}</div>
     <div class="glass-card closing-card" ${r(0, "card")}>
       <span class="script closing__line" ${r(1)}>${lines(k.lines)}</span>
-      ${fineRule(2)}
-      <span class="arabic closing__insha" lang="ar" ${r(3)}>${esc(k.inshaAllah)}</span>
+      <span class="arabic closing__insha" lang="ar" ${r(2)}>${esc(k.inshaAllah)}</span>
     </div>
   </section>`;
 }

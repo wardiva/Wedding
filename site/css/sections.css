@@ -374,6 +374,7 @@
 .closing-card { padding: calc(40 * var(--u)) calc(28 * var(--u)) calc(36 * var(--u)); }
 .closing__line { font-size: calc(56 * var(--u)); line-height: 1.16; white-space: normal; }
 .closing__insha {
+  margin-top: calc(14 * var(--u));
   font-size: calc(40 * var(--u));
   line-height: 1.5;
   color: var(--gold-2);
