@@ -1,8 +1,9 @@
 // Hero: the couple video is the scene behind the curtains. The opening clip
 // already shows its first seconds through the parting drapes, so the hero
-// picks up at `start` (the opening's last frame) and plays on (muted). When
-// that first pass ends `onFirstEnd` fires (the page moves on to the letter)
-// and the clip loops from then on, so coming back shows it still playing.
+// picks up at `start` (the opening's last frame) and plays on (muted).
+// `leadOut` seconds before that first pass ends `onFirstEnd` fires (the page
+// moves on to the letter) and the clip loops from then on, so coming back
+// shows it still playing.
 //
 // Nothing is downloaded until prime() is called, which the opening does once
 // the curtain video has started (or at the tap when it falls back), so the
@@ -10,7 +11,7 @@
 // (= the frame at `start`) sits under the video: it is what shows if the
 // video fails or can't autoplay, and with Reduce Motion it is all that loads.
 
-export function initHero(section, { reducedMotion, start = 0, onFirstEnd = () => {} }) {
+export function initHero(section, { reducedMotion, start = 0, leadOut = 3, onFirstEnd = () => {} }) {
   const video = section.querySelector(".hero__video");
   const poster = section.querySelector(".hero__poster");
   let primed = false;
@@ -26,13 +27,19 @@ export function initHero(section, { reducedMotion, start = 0, onFirstEnd = () =>
   video.addEventListener("error", fail);
   video.querySelector("source:last-of-type")?.addEventListener("error", fail);
   video.addEventListener("playing", () => section.classList.add("hero-playing"));
-  // First pass ends → hand over, then loop seamlessly from the start.
+  // `leadOut` s before the first pass ends → hand over to the next screen.
+  let handed = false;
+  const handOver = () => { if (!handed) { handed = true; onFirstEnd(); } };
+  video.addEventListener("timeupdate", () => {
+    if (!handed && video.duration && video.currentTime >= video.duration - leadOut) handOver();
+  });
+  // First pass ends → loop seamlessly from the start.
   video.addEventListener("ended", () => {
     video.loop = true;
     video.currentTime = 0;
     const p = video.play();
     if (p && typeof p.catch === "function") p.catch(() => {});
-    onFirstEnd();
+    handOver();
   }, { once: true });
 
   const prime = () => {
