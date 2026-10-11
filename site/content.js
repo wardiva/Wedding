@@ -115,7 +115,7 @@ export default {
 
   /* Media. Swap files here (keep similar dimensions / aspect ratios). */
   media: {
-    music: "assets/audio/background-music.mp3",
+    music: "assets/audio/kudmayi.mp3", // Kudmayi, from 2:46 (1:50, loops)
     musicVolume: 0.7,
     // Opening: the bow unties and the drapes part over the couple walking
     // down the aisle (tools/media/hyperframes/compositions/reveal.html).

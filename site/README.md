@@ -39,7 +39,7 @@ Drop new files into `assets/` and point `content.js` at them. Keep the shapes:
 | `images/tent-light.jpg` | countdown and venue backdrop (and the blurred desktop backdrop) | ~5:8 portrait |
 | `images/floral-tent.jpg` | letter and schedule backdrop | ~5:8 portrait |
 | `images/closing-couple.jpg` | closing: the couple's photo, full-bleed, text over the canopy | 732×1600 portrait |
-| `audio/background-music.mp3` | background music (loops) | — |
+| `audio/kudmayi.mp3` | background music: "Kudmayi" from 2:46, faded in and out so it loops smoothly | 1:50, 128 kbps |
 
 The files in `assets/card` (paper, washes, ornaments, arch, gold veins,
 seal, deckle mask, botanical sprigs, star) are artwork kept for a possible
