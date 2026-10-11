@@ -40,7 +40,7 @@
   --safe-b: env(safe-area-inset-bottom, 0px);
   --safe-t: env(safe-area-inset-top, 0px);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);   /* strong ease-out: confident arrivals */
-  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1); /* strong ease-in-out: on-screen movement, crossfades */
 }
 @supports (height: 100dvh) {
   :root { --app-h: 100dvh; }
@@ -127,7 +127,7 @@ img, video, canvas { display: block; }
 .wash {
   position: absolute; inset: 0; z-index: -1;
   opacity: 0;
-  transition: opacity 0.9s var(--ease-soft);
+  transition: opacity 0.9s var(--ease-out);
   pointer-events: none;
 }
 .section.is-active .wash { opacity: 1; }

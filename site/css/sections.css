@@ -19,7 +19,7 @@
 /* ═════════════════════════ 1 · Opening → hero ═════════════════════════ */
 .s-opening { padding: 0; }
 .s-opening .bg__video { opacity: 0; transition: opacity 0.25s linear; }
-.s-opening .bg__end { opacity: 0; transition: opacity 1.2s var(--ease-soft); }
+.s-opening .bg__end { opacity: 0; transition: opacity 1.2s var(--ease-in-out); }
 .s-opening.is-playing .bg__video { opacity: 1; }
 .s-opening.use-end-frame .bg__end { opacity: 1; }
 .s-opening .wash { background: none; }
@@ -32,7 +32,7 @@
   width: 100%;
   cursor: pointer;
   text-align: center;
-  transition: opacity 0.45s var(--ease-soft), visibility 0s linear 0.45s;
+  transition: opacity 0.25s var(--ease-out), visibility 0s linear 0.25s;
 }
 .s-opening:not(.is-intro) .intro { opacity: 0; visibility: hidden; pointer-events: none; }
 /* "Tap to Open": a frosted ivory pill near the foot of the curtain (the
@@ -113,7 +113,7 @@
   background: linear-gradient(to bottom,
     rgba(22, 13, 6, 0.72) 0%, rgba(22, 13, 6, 0.58) 26%, rgba(22, 13, 6, 0.32) 36%, rgba(22, 13, 6, 0) 50%);
   opacity: 0;
-  transition: opacity 0.8s var(--ease-soft);
+  transition: opacity 0.8s var(--ease-out);
 }
 .s-opening.show-text .hero__shade { opacity: 1; }
 
@@ -369,7 +369,7 @@
 .s-closing .bg {
   background-position: 50% 30%;
   transform: scale(1.06);
-  transition: transform 14s cubic-bezier(0.2, 0.6, 0.3, 1);
+  transition: transform 14s var(--ease-out);
 }
 .s-closing.is-active .bg { transform: scale(1); }
 .closing__shade {

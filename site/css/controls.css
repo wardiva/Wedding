@@ -29,7 +29,7 @@
 }
 .music-btn__slash { opacity: 0; transition: opacity 0.2s; }
 .music-btn[aria-pressed="false"].has-started .music-btn__slash { opacity: 1; }
-.music-btn[aria-pressed="true"] svg { animation: note-bob 2.4s ease-in-out infinite; }
+.music-btn[aria-pressed="true"] svg { animation: note-bob 2.4s var(--ease-in-out) infinite; }
 @keyframes note-bob { 50% { transform: translateY(-1.5px); } }
 
 /* ───────────────────────── Scroll cue (bottom-centre) ───────────────────────── */
@@ -44,12 +44,12 @@
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.6s var(--ease-soft), visibility 0s linear 0.6s;
+  transition: opacity 0.2s var(--ease-out), visibility 0s linear 0.2s;
 }
 .scroll-cue.is-visible {
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.8s var(--ease-soft) 0.2s, visibility 0s;
+  transition: opacity 0.3s var(--ease-out) 0.2s, visibility 0s;
 }
 /* Frosted ivory disc in the same material as "Tap to Open" */
 .scroll-cue__btn {
@@ -86,8 +86,8 @@
   fill: none; stroke: #4a3a2c; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
 }
 /* The two chevrons take turns sliding down, as in the reference */
-.scroll-cue__chev .c1 { animation: chev 1.6s ease-in-out infinite; }
-.scroll-cue__chev .c2 { animation: chev 1.6s ease-in-out infinite 0.8s; }
+.scroll-cue__chev .c1 { animation: chev 1.6s var(--ease-in-out) infinite; }
+.scroll-cue__chev .c2 { animation: chev 1.6s var(--ease-in-out) infinite 0.8s; }
 @keyframes chev {
   0% { opacity: 0; transform: translateY(-3px); }
   35% { opacity: 1; }
