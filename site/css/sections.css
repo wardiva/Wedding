@@ -16,13 +16,6 @@
   text-align: center;
 }
 
-.ornament-heart {
-  display: inline-block;
-  width: calc(30 * var(--u));
-  height: calc(27 * var(--u));
-  color: #8f6d3c;
-}
-
 /* ═════════════════════════ 1 · Opening → hero ═════════════════════════ */
 .s-opening { padding: 0; }
 .s-opening .bg__video { opacity: 0; transition: opacity 0.25s linear; }
@@ -361,20 +354,48 @@
 }
 .fine-rule--after-names { margin-top: calc(22 * var(--u)); margin-bottom: calc(12 * var(--u)); }
 
-/* ═════════════════════════ 6 · Closing ═════════════════════════ */
-.closing-card {
-  padding: calc(30 * var(--u)) calc(26 * var(--u)) calc(20 * var(--u));
-  margin-top: calc(10 * var(--u));
+/* ═════════════════════════ 6 · Closing ═════════════════════════
+   The couple's photo full-bleed; the line and "In sha Allah" sit over the
+   lit canopy, like the hero's names, on a soft shade (no blur). */
+.s-closing { justify-content: flex-start; padding-top: calc(62 * var(--u) + var(--safe-t)); overflow: hidden; }
+.s-closing .bg {
+  background-position: 50% 30%;
+  transform: scale(1.06);
+  transition: transform 14s cubic-bezier(0.2, 0.6, 0.3, 1);
 }
-.s-closing { padding-bottom: calc(60 * var(--u) + var(--safe-b)); }
-.closing__line { font-weight: 500; font-size: calc(27 * var(--u)); color: var(--ink-2); margin-top: calc(23 * var(--u)); }
-.closing__name { font-size: calc(64 * var(--u)); line-height: 1.12; }
-.closing__amp { font-family: var(--font-script); font-size: calc(28 * var(--u)); color: var(--gold); line-height: 1; margin: calc(2 * var(--u)) 0 calc(2 * var(--u)); }
-.closing-card .divider { margin: calc(18 * var(--u)) auto calc(30 * var(--u)); }
-.closing__verse { font-size: calc(32 * var(--u)); line-height: 1.6; color: var(--gold-2); background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding: 0 0.2em; }
-.closing__ref { font-size: calc(12 * var(--u)); color: #6b5d55; letter-spacing: 0.26em; margin-top: calc(2 * var(--u)); }
+.s-closing.is-active .bg { transform: scale(1); }
+.closing__shade {
+  position: absolute; inset: 0; z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(22, 13, 6, 0.68) 0%, rgba(22, 13, 6, 0.56) 24%, rgba(22, 13, 6, 0.3) 36%, rgba(22, 13, 6, 0) 50%);
+}
+.closing__text {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  --closing-shadow: 0 calc(2 * var(--u)) calc(5 * var(--u)) rgba(28, 16, 6, 0.6), 0 0 calc(24 * var(--u)) rgba(28, 16, 6, 0.5);
+}
+.closing__line {
+  font-size: calc(60 * var(--u));
+  line-height: 1.12;
+  background: none;
+  color: #fbf3e2;
+  -webkit-text-fill-color: #fbf3e2;
+  text-shadow: var(--closing-shadow);
+}
+.fine-rule--light { margin: calc(26 * var(--u)) auto calc(6 * var(--u)); filter: drop-shadow(0 1px 3px rgba(28, 16, 6, 0.5)); }
+.fine-rule--light i { background: linear-gradient(90deg, rgba(216, 191, 140, 0), rgba(216, 191, 140, 0.95)); }
+.fine-rule--light b { background: var(--gold-light); }
+.closing__insha {
+  font-size: calc(44 * var(--u));
+  line-height: 1.7;
+  color: #fbf3e2;
+  text-shadow: var(--closing-shadow);
+}
+@media (prefers-reduced-motion: reduce) {
+  .s-closing .bg { transform: none; transition: none; }
+}
 
-.closing-card > *, .letter-card > * { position: relative; z-index: 1; }
+.letter-card > * { position: relative; z-index: 1; }
 
 /* Card content stacks and centres */
 .glass-card { display: flex; flex-direction: column; align-items: center; }

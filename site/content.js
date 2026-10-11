@@ -13,7 +13,7 @@
  *    3. Countdown  — the date and a live countdown (petals on arrival).
  *    4. Schedule   — timeline built from the `schedule.items` list.
  *    5. Venue      — the venue's name and address with Open Location.
- *    6. Closing    — names and a Quranic verse.
+ *    6. Closing    — the couple's photo: "We can't wait to see you there", In sha Allah.
  *
  *  • Text supports plain strings only (no HTML).
  *  • Media paths are relative to the /site folder. Keep the same aspect
@@ -99,12 +99,12 @@ export default {
     verseArabic: "وَخَلَقْنَاكُمْ أَزْوَاجًا",
     verseReference: "(Quran 78:8)",
   },
-  /* 6 — Closing (names come from `couple`) */
+  /* 6 — Closing: the couple's photo, with this over the canopy */
   closing: {
-    line: "We cannot wait to see you there.",
-    verseArabic: "وَخَلَقْنَاكُمْ أَزْوَاجًا",
-    verseReference: "(Quran 78:8)",
+    lines: ["We can't wait", "to see you there"], // one entry per line
+    inshaAllah: "إِنْ شَاءَ ٱللَّٰهُ",
   },
+
 
   /* Persistent controls */
   ui: {
@@ -134,6 +134,7 @@ export default {
     heroStart: 3.67, // seconds into the hero clip where the opening leaves off
     // Photo backdrops (portrait, ~5:8).
     tentLight: "assets/images/tent-light.jpg", // countdown and venue (and the desktop backdrop)
-    floralTent: "assets/images/floral-tent.jpg?v=2", // letter and closing
+    floralTent: "assets/images/floral-tent.jpg?v=2", // letter and schedule
+    closingPhoto: "assets/images/closing-couple.jpg", // closing; 732x1600 portrait
   },
 };

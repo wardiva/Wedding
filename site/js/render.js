@@ -135,20 +135,15 @@ function letter(c) {
 }
 
 function closing(c) {
-  const k = c.closing, cp = c.couple;
+  const k = c.closing;
   return `
-  <section class="section s-floral s-closing" data-section="closing" data-bg="${c.media.floralTent}">
+  <section class="section s-closing" data-section="closing" data-bg="${c.media.closingPhoto}">
     <div class="bg"></div>
-    <div class="wash"></div>
-    <div class="glass-card closing-card" ${r(0, "card")}>
-      <span class="ornament-heart" ${r(1)}>${icon.heart}</span>
-      <p class="closing__line" ${r(2)} style="margin-bottom:0">${esc(k.line)}</p>
-      <span class="script closing__name" ${r(3)}>${esc(cp.groom.name)}</span>
-      <span class="closing__amp" ${r(4)}>${esc(cp.joiner)}</span>
-      <span class="script closing__name" ${r(5)}>${esc(cp.bride.name)}</span>
-      <span ${r(6, "fade")}>${icon.divider}</span>
-      <div class="arabic closing__verse" lang="ar" ${r(7)}>${esc(k.verseArabic)}</div>
-      <span class="caps closing__ref" ${r(8)}>${esc(k.verseReference)}</span>
+    <div class="closing__shade" aria-hidden="true"></div>
+    <div class="closing__text">
+      <span class="script closing__line" ${r(0)}>${lines(k.lines)}</span>
+      ${fineRule(1, "fine-rule--light")}
+      <span class="arabic closing__insha" lang="ar" ${r(2)}>${esc(k.inshaAllah)}</span>
     </div>
   </section>`;
 }

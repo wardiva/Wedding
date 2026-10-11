@@ -160,14 +160,6 @@ em, i, cite { font-style: normal; }
 .serif { font-family: var(--font-serif); }
 .arabic { font-family: var(--font-arabic); direction: rtl; unicode-bidi: isolate; }
 
-/* Gold line · diamond · line divider */
-.divider {
-  display: block;
-  width: calc(156 * var(--u));
-  height: calc(14 * var(--u));
-  color: var(--gold);
-}
-
 /* ───────────────────────── Reveal choreography ─────────────────────────
    Elements fade up with a soft blur when their section becomes active.
    --i sets the stagger step (0.12s each). */

@@ -5,7 +5,8 @@ Komal Naveed: closed curtains → tap → the bow unties and the drapes part ove
 the couple walking down the aisle, which carries on as the hero (their names
 and "Are saying “Qabool Hai”" over the canopy) → a letter to guests (the
 invitation itself), the date with a live countdown (petals fall on arrival),
-the day's schedule, the venue and a closing card.
+the day's schedule, the venue and a closing photo of the couple ("We can't wait
+to see you there", In sha Allah).
 
 It is a static site — plain HTML, CSS and ES modules, no build step.
 
@@ -36,7 +37,8 @@ Drop new files into `assets/` and point `content.js` at them. Keep the shapes:
 | `images/hero-start.jpg` | the reveal's last frame = the hero clip at `heroStart` (hero poster) | 1008×1792 |
 | `video/walima-walk.mp4` + `.webm` | Hero: the couple walking down the aisle (client footage, audio removed). Continues from `heroStart`, plays once and holds the last frame. Rendered from the Remotion composition `WalimaVenue` in `/video` (`npm run render:walima`) | 1008×1792, 10 s |
 | `images/tent-light.jpg` | countdown and venue backdrop (and the blurred desktop backdrop) | ~5:8 portrait |
-| `images/floral-tent.jpg` | letter, schedule and closing backdrop | ~5:8 portrait |
+| `images/floral-tent.jpg` | letter and schedule backdrop | ~5:8 portrait |
+| `images/closing-couple.jpg` | closing: the couple's photo, full-bleed, text over the canopy | 732×1600 portrait |
 | `audio/background-music.mp3` | background music (loops) | — |
 
 The files in `assets/card` (paper, washes, ornaments, arch, gold veins,
