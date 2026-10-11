@@ -297,11 +297,14 @@
 .tl__what { font-weight: 600; font-size: calc(26 * var(--u)); line-height: 1.2; color: var(--ink); padding-left: calc(2 * var(--u)); text-wrap: balance; }
 
 /* ═════════════════════════ 2 · Letter ═════════════════════════ */
-.s-floral .bg { background-image: var(--bg); }
-.s-floral .wash { background: none; }
+/* Photo and video backdrops */
+.s-photo .wash, .s-drapes .wash { background: none; }
+.bg__loop { opacity: 0; transition: opacity 0.6s var(--ease-out); }
+.bg__loop.is-playing { opacity: 1; }
+/* Card sits low, leaving the swaying drapes clear above it */
+.s-drapes { justify-content: flex-end; }
 .letter-card {
   padding: calc(34 * var(--u)) calc(30 * var(--u)) calc(32 * var(--u));
-  margin-top: calc(24 * var(--u));
 }
 .letter-card__bismillah,
 .letter-card__verse {
@@ -363,49 +366,17 @@
 .fine-rule--after-names { margin-top: calc(22 * var(--u)); margin-bottom: calc(12 * var(--u)); }
 
 /* ═════════════════════════ 6 · Closing ═════════════════════════
-   The couple's photo full-bleed; the line and "In sha Allah" sit over the
-   lit canopy, like the hero's names, on a soft shade (no blur). */
-.s-closing { justify-content: flex-start; padding-top: calc(58 * var(--u) + var(--safe-t)); overflow: hidden; }
-.s-closing .bg {
-  background-position: 50% 30%;
-  transform: scale(1.06);
-  transition: transform 14s var(--ease-out);
-}
-.s-closing.is-active .bg { transform: scale(1); }
-.closing__shade {
-  position: absolute; inset: 0; z-index: -1;
-  pointer-events: none;
-  /* A warm burn behind the words (like darkening a print), over a deeper
-     fade from the top, so the chandeliers and fairy lights stop competing
-     with the text; the couple below stays untouched. */
-  background:
-    radial-gradient(ellipse 85% 26% at 50% 21%, rgba(24, 13, 5, 0.55), rgba(24, 13, 5, 0) 100%),
-    linear-gradient(to bottom,
-      rgba(24, 13, 5, 0.78) 0%, rgba(24, 13, 5, 0.66) 22%, rgba(24, 13, 5, 0.42) 34%, rgba(24, 13, 5, 0.12) 46%, rgba(24, 13, 5, 0) 56%);
-}
-.closing__text {
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-  --closing-shadow: 0 calc(2 * var(--u)) calc(5 * var(--u)) rgba(28, 16, 6, 0.6), 0 0 calc(24 * var(--u)) rgba(28, 16, 6, 0.5);
-}
-.closing__line {
-  font-size: calc(54 * var(--u));
-  line-height: 1.16;
-  background: none;
-  color: #fbf3e2;
-  -webkit-text-fill-color: #fbf3e2;
-  text-shadow: var(--closing-shadow);
-}
-.fine-rule--light { margin: calc(30 * var(--u)) auto calc(14 * var(--u)); filter: drop-shadow(0 1px 3px rgba(28, 16, 6, 0.5)); }
-.fine-rule--light i { background: linear-gradient(90deg, rgba(216, 191, 140, 0), rgba(216, 191, 140, 0.95)); }
-.fine-rule--light b { background: var(--gold-light); }
+   Frosted card under the swaying drapes. */
+.closing-card { padding: calc(40 * var(--u)) calc(28 * var(--u)) calc(36 * var(--u)); }
+.closing__line { font-size: calc(56 * var(--u)); line-height: 1.16; white-space: normal; }
 .closing__insha {
   font-size: calc(40 * var(--u));
   line-height: 1.5;
-  color: #fbf3e2;
-  text-shadow: var(--closing-shadow);
-}
-@media (prefers-reduced-motion: reduce) {
-  .s-closing .bg { transform: none; transition: none; }
+  color: var(--gold-2);
+  background: var(--gold-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 0.2em;
 }
 
 .letter-card > * { position: relative; z-index: 1; }

@@ -33,7 +33,7 @@ const music = initMusic({
 
 const petals = createPetals(document.getElementById("petals"), { reducedMotion });
 
-/* ── Lazy backdrops: load a section's image when it is within one screen ── */
+/* ── Lazy backdrops: load a section's image or loop video within one screen ── */
 const bgObserver = new IntersectionObserver(
   (entries) => {
     for (const e of entries) {
@@ -41,6 +41,13 @@ const bgObserver = new IntersectionObserver(
       const s = e.target;
       const bg = s.querySelector(".bg");
       if (s.dataset.bg && bg) bg.style.backgroundImage = `url("${s.dataset.bg}")`;
+      const loop = s.querySelector(".bg__loop");
+      if (loop && !reducedMotion) {
+        loop.querySelectorAll("source[data-src]").forEach((src) => (src.src = src.dataset.src));
+        loop.preload = "auto";
+        loop.addEventListener("playing", () => loop.classList.add("is-playing"), { once: true });
+        loop.load();
+      }
       bgObserver.unobserve(s);
     }
   },
@@ -63,6 +70,14 @@ const setCurrent = (s) => {
 
   if (opened && s.dataset.section === "opening") hero.play();
   else hero.pause();
+
+  // Loop videos play only while their screen is the current one.
+  for (const v of scroller.querySelectorAll(".bg__loop")) {
+    if (v.closest(".section") === s && !reducedMotion) {
+      const p = v.play();
+      if (p && typeof p.catch === "function") p.catch(() => {});
+    } else if (!v.paused) v.pause();
+  }
 
   // A soft petal shower the first time the countdown comes into view.
   if (!petalsShown && s.dataset.section === "countdown") {

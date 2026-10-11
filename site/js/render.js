@@ -12,6 +12,13 @@ const r = (i, kind = "") => `data-reveal${kind ? `="${kind}"` : ""} style="--i:$
 const lines = (v) => (Array.isArray(v) ? v : [v]).map(esc).join("<br />");
 
 // Hairlines tapering into a small gold diamond
+// A looping backdrop video (sources load lazily; see main.js)
+const loopVideo = (mp4, webm, poster) => `
+      <video class="bg__loop" muted playsinline loop preload="none" poster="${poster}"
+             disablepictureinpicture disableremoteplayback aria-hidden="true">
+        <source data-src="${mp4}" type="video/mp4" />
+        <source data-src="${webm}" type="video/webm" />
+      </video>`;
 const fineRule = (i, cls = "") => `<span class="fine-rule ${cls}" ${r(i, "fade")} aria-hidden="true"><i></i><b></b><i></i></span>`;
 
 function opening(c) {
@@ -77,7 +84,7 @@ function countdown(c) {
 function venue(c) {
   const v = c.venue;
   return `
-  <section class="section s-tent s-venue" data-section="venue" data-bg="${c.media.tentLight}">
+  <section class="section s-photo s-venue" data-section="venue" data-bg="${c.media.venueBg}">
     <div class="bg"></div>
     <div class="wash"></div>
     <div class="glass-card venue-card" ${r(0, "card")}>
@@ -100,7 +107,7 @@ function schedule(c) {
           <span class="tl__what">${esc(it.title)}</span>
         </li>`;
   return `
-  <section class="section s-floral s-schedule" data-section="schedule" data-bg="${c.media.floralTent}">
+  <section class="section s-photo s-schedule" data-section="schedule" data-bg="${c.media.scheduleBg}">
     <div class="bg"></div>
     <div class="wash"></div>
     <div class="glass-card sched-card" ${r(0, "card")}>
@@ -116,8 +123,8 @@ function schedule(c) {
 function letter(c) {
   const l = c.letter, cp = c.couple;
   return `
-  <section class="section s-floral s-letter" data-section="letter" data-bg="${c.media.floralTent}">
-    <div class="bg"></div>
+  <section class="section s-drapes s-letter" data-section="letter" data-bg="${c.media.letterPoster}">
+    <div class="bg">${loopVideo(c.media.letterVideo, c.media.letterVideoWebm, c.media.letterPoster)}</div>
     <div class="wash"></div>
     <div class="glass-card letter-card" ${r(0, "card")}>
       <div class="arabic letter-card__bismillah" lang="ar" ${r(1)}>${esc(l.bismillah)}</div>
@@ -137,13 +144,12 @@ function letter(c) {
 function closing(c) {
   const k = c.closing;
   return `
-  <section class="section s-closing" data-section="closing" data-bg="${c.media.closingPhoto}">
-    <div class="bg"></div>
-    <div class="closing__shade" aria-hidden="true"></div>
-    <div class="closing__text">
-      <span class="script closing__line" ${r(0)}>${lines(k.lines)}</span>
-      ${fineRule(1, "fine-rule--light")}
-      <span class="arabic closing__insha" lang="ar" ${r(2)}>${esc(k.inshaAllah)}</span>
+  <section class="section s-drapes s-closing" data-section="closing" data-bg="${c.media.closingPoster}">
+    <div class="bg">${loopVideo(c.media.closingVideo, c.media.closingVideoWebm, c.media.closingPoster)}</div>
+    <div class="glass-card closing-card" ${r(0, "card")}>
+      <span class="script closing__line" ${r(1)}>${lines(k.lines)}</span>
+      ${fineRule(2)}
+      <span class="arabic closing__insha" lang="ar" ${r(3)}>${esc(k.inshaAllah)}</span>
     </div>
   </section>`;
 }
