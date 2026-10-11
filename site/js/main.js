@@ -121,34 +121,9 @@ const countdownEl = document.getElementById("countdown");
 initCountdown(countdownEl);
 initScratch(countdownEl, { onReveal: () => petals.burst() });
 
-/* ── Events: add-to-calendar + carousel dots ── */
+/* ── Add to calendar ── */
 scroller.addEventListener("click", (e) => {
-  const btn = e.target.closest("[data-ics]");
-  if (btn) downloadIcs(content.events[Number(btn.dataset.ics)]);
-});
-const track = document.getElementById("eventsTrack");
-const dots = byName("events")?.querySelectorAll(".events-dots span");
-if (track && dots?.length) {
-  track.addEventListener("scroll", () => {
-    const i = Math.round(track.scrollLeft / track.clientWidth);
-    dots.forEach((d, j) => d.classList.toggle("is-current", i === j));
-  }, { passive: true });
-}
-
-/* ── FAQ accordion (one open at a time) ── */
-scroller.addEventListener("click", (e) => {
-  const q = e.target.closest(".faq-item__q");
-  if (!q) return;
-  const item = q.parentElement;
-  const willOpen = !item.classList.contains("is-open");
-  item.parentElement.querySelectorAll(".faq-item").forEach((it) => {
-    it.classList.remove("is-open");
-    it.querySelector(".faq-item__q").setAttribute("aria-expanded", "false");
-  });
-  if (willOpen) {
-    item.classList.add("is-open");
-    q.setAttribute("aria-expanded", "true");
-  }
+  if (e.target.closest("[data-ics]")) downloadIcs(content.event);
 });
 
 /* ── Keep the column sized to the visible viewport on mobile browsers ── */

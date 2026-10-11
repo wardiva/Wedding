@@ -1,24 +1,22 @@
-# Walima invitation (mobile-first)
+# Barat Ceremony invitation (mobile-first)
 
-A cinematic, phone-first digital invitation: closed curtains → tap → the bow
-unties and the drapes part → the invitation, families, letter, scratch-to-reveal
-countdown with a petal shower, venue card over a walking-couple video, the
-couple, dress code, FAQ and a closing card.
+A cinematic, phone-first digital invitation for the Barat Ceremony of Hamza Shafi
+& Komal Naveed: closed curtains → tap → the bow unties and the drapes part → the
+invitation, a scratch-to-reveal countdown with a petal shower, the venue card over
+a walking-couple video (with an "Open in Google Maps" link), the schedule with the
+dress code, and a closing card.
 
 It is a static site — plain HTML, CSS and ES modules, no build step.
 
 ## Editing the content
 
 **Everything a guest reads or sees is in [`content.js`](content.js).** Names,
-dates, the countdown target, events, FAQ, dress code, wording, and every media
-path live there. Change values and refresh; no other file needs to change.
+date, venue, Google Maps link, schedule, dress code, wording and every media path
+live there. Change values and refresh; no other file needs to change.
 
-- Current values are *placeholders* copied from the design reference so the
-  layout keeps the right line lengths.
-- Add more entries to `events` to get a swipeable list (`01 / 03`…).
-- Set `dressCode.enabled` / `faq.enabled` to `false` to drop a section.
-- `countdown.target` and `events[].calendar` use ISO dates with the venue's
-  UTC offset, e.g. `2026-11-28T13:00:00+05:00`.
+- `countdown.target` and `event.calendar` use ISO dates with the venue's
+  UTC offset, e.g. `2026-11-27T13:00:00+05:00`.
+- `schedule.items` takes any number of `{ time, label }` rows.
 
 ### Replacing media
 
@@ -29,11 +27,9 @@ Drop new files into `assets/` and point `content.js` at them. Keep the shapes:
 | `images/curtain-closed.jpg` | "Tap to Open" screen (= first video frame) | 1008×1600 portrait |
 | `video/curtain-opening.mp4` + `.webm` | the opening sequence, ~4.7 s, silent | 1008×1600 |
 | `images/tent-open.jpg` | invitation backdrop (= last video frame) | 1008×1600 |
-| `images/tent-light.jpg` | invitation, families and countdown backdrop | ~5:8 portrait |
-| `images/floral-tent.jpg` | letter and closing backdrop | ~5:8 portrait |
-| `video/walima-couple.mp4` + `.webm`, `images/walima-couple.jpg` | Walima section: the couple walking down the aisle (poster = first frame). Rendered from the Remotion composition `WalimaVenue` in `/video` (`npm run render:walima`), with the outfits recoloured by `tools/media/recolor_outfits.py` | 1008×1600, 5.4 s |
-| `images/couple-portrait.jpg` | arched portrait | ~3:4 portrait |
-| `images/groom.webp`, `images/bride.webp` | family illustrations | transparent cut-outs |
+| `images/tent-light.jpg` | invitation and countdown backdrop | ~5:8 portrait |
+| `images/floral-tent.jpg` | closing backdrop | ~5:8 portrait |
+| `video/walima-couple.mp4` + `.webm`, `images/walima-couple.jpg` | Venue section: the couple walking down the aisle (poster = first frame). Rendered from the Remotion composition `WalimaVenue` in `/video` (`npm run render:walima`), with the outfits recoloured by `tools/media/recolor_outfits.py` | 1008×1600, 5.4 s |
 | `audio/background-music.mp3` | background music (loops) | — |
 
 Keep the opening video's first and last frames identical to the two stills, so
@@ -93,7 +89,7 @@ site/
   js/countdown.js     ← live countdown
   js/music.js         ← music start on first tap + toggle
   js/calendar.js      ← "Add to calendar" (.ics)
-  js/main.js          ← wiring: section activation, lazy media, scroll cue, FAQ
+  js/main.js          ← wiring: section activation, lazy media, scroll cue
 ```
 
 - **Sizing:** every measurement is written in reference pixels:
@@ -110,5 +106,5 @@ site/
 - **Reduced motion:** with *Reduce Motion* on, the curtain cross-fades instead
   of playing, entrance blurs and drifts are removed, and the petal shower is lighter.
 
-The tools that produced the placeholder media from the design reference live in
+The tools that produced the media live in
 [`../tools/media`](../tools/media).
