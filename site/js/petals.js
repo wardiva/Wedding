@@ -27,14 +27,16 @@ export function createPetals(canvas, { reducedMotion = false } = {}) {
 
   const spawn = (count, spread) => {
     const unit = w / 504;
+    const now = Math.ceil(count * 0.4); // first wave: already on screen, no wait
     for (let i = 0; i < count; i++) {
+      const first = i < now;
       const sage = Math.random() < 0.2;
       const [c1, c2] = PALETTE[sage ? 4 + (Math.random() < 0.5 ? 0 : 1) : Math.floor(Math.random() * 4)];
       const size = (10 + Math.random() * 14) * unit;
       petals.push({
         x: Math.random() * w,
-        y: -20 - Math.random() * h * 0.35,
-        delay: Math.random() * spread,
+        y: first ? Math.random() * h * 0.55 : -20 - Math.random() * 40,
+        delay: first ? Math.random() * 0.25 : 0.3 + Math.random() * spread,
         size,
         aspect: 0.62 + Math.random() * 0.25,
         vy: (120 + Math.random() * 150) * (h / 800),
@@ -53,6 +55,7 @@ export function createPetals(canvas, { reducedMotion = false } = {}) {
   const drawPetal = (p, t) => {
     const flip = Math.cos(t * p.flipF + p.phase); // 3D tumble
     ctx.save();
+    ctx.globalAlpha = Math.min(1, (t - p.delay) / 0.25); // fade in, never pop
     ctx.translate(p.x + Math.sin(t * p.swayF + p.phase) * p.sway, p.y);
     ctx.rotate(p.rot + t * p.vr);
     ctx.scale(1, 0.25 + 0.75 * Math.abs(flip));
@@ -96,7 +99,7 @@ export function createPetals(canvas, { reducedMotion = false } = {}) {
     burst() {
       resize();
       // a light scatter, not a blizzard: few petals, spread out in time
-      spawn(reducedMotion ? 8 : 32, reducedMotion ? 2 : 4);
+      spawn(reducedMotion ? 8 : 32, reducedMotion ? 1.5 : 3);
       if (!raf) {
         t0 = prev = performance.now();
         raf = requestAnimationFrame(frame);
