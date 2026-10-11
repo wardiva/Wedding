@@ -65,8 +65,9 @@ npx serve site          # from the repo root, then open the printed URL on your 
 ## Deploying to Vercel
 
 `vercel.json` serves this folder as a static site (no build step), with
-long-lived caching for fonts, a one-day cache for media, and fresh
-`content.js` / JS / CSS on every visit, so text edits show up immediately.
+long-lived caching for fonts, and media, `content.js`, JS and CSS revalidated on
+every visit, so edits show up immediately. When you replace a media file, also
+bump its `?v=` in `content.js` so phones that cached the old copy fetch the new one.
 
 **From the CLI** (needs a token from vercel.com/account/tokens):
 

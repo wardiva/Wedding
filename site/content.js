@@ -148,10 +148,10 @@ export default {
     music: "assets/audio/background-music.mp3",
     musicVolume: 0.7,
     // Opening: poster = first frame of the curtain video, end frame = its last frame.
-    curtainPoster: "assets/images/curtain-closed.jpg", // 1008x1600
-    curtainVideo: "assets/video/curtain-opening.mp4", //  1008x1600, ~4.7s, no audio (H.264)
-    curtainVideoWebm: "assets/video/curtain-opening.webm", // same clip, VP9 fallback
-    curtainEndFrame: "assets/images/tent-open.jpg", //   1008x1600 (last video frame)
+    curtainPoster: "assets/images/curtain-closed.jpg?v=2", // 1008x1600
+    curtainVideo: "assets/video/curtain-opening.mp4?v=2", //  1008x1600, ~4.7s, no audio (H.264)
+    curtainVideoWebm: "assets/video/curtain-opening.webm?v=2", // same clip, VP9 fallback
+    curtainEndFrame: "assets/images/tent-open.jpg?v=2", //   1008x1600 (last video frame)
     // Hero: the couple walking down the aisle (client footage, audio removed).
     // Cross-fades in over the curtain's end frame, plays once and holds the
     // last frame. It starts downloading only once the curtain video plays.
@@ -160,7 +160,7 @@ export default {
     heroPoster: "assets/images/walima-walk.jpg", // first frame; shown if the video can't play
     // Photo backdrops (portrait, ~5:8).
     tentLight: "assets/images/tent-light.jpg", // countdown (and the desktop backdrop)
-    floralTent: "assets/images/floral-tent.jpg", // letter and closing
+    floralTent: "assets/images/floral-tent.jpg?v=2", // letter and closing
     // Invitation, venue, schedule and dress code use the paper art in
     // assets/card (paper.webp, wash.svg, sprigs, ornament), set in css/sections.css.
   },
