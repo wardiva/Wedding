@@ -415,18 +415,20 @@
 .letter-card {
   padding: calc(34 * var(--u)) calc(30 * var(--u)) calc(32 * var(--u));
   margin-top: calc(24 * var(--u));
+  /* two tones: deep warm brown to read, one gold for every accent */
+  --lc-gold: linear-gradient(180deg, #b39160 0%, #9a7744 100%);
 }
 .letter-card__bismillah,
 .letter-card__verse {
   line-height: 1.6;
-  color: var(--gold-2);
-  background: var(--gold-grad);
+  color: #9a7744;
+  background: var(--lc-gold);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
   padding: 0 0.2em;
 }
-.letter-card__bismillah { font-size: calc(32 * var(--u)); }
-.letter-card .divider { margin: calc(12 * var(--u)) auto calc(16 * var(--u)); }
+.letter-card__bismillah { font-size: calc(30 * var(--u)); }
+.letter-card__verse { font-size: calc(34 * var(--u)); }
 .letter-card__lead {
   font-size: calc(23 * var(--u));
   line-height: 1.45;
@@ -437,23 +439,48 @@
   font-family: var(--font-serif);
   font-weight: 600;
   text-transform: uppercase;
-  font-size: calc(15 * var(--u));
-  letter-spacing: 0.34em;
-  margin-right: -0.34em;
-  color: var(--gold-deep);
-  margin-top: calc(18 * var(--u));
+  font-size: calc(14.5 * var(--u));
+  letter-spacing: 0.36em;
+  margin-right: -0.36em;
+  color: #8b6a3d;
+  margin-top: calc(20 * var(--u));
 }
-.letter-card__name { font-size: calc(60 * var(--u)); line-height: 1.1; }
-.letter-card__event + .letter-card__name { margin-top: calc(8 * var(--u)); }
+/* Each name shades from deep brown at the top to warm bronze at the foot,
+   so both words carry the same colour. */
+.letter-card__name {
+  font-size: calc(60 * var(--u));
+  line-height: 1.12;
+  background-image: linear-gradient(180deg, #3b2c21 15%, #5e4630 60%, #84653f 100%);
+}
+.letter-card__event + .letter-card__name { margin-top: calc(6 * var(--u)); }
 .letter-card__amp {
   font-family: "Great Vibes", var(--font-script);
-  font-size: calc(38 * var(--u));
+  font-size: calc(36 * var(--u));
   line-height: 0.9;
-  color: var(--gold);
+  color: #a68657;
 }
-.letter-card__rule .divider { margin-top: calc(20 * var(--u)); margin-bottom: calc(10 * var(--u)); }
-.letter-card__verse { font-size: calc(30 * var(--u)); }
-.letter-card__ref { font-size: calc(12 * var(--u)); color: #6b5d55; letter-spacing: 0.26em; margin-top: calc(2 * var(--u)); }
+.letter-card__ref { font-size: calc(11.5 * var(--u)); color: var(--ink-3); letter-spacing: 0.3em; margin-right: -0.3em; margin-top: calc(4 * var(--u)); }
+
+/* Fine rule: hairlines that taper to nothing, around a small gold diamond */
+.fine-rule {
+  display: flex; align-items: center; justify-content: center;
+  gap: calc(10 * var(--u));
+  margin: calc(14 * var(--u)) auto calc(18 * var(--u));
+}
+.fine-rule i {
+  display: block;
+  width: calc(64 * var(--u));
+  height: 1px;
+  background: linear-gradient(90deg, rgba(166, 134, 87, 0), rgba(166, 134, 87, 0.85));
+}
+.fine-rule i:last-child { transform: scaleX(-1); }
+.fine-rule b {
+  display: block;
+  width: calc(6 * var(--u)); height: calc(6 * var(--u));
+  background: #a68657;
+  transform: rotate(45deg);
+}
+.fine-rule--after-names { margin-top: calc(22 * var(--u)); margin-bottom: calc(12 * var(--u)); }
 
 /* ═════════════════════════ 8 · Closing ═════════════════════════ */
 .closing-card {
