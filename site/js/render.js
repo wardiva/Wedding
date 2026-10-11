@@ -11,7 +11,6 @@ const r = (i, kind = "") => `data-reveal${kind ? `="${kind}"` : ""} style="--i:$
 /** A string or a list of lines → escaped lines joined with <br> */
 const lines = (v) => (Array.isArray(v) ? v : [v]).map(esc).join("<br />");
 
-// Hairlines tapering into a small gold diamond
 // A looping backdrop video (sources load lazily; see main.js)
 const loopVideo = (mp4, webm, poster) => `
       <video class="bg__loop" muted playsinline loop preload="none" poster="${poster}"
@@ -19,7 +18,6 @@ const loopVideo = (mp4, webm, poster) => `
         <source data-src="${mp4}" type="video/mp4" />
         <source data-src="${webm}" type="video/webm" />
       </video>`;
-const fineRule = (i, cls = "") => `<span class="fine-rule ${cls}" ${r(i, "fade")} aria-hidden="true"><i></i><b></b><i></i></span>`;
 
 function opening(c) {
   const { couple: cp, hero: h, media: m } = c;
@@ -69,7 +67,6 @@ function countdown(c) {
     <div class="glass-card cd-card" id="countdown" data-target="${esc(k.target)}" ${r(0, "card")}>
       <span class="card-eyebrow" ${r(1)}>${esc(k.eyebrow)}</span>
       <span class="script card-title" ${r(2)}>${esc(k.title)}</span>
-      ${fineRule(3)}
       <span class="cd__day" ${r(4)}>${esc(k.day)}</span>
       <span class="cd__date" ${r(5)}>${esc(k.date)}</span>
       <span class="cd__time" ${r(6)}>${esc(k.time)}</span>
@@ -89,7 +86,6 @@ function venue(c) {
     <div class="glass-card venue-card" ${r(0, "card")}>
       <span class="card-eyebrow" ${r(1)}>${esc(v.eyebrow)}</span>
       <span class="script card-title venue__name" ${r(2)}>${esc(v.name)}</span>
-      ${fineRule(3)}
       <span class="venue__addr" ${r(4)}>${esc(v.address)}</span>
       <span class="venue__city" ${r(5)}>${esc(v.city)}</span>
       <a class="caps btn btn--gold" href="${esc(v.mapsUrl)}" target="_blank" rel="noopener" ${r(6)}>${icon.pin}<span>${esc(v.openLocation)}</span></a>
@@ -112,7 +108,6 @@ function schedule(c) {
     <div class="glass-card sched-card" ${r(0, "card")}>
       <span class="card-eyebrow" ${r(1)}>${esc(s.eyebrow)}</span>
       <h2 class="script card-title" ${r(2)}>${esc(s.title)}</h2>
-      ${fineRule(3)}
       <ol class="tl">${s.items.map(row).join("")}
       </ol>
     </div>

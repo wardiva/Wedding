@@ -167,7 +167,7 @@
   margin-right: calc(-1 * var(--track-caps));
   color: var(--gold-deep);
 }
-.card-title { font-size: calc(72 * var(--u)); line-height: 1.1; margin: calc(2 * var(--u)) 0 0; font-weight: 400; }
+.card-title { font-size: calc(72 * var(--u)); line-height: 1.1; margin: calc(2 * var(--u)) 0 calc(22 * var(--u)); font-weight: 400; }
 .cd-card, .sched-card { padding: calc(32 * var(--u)) calc(26 * var(--u)) calc(34 * var(--u)); }
 
 .cd__day {
@@ -198,7 +198,7 @@
   font-variant-numeric: lining-nums;
   margin-top: calc(4 * var(--u));
 }
-.cd__count { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; margin-top: calc(26 * var(--u)); }
+.cd__count { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; margin-top: calc(22 * var(--u)); }
 .cd__cell { display: flex; flex-direction: column; align-items: center; padding: calc(2 * var(--u)) 0; }
 .cd__cell + .cd__cell {
   border-left: 1px solid transparent;
@@ -226,7 +226,7 @@
 /* ═════════════════════════ 5 · Venue ═════════════════════════ */
 .s-venue .wash { background: none; }
 .venue-card { padding: calc(36 * var(--u)) calc(30 * var(--u)) calc(38 * var(--u)); }
-.venue__name { white-space: normal; max-width: calc(330 * var(--u)); }
+.venue__name { white-space: nowrap; font-size: calc(64 * var(--u)); }
 .venue__addr { font-weight: 500; font-size: calc(26 * var(--u)); line-height: 1.35; color: var(--ink); }
 .venue__city {
   font-family: var(--font-serif);
@@ -238,7 +238,7 @@
   color: var(--ink-2);
   margin-top: calc(6 * var(--u));
 }
-.venue-card .btn { margin-top: calc(30 * var(--u)); }
+.venue-card .btn { margin-top: calc(26 * var(--u)); }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: calc(11.5 * var(--u));
   width: calc(303 * var(--u)); max-width: 100%;
@@ -262,7 +262,7 @@
 /* ═════════════════════════ 4 · Schedule ═════════════════════════ */
 /* Each row reads on one line: "1:00 PM" ◆ event, sharing a baseline. The
    right-aligned times form a clean column against the gold line. */
-.tl { position: relative; list-style: none; margin: calc(6 * var(--u)) auto 0; padding: 0; width: 100%; }
+.tl { position: relative; list-style: none; margin: 0 auto; padding: 0; width: 100%; }
 .tl::before {
   content: "";
   position: absolute;
@@ -349,26 +349,6 @@
   color: var(--gold);
 }
 .letter-card__ref { font-size: var(--fs-caption); color: #6b5d55; margin-top: calc(4 * var(--u)); }
-
-/* Fine rule: hairlines that taper to nothing, around a small gold diamond */
-.fine-rule {
-  display: flex; align-items: center; justify-content: center;
-  gap: calc(10 * var(--u));
-  margin: calc(14 * var(--u)) auto calc(18 * var(--u));
-}
-.fine-rule i {
-  display: block;
-  width: calc(64 * var(--u));
-  height: 1px;
-  background: linear-gradient(90deg, rgba(166, 134, 87, 0), rgba(166, 134, 87, 0.85));
-}
-.fine-rule i:last-child { transform: scaleX(-1); }
-.fine-rule b {
-  display: block;
-  width: calc(6 * var(--u)); height: calc(6 * var(--u));
-  background: #a68657;
-  transform: rotate(45deg);
-}
 
 /* ═════════════════════════ 6 · Closing ═════════════════════════
    Frosted card under the swaying drapes. */
