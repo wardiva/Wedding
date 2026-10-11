@@ -36,12 +36,10 @@ function opening(c) {
     <div class="wash"></div>
 
     <button class="intro" id="tapToOpen" type="button" aria-label="${esc(c.intro.tapToOpen)}">
-      <span class="intro__names">
-        <span class="script">${esc(cp.groom.name)}</span>
-        <span class="intro__amp">${esc(cp.joiner)}</span>
-        <span class="script">${esc(cp.bride.name)}</span>
+      <span class="intro__tap">
+        <span class="intro__halo" aria-hidden="true"></span>
+        <span class="caps">${esc(c.intro.tapToOpen)}</span>
       </span>
-      <span class="intro__tap"><span class="script">${esc(c.intro.tapToOpen)}</span></span>
     </button>
 
     <div class="hero" aria-hidden="true">

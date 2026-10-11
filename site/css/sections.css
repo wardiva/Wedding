@@ -42,37 +42,52 @@
   transition: opacity 0.45s var(--ease-soft), visibility 0s linear 0.45s;
 }
 .s-opening:not(.is-intro) .intro { opacity: 0; visibility: hidden; pointer-events: none; }
-.intro__names {
-  position: absolute;
-  left: 0; right: 0;
-  top: 15.2%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: intro-in 1.6s var(--ease-out) both 0.2s;
-}
-.intro__names .script { font-size: calc(51 * var(--u)); line-height: 1.05; }
-.intro__amp {
-  font-family: var(--font-script);
-  color: var(--gold);
-  font-size: calc(27 * var(--u));
-  line-height: 1;
-  margin: calc(4 * var(--u)) 0 calc(2 * var(--u));
-}
+/* "Tap to Open": a frosted ivory pill near the foot of the curtain (the
+   whole screen is the button; the pill is its visible face) */
 .intro__tap {
   position: absolute;
-  left: 0; right: 0;
-  top: 62.6%;
-  display: flex;
+  left: 50%;
+  bottom: calc(118 * var(--u) + var(--safe-b));
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  animation: intro-in 1.6s var(--ease-out) both 0.6s;
+  padding: calc(17 * var(--u)) calc(40 * var(--u));
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 254, 251, 0.82), rgba(251, 246, 238, 0.74));
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    0 0 0 1px rgba(166, 134, 87, 0.28),
+    0 calc(10 * var(--u)) calc(28 * var(--u)) rgba(90, 66, 40, 0.2);
+  animation: intro-in 1.6s var(--ease-out) both 0.5s;
 }
-.intro__tap .script {
-  font-size: calc(35 * var(--u));
-  animation: tap-breathe 2.8s ease-in-out infinite 2.2s;
+.intro__tap .caps {
+  position: relative;
+  font-size: calc(15 * var(--u));
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  margin-right: -0.32em; /* optical centring of tracked caps */
+  color: #4a3a2c;
+  white-space: nowrap;
 }
+/* soft ring that breathes outward to invite the tap */
+.intro__halo {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.85);
+  animation: tap-halo 2.6s var(--ease-out) infinite 2.1s;
+  pointer-events: none;
+}
+.intro:active .intro__tap { transform: translateX(-50%) scale(0.97); }
+@media (prefers-reduced-motion: reduce) { .intro__halo { animation: none; opacity: 0; } }
 @keyframes intro-in { from { opacity: 0; filter: blur(6px); } to { opacity: 1; filter: none; } }
-@keyframes tap-breathe { 50% { opacity: 0.55; } }
+@keyframes tap-halo {
+  0% { opacity: 0.9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.18, 1.5); }
+}
 
 /* ── Hero: after the curtains part, the couple video takes over this screen ──
    The poster (= first frame) cross-fades in over the curtain's end frame and
