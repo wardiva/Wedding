@@ -52,7 +52,7 @@ export default {
   /* 2 — Invitation (plain paper card) */
   invitation: {
     bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-    // Each entry is one line of the italic lead-in.
+    // Each entry is one line of the lead-in.
     lines: [
       "With the blessings of Allah and our families,",
       "we request the honour of your presence",
@@ -95,7 +95,7 @@ export default {
   },
 
   /* 5 — Schedule. Add, remove or reorder rows freely.
-         time + period → "1:00" over "PM"; `note` is an optional italic second
+         time + period → "1:00" over "PM"; `note` is an optional smaller second
          line; `highlight: true` marks the key moment with a solid gold node. */
   schedule: {
     eyebrow: "Friday · 27 November",
@@ -114,7 +114,7 @@ export default {
     eyebrow: "Dress Code",
     title: "Formal Wear", // large script
     attire: "Formal", // spaced capitals
-    // Each entry is one line of the italic guidance.
+    // Each entry is one line of the guidance.
     note: ["Traditional or western formal attire,", "whichever you feel your finest in."],
     groomArt: "assets/images/groom.webp", // transparent cut-out, ~1:2.1
     brideArt: "assets/images/bride.webp", // transparent cut-out, ~1:1.6

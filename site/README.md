@@ -17,7 +17,7 @@ code, letter and every media path live there. Change values and refresh; no
 other file needs to change (except the link-preview tags, below).
 
 - `schedule.items` is a list: add, remove or reorder rows. `note` is an
-  optional italic second line, and `highlight: true` gives a row the solid
+  optional smaller second line, and `highlight: true` gives a row the solid
   gold marker (used for the Nikah).
 - `invitation.lines` and `dressCode.note` are lists, one entry per line.
 - `countdown.target` and `venue.calendar` use ISO dates with the venue's UTC

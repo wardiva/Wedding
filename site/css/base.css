@@ -147,6 +147,9 @@ img, video, canvas { display: block; }
 .script--gold { background-image: var(--gold-grad); }
 .script--light { background: none; color: #fbf6ee; -webkit-text-fill-color: #fbf6ee; }
 
+/* No italics anywhere in the invitation */
+em, i, cite { font-style: normal; }
+
 .caps {
   font-family: var(--font-sans);
   font-weight: 500;

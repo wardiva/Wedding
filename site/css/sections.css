@@ -201,14 +201,14 @@
   padding: 0 0.2em;
 }
 .invite .ornament { margin-top: calc(8 * var(--u)); }
-.invite__lead { font-style: italic; font-size: calc(25 * var(--u)); line-height: 1.45; color: var(--ink-2); margin: calc(15 * var(--u)) 0 0; }
+.invite__lead { font-size: calc(22.5 * var(--u)); line-height: 1.45; color: var(--ink-2); margin: calc(15 * var(--u)) 0 0; }
 .invite__event { font-size: calc(43.6 * var(--u)); letter-spacing: 0.3em; margin-right: -0.3em; color: var(--ink); line-height: 1.2; margin-top: calc(23 * var(--u)); }
 .invite__ceremony { font-size: calc(14.75 * var(--u)); color: var(--gold-deep); letter-spacing: 0.44em; margin-right: -0.44em; margin-top: calc(2.5 * var(--u)); }
 .invite__name { font-size: calc(74 * var(--u)); line-height: 1.08; }
 .invite__name--first { margin-top: calc(18 * var(--u)); }
 .invite__amp { font-family: var(--font-script); font-size: calc(38.5 * var(--u)); line-height: 1; color: var(--gold); }
 .invite__date { font-size: calc(17.3 * var(--u)); letter-spacing: 0.3em; margin-right: -0.3em; color: var(--ink); }
-.invite__time { font-style: italic; font-size: calc(28 * var(--u)); color: var(--ink-2); margin-top: calc(5 * var(--u)); }
+.invite__time { font-size: calc(28 * var(--u)); color: var(--ink-2); margin-top: calc(5 * var(--u)); }
 
 /* ═════════════════════════ 3 · Countdown ═════════════════════════ */
 .s-countdown .wash { background: none; }
@@ -275,7 +275,6 @@
 .countdown.is-revealed .countdown__hint { opacity: 0; }
 .countdown__date {
   font-family: var(--font-serif);
-  font-style: italic;
   font-size: calc(23 * var(--u));
   color: #4c4038;
   margin-top: calc(26 * var(--u));
@@ -383,7 +382,7 @@
 .dress__figs .dress__bride { height: 88%; }
 .dress__card { margin-top: calc(38.5 * var(--u)); width: calc(372 * var(--u)); max-width: 100%; padding: calc(23 * var(--u)) calc(20.5 * var(--u)); border-top: 1px solid rgba(166, 134, 87, 0.45); border-bottom: 1px solid rgba(166, 134, 87, 0.45); text-align: center; }
 .dress__attire { font-size: calc(38.5 * var(--u)); letter-spacing: 0.26em; margin-right: -0.26em; color: var(--ink); line-height: 1.1; }
-.dress__note { font-style: italic; font-size: calc(23 * var(--u)); line-height: 1.4; color: var(--ink-2); margin: calc(10 * var(--u)) 0 0; }
+.dress__note { font-size: calc(23 * var(--u)); line-height: 1.4; color: var(--ink-2); margin: calc(10 * var(--u)) 0 0; }
 
 /* ═════════════════════════ 7 · Letter ═════════════════════════ */
 .s-floral .bg { background-image: var(--bg); }
@@ -427,7 +426,7 @@
   margin-top: calc(10 * var(--u));
 }
 .s-closing { padding-bottom: calc(60 * var(--u) + var(--safe-b)); }
-.closing__line { font-style: italic; font-weight: 500; font-size: calc(27 * var(--u)); color: var(--ink-2); margin-top: calc(23 * var(--u)); }
+.closing__line { font-weight: 500; font-size: calc(27 * var(--u)); color: var(--ink-2); margin-top: calc(23 * var(--u)); }
 .closing__name { font-size: calc(64 * var(--u)); line-height: 1.12; }
 .closing__amp { font-family: var(--font-script); font-size: calc(28 * var(--u)); color: var(--gold); line-height: 1; margin: calc(2 * var(--u)) 0 calc(2 * var(--u)); }
 .closing-card .divider { margin: calc(18 * var(--u)) auto calc(30 * var(--u)); }
