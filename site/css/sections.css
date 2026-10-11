@@ -121,6 +121,8 @@
    capitals, straight on the video: a soft warm shadow keeps them legible over
    the canopy without any panel or blur. */
 .hero__text { --hero-shadow: 0 calc(2 * var(--u)) calc(5 * var(--u)) rgba(28, 16, 6, 0.6), 0 0 calc(24 * var(--u)) rgba(28, 16, 6, 0.5); }
+/* "Hamza & Komal" on one line, the ampersand centred between the names */
+.hero__names { display: flex; align-items: center; justify-content: center; gap: calc(12 * var(--u)); white-space: nowrap; }
 .hero__name {
   font-size: calc(56 * var(--u));
   line-height: 1.05;
@@ -134,7 +136,7 @@
   font-weight: 500;
   font-size: calc(40 * var(--u));
   line-height: 1;
-  margin: calc(2 * var(--u)) 0;
+  margin: 0;
   color: var(--gold-light);
   text-shadow: var(--hero-shadow);
 }

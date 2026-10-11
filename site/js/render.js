@@ -48,11 +48,13 @@ function opening(c) {
 
     <div class="hero__shade" aria-hidden="true"></div>
     <h1 class="hero__text">
-      <span class="script hero__name" ${r(0)}>${esc(cp.groom.shortName)}</span>
-      <span class="hero__amp" ${r(1)}>${esc(cp.joiner)}</span>
-      <span class="script hero__name" ${r(2)}>${esc(cp.bride.shortName)}</span>
-      <span class="hero__saying" ${r(3)}>${esc(h.saying)}</span>
-      <span class="hero__vow" ${r(4)}>${esc(h.vow)}</span>
+      <span class="hero__names" ${r(0)}>
+        <span class="script hero__name">${esc(cp.groom.shortName)}</span>
+        <span class="hero__amp">${esc(cp.joiner)}</span>
+        <span class="script hero__name">${esc(cp.bride.shortName)}</span>
+      </span>
+      <span class="hero__saying" ${r(1)}>${esc(h.saying)}</span>
+      <span class="hero__vow" ${r(2)}>${esc(h.vow)}</span>
     </h1>
   </section>`;
 }
