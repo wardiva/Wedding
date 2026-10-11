@@ -1,14 +1,23 @@
-// Petal shower: ivory and sage petals tumble down over the whole column after
+// Petal shower: ivory, rose-red and sage petals tumble down over the whole column after
 // the date is revealed, carrying on as the guest scrolls to the venue card.
 
-const PALETTE = [
+const IVORY = [
   ["#fffdf8", "#ece4d6"],
   ["#fbf7f0", "#e3d9c8"],
   ["#ffffff", "#efe8dc"],
   ["#f6f1e8", "#ddd2c1"],
-  ["#cfdccc", "#9fb59f"], // sage
-  ["#bccdb9", "#8fa690"], // sage
 ];
+const RED = [ // rose-red to maroon, like the bridal lehenga
+  ["#c0303f", "#7e1424"],
+  ["#a8202f", "#64101c"],
+  ["#d2485a", "#93202f"],
+];
+const SAGE = [
+  ["#cfdccc", "#9fb59f"],
+  ["#bccdb9", "#8fa690"],
+];
+const pick = (a) => a[Math.floor(Math.random() * a.length)];
+const colour = () => { const r = Math.random(); return pick(r < 0.4 ? RED : r < 0.55 ? SAGE : IVORY); };
 
 export function createPetals(canvas, { reducedMotion = false } = {}) {
   const ctx = canvas.getContext("2d");
@@ -30,8 +39,7 @@ export function createPetals(canvas, { reducedMotion = false } = {}) {
     const now = Math.ceil(count * 0.4); // first wave: already on screen, no wait
     for (let i = 0; i < count; i++) {
       const first = i < now;
-      const sage = Math.random() < 0.2;
-      const [c1, c2] = PALETTE[sage ? 4 + (Math.random() < 0.5 ? 0 : 1) : Math.floor(Math.random() * 4)];
+      const [c1, c2] = colour();
       const size = (10 + Math.random() * 14) * unit;
       petals.push({
         x: Math.random() * w,
