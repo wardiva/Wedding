@@ -132,7 +132,7 @@ export default {
     heroPoster: "assets/images/hero-start.jpg", // the frame at heroStart; shown if the video can't play
     heroStart: 3.67, // seconds into the hero clip where the opening leaves off
     // Photo backdrops (portrait, ~5:8).
-    tentLight: "assets/images/tent-light.jpg", // countdown (and the desktop backdrop)
+    tentLight: "assets/images/countdown-tent.jpg", // countdown (and the desktop backdrop); 1130x2000
     scheduleBg: "assets/images/schedule-tent.jpg", // schedule; 903x1600 portrait
     venueBg: "assets/images/venue-lounge.jpg", // venue; 903x1600 portrait
     // Looping backdrops: gently swaying drapes. Each clip plays forward then

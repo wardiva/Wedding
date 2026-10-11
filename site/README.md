@@ -35,7 +35,7 @@ Drop new files into `assets/` and point `content.js` at them. Keep the shapes:
 | `video/curtain-reveal.mp4` + `.webm` | the opening: the drapes part over the couple, 4.7 s, silent. Rendered with HyperFrames (`tools/media/hyperframes/compositions/reveal.html`) | 1008×1792 |
 | `images/hero-start.jpg` | the reveal's last frame = the hero clip at `heroStart` (hero poster) | 1008×1792 |
 | `video/walima-walk.mp4` + `.webm` | Hero: the couple walking down the aisle (client footage, audio removed). Continues from `heroStart`, plays once and holds the last frame. Rendered from the Remotion composition `WalimaVenue` in `/video` (`npm run render:walima`) | 1008×1792, 10 s |
-| `images/tent-light.jpg` | countdown and venue backdrop (and the blurred desktop backdrop) | ~5:8 portrait |
+| `images/countdown-tent.jpg` | countdown backdrop (and the blurred desktop backdrop) | 1130×2000 portrait |
 | `images/schedule-tent.jpg`, `images/venue-lounge.jpg` | schedule and venue backdrops | 903×1600 portrait |
 | `video/letter-drapes.*`, `video/closing-drapes.*` (+ `images/*-drapes.jpg` posters) | looping swaying-drape backdrops for the letter and closing; ping-pong loops, muted, played only on screen | 1080×1920 |
 | `audio/kudmayi.mp3` | background music: "Kudmayi" from 2:46, faded in and out so it loops smoothly | 1:50, 128 kbps |
