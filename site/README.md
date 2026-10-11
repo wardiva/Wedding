@@ -63,6 +63,13 @@ npx serve site          # from the repo root, then open the printed URL on your 
 
 ## Deploying to Vercel
 
+**Live address: https://hamza-and-komal-barat-invitation.vercel.app** — a
+production domain on the Vercel project, so every production deploy appears
+there automatically. `wedding-invitation-pearl-alpha-31.vercel.app` serves
+the same site; `hamza-and-komal-barat.vercel.app` redirects to the live
+address (see `vercel.json`). The link-preview tags in `index.html` use the
+live address.
+
 `vercel.json` serves this folder as a static site (no build step), with
 long-lived caching for fonts, and media, `content.js`, JS and CSS revalidated on
 every visit, so edits show up immediately. When you replace a media file, also
