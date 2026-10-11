@@ -183,58 +183,6 @@
   background: url("../assets/card/ornament.svg") center / contain no-repeat;
 }
 /* line · gold star · line */
-.star-rule { display: flex; align-items: center; justify-content: center; gap: calc(13 * var(--u)); margin: calc(20 * var(--u)) auto calc(18 * var(--u)); }
-.star-rule i { display: block; width: calc(69 * var(--u)); height: 1px; background: linear-gradient(90deg, transparent, rgba(166, 134, 87, 0.7)); }
-.star-rule i:last-child { transform: scaleX(-1); }
-.star-rule b { display: block; width: calc(11.5 * var(--u)); height: calc(11.5 * var(--u)); background: url("../assets/card/star.svg") center / contain no-repeat; }
-
-/* ═════════════════════════ 2 · Invitation ═════════════════════════ */
-.s-invite {
-  --frame-t: calc(28 * var(--u) + var(--safe-t));
-  --frame-b: calc(95 * var(--u) + var(--safe-b));
-  padding: var(--frame-t) calc(23 * var(--u)) var(--frame-b);
-}
-.invite__frame {
-  position: absolute;
-  top: var(--frame-t); bottom: var(--frame-b);
-  left: calc(23 * var(--u)); right: calc(23 * var(--u));
-  border: 1px solid rgba(166, 134, 87, 0.45);
-  border-radius: 2px;
-  pointer-events: none;
-}
-.invite__frame::after { content: ""; position: absolute; inset: calc(6.4 * var(--u)); border: 1px solid rgba(166, 134, 87, 0.22); }
-.invite__sprig { position: absolute; background: 0 0 / contain no-repeat; opacity: 0.95; pointer-events: none; }
-.invite__sprig--top { left: calc(-28 * var(--u)); top: calc(-23 * var(--u)); width: calc(169 * var(--u)); height: calc(267 * var(--u)); background-image: url("../assets/card/sprig-top.svg"); }
-.invite__sprig--bottom { right: calc(-44 * var(--u)); bottom: calc(59 * var(--u) + var(--safe-b)); width: calc(192 * var(--u)); height: calc(247 * var(--u)); background-image: url("../assets/card/sprig-bottom.svg"); }
-.invite {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  padding: 0 calc(20 * var(--u));
-}
-.invite__bismillah {
-  font-size: calc(38.5 * var(--u));
-  line-height: 1.5;
-  color: var(--gold-2);
-  background: var(--gold-grad);
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent;
-  padding: 0 0.2em;
-}
-.invite .ornament { margin-top: calc(8 * var(--u)); }
-.invite__lead { font-size: calc(22.5 * var(--u)); line-height: 1.45; color: var(--ink-2); margin: calc(15 * var(--u)) 0 0; }
-.invite__event { font-size: calc(43.6 * var(--u)); letter-spacing: 0.3em; margin-right: -0.3em; color: var(--ink); line-height: 1.2; margin-top: calc(23 * var(--u)); }
-.invite__ceremony { font-size: calc(14.75 * var(--u)); color: var(--gold-deep); letter-spacing: 0.44em; margin-right: -0.44em; margin-top: calc(2.5 * var(--u)); }
-.invite__name { font-size: calc(74 * var(--u)); line-height: 1.08; }
-.invite__name--first { margin-top: calc(18 * var(--u)); }
-.invite__amp { font-family: var(--font-script); font-size: calc(38.5 * var(--u)); line-height: 1; color: var(--gold); }
-.invite__date { font-size: calc(17.3 * var(--u)); letter-spacing: 0.3em; margin-right: -0.3em; color: var(--ink); }
-.invite__time { font-size: calc(28 * var(--u)); color: var(--ink-2); margin-top: calc(5 * var(--u)); }
-
 /* ═════════════════════════ 3 · Countdown ═════════════════════════ */
 .s-countdown .wash { background: none; }
 .countdown { width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: calc(70 * var(--u)); }

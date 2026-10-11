@@ -3,23 +3,23 @@
 A cinematic, phone-first digital invitation for the Barat of Hamza Shafi &
 Komal Naveed: closed curtains → tap → the bow unties and the drapes part over
 the couple walking down the aisle, which carries on as the hero (their names
-and "Are saying “Qabool Hai”" over the canopy) → a letter to guests, the
-invitation, a scratch-to-reveal countdown with a petal shower, the venue, the
-day's schedule, the dress code and a closing card.
+and "Are saying “Qabool Hai”" over the canopy) → a letter to guests (the
+invitation itself), a scratch-to-reveal countdown with a petal shower, the
+venue, the day's schedule, the dress code and a closing card.
 
 It is a static site — plain HTML, CSS and ES modules, no build step.
 
 ## Editing the content
 
 **Everything a guest reads or sees is in [`content.js`](content.js).** Names,
-the hero lines, invitation wording, countdown target, venue, schedule, dress
+the hero lines, the letter's wording, countdown target, venue, schedule, dress
 code, letter and every media path live there. Change values and refresh; no
 other file needs to change (except the link-preview tags, below).
 
 - `schedule.items` is a list: add, remove or reorder rows. `note` is an
   optional smaller second line, and `highlight: true` gives a row the solid
   gold marker (used for the Nikah).
-- `invitation.lines` and `dressCode.note` are lists, one entry per line.
+- `letter.lines` and `dressCode.note` are lists, one entry per line.
 - `countdown.target` and `venue.calendar` use ISO dates with the venue's UTC
   offset, e.g. `2026-11-27T13:00:00+05:00`.
 - Link previews (WhatsApp, iMessage) are read from `index.html` (`<title>`,
@@ -39,11 +39,12 @@ Drop new files into `assets/` and point `content.js` at them. Keep the shapes:
 | `images/tent-light.jpg` | countdown backdrop (and the blurred desktop backdrop) | ~5:8 portrait |
 | `images/floral-tent.jpg` | letter and closing backdrop | ~5:8 portrait |
 | `images/groom.webp`, `images/bride.webp` | dress-code illustrations | transparent cut-outs |
-| `card/paper.webp`, `card/wash.svg`, `card/sprig-*.svg`, `card/ornament.svg`, `card/star.svg` | paper, sage wash, botanical corners and gold ornaments on the invitation, venue, schedule and dress-code screens (set in `css/sections.css`; see `card/README.md`) | — |
+| `card/paper.webp`, `card/wash.svg`, `card/ornament.svg` | paper, sage wash and gold ornaments on the venue, schedule and dress-code screens (set in `css/sections.css`; see `card/README.md`) | — |
 | `audio/background-music.mp3` | background music (loops) | — |
 
-The other files in `assets/card` (arch, gold veins, seal, deckle mask) are
-artwork kept for a possible card redesign; the page doesn't load them.
+The other files in `assets/card` (arch, gold veins, seal, deckle mask,
+botanical sprigs, star) are artwork kept for a possible redesign; the page
+doesn't load them.
 
 Keep the reveal's first and last frames identical to the two stills, and its
 last frame equal to the hero clip at `heroStart`, so the hand-offs stay

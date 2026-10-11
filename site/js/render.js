@@ -11,11 +11,10 @@ const r = (i, kind = "") => `data-reveal${kind ? `="${kind}"` : ""} style="--i:$
 /** A string or a list of lines → escaped lines joined with <br> */
 const lines = (v) => (Array.isArray(v) ? v : [v]).map(esc).join("<br />");
 
-/* Gold ornament (assets/card/ornament.svg) and the thin star rule */
+/* Gold ornament (assets/card/ornament.svg) */
 const ornament = (i) => `<span class="ornament" ${r(i, "fade")} aria-hidden="true"></span>`;
 // Hairlines tapering into a small gold diamond
 const fineRule = (i, cls = "") => `<span class="fine-rule ${cls}" ${r(i, "fade")} aria-hidden="true"><i></i><b></b><i></i></span>`;
-const starRule = (i) => `<span class="star-rule" ${r(i, "fade")} aria-hidden="true"><i></i><b></b><i></i></span>`;
 
 function opening(c) {
   const { couple: cp, hero: h, media: m } = c;
@@ -52,31 +51,6 @@ function opening(c) {
       <span class="hero__saying" ${r(3)}>${esc(h.saying)}</span>
       <span class="hero__vow" ${r(4)}>${esc(h.vow)}</span>
     </h1>
-  </section>`;
-}
-
-function invitation(c) {
-  const { couple: cp, invitation: inv } = c;
-  return `
-  <section class="section s-paper s-invite" data-section="invitation">
-    <div class="bg"></div>
-    <div class="wash"></div>
-    <div class="invite__frame" ${r(0, "fade")}></div>
-    <div class="invite__sprig invite__sprig--top" ${r(0, "fade")}></div>
-    <div class="invite__sprig invite__sprig--bottom" ${r(1, "fade")}></div>
-    <div class="invite">
-      <div class="arabic invite__bismillah" lang="ar" ${r(0)}>${esc(inv.bismillah)}</div>
-      ${ornament(1)}
-      <p class="invite__lead" ${r(2)}>${lines(inv.lines)}</p>
-      <span class="caps-serif invite__event" ${r(3)}>${esc(inv.eventTitle)}</span>
-      <span class="caps-serif invite__ceremony" ${r(4)}>${esc(inv.ceremonyLabel)}</span>
-      <span class="script script--gold invite__name invite__name--first" ${r(5)}>${esc(cp.groom.name)}</span>
-      <span class="invite__amp" ${r(6)}>${esc(cp.joiner)}</span>
-      <span class="script script--gold invite__name" ${r(7)}>${esc(cp.bride.name)}</span>
-      ${starRule(8)}
-      <span class="caps-serif invite__date" ${r(9)}>${esc(inv.dateLine)}</span>
-      <span class="invite__time" ${r(10)}>${esc(inv.timeLine)}</span>
-    </div>
   </section>`;
 }
 
@@ -218,7 +192,7 @@ function closing(c) {
 }
 
 export function renderSections(c) {
-  return [opening, letter, invitation, countdown, venue, schedule, dressCode, closing]
+  return [opening, letter, countdown, venue, schedule, dressCode, closing]
     .map((fn) => fn(c))
     .join("");
 }

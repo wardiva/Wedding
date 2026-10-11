@@ -10,12 +10,11 @@
  *                   couple video, which carries on as the HERO with the names
  *                   and "Are saying “Qabool Hai”" over the canopy.
  *    2. Letter     — a note to guests.
- *    3. Invitation — Bismillah, invitation wording, names, date and time.
- *    4. Countdown  — live countdown with scratch-to-reveal cards and petals.
- *    5. Venue      — arch card with Open Location and Add to Calendar.
- *    6. Schedule   — timeline built from the `schedule.items` list.
- *    7. Dress code — groom and bride illustrations with a guidance line.
- *    8. Closing    — names and a Quranic verse.
+ *    3. Countdown  — live countdown with scratch-to-reveal cards and petals.
+ *    4. Venue      — arch card with Open Location and Add to Calendar.
+ *    5. Schedule   — timeline built from the `schedule.items` list.
+ *    6. Dress code — groom and bride illustrations with a guidance line.
+ *    7. Closing    — names and a Quranic verse.
  *
  *  • Text supports plain strings only (no HTML).
  *  • Media paths are relative to the /site folder. Keep the same aspect
@@ -50,22 +49,7 @@ export default {
     vow: "“Qabool Hai”",
   },
 
-  /* 3 — Invitation (plain paper card) */
-  invitation: {
-    bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-    // Each entry is one line of the lead-in.
-    lines: [
-      "With the blessings of Allah and our families,",
-      "we request the honour of your presence",
-      "at the",
-    ],
-    eventTitle: "Barat", // spaced capitals
-    ceremonyLabel: "Ceremony of",
-    dateLine: "Friday · 27 November 2026",
-    timeLine: "1 PM – 4 PM",
-  },
-
-  /* 4 — Countdown with scratch-to-reveal */
+  /* 3 — Countdown with scratch-to-reveal */
   countdown: {
     eyebrow: "Until Barat",
     title: "Countdown",
@@ -76,7 +60,7 @@ export default {
     labels: { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds" },
   },
 
-  /* 5 — Venue */
+  /* 4 — Venue */
   venue: {
     eyebrow: "The Venue",
     name: "Grand Heaven", // large script; wraps onto two lines
@@ -95,7 +79,7 @@ export default {
     },
   },
 
-  /* 6 — Schedule. Add, remove or reorder rows freely.
+  /* 5 — Schedule. Add, remove or reorder rows freely.
          time + period → "1:00" over "PM"; `note` is an optional smaller second
          line; `highlight: true` marks the key moment with a solid gold node. */
   schedule: {
@@ -110,7 +94,7 @@ export default {
     ],
   },
 
-  /* 7 — Dress code */
+  /* 6 — Dress code */
   dressCode: {
     eyebrow: "Dress Code",
     title: "Formal Wear", // large script
@@ -134,7 +118,7 @@ export default {
     verseArabic: "وَخَلَقْنَاكُمْ أَزْوَاجًا",
     verseReference: "(Quran 78:8)",
   },
-  /* 8 — Closing (names come from `couple`) */
+  /* 7 — Closing (names come from `couple`) */
   closing: {
     line: "We cannot wait to see you there.",
     verseArabic: "وَخَلَقْنَاكُمْ أَزْوَاجًا",
