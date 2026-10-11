@@ -135,8 +135,9 @@
   text-shadow: var(--hero-shadow);
 }
 .hero__amp {
-  font-family: var(--font-serif);
-  font-weight: 500;
+  /* same face as the names, kept gold */
+  font-family: "Signerica", var(--font-serif);
+  font-weight: 400;
   font-size: calc(40 * var(--u));
   line-height: 1;
   margin: 0;
