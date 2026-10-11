@@ -301,8 +301,12 @@
 .s-photo .wash, .s-drapes .wash { background: none; }
 .bg__loop { opacity: 0; transition: opacity 0.6s var(--ease-out); }
 .bg__loop.is-playing { opacity: 1; }
-/* Card sits low, leaving the swaying drapes clear above it */
-.s-drapes { justify-content: flex-end; }
+/* Every frosted card sits in the true middle of the screen: equal room
+   above and below (the bottom room is the scroll button's). */
+.section:has(> .glass-card) {
+  justify-content: center;
+  padding-top: calc(118 * var(--u) + var(--safe-b));
+}
 .letter-card {
   padding: calc(34 * var(--u)) calc(30 * var(--u)) calc(32 * var(--u));
 }
