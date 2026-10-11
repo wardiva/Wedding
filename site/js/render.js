@@ -124,26 +124,6 @@ function schedule(c) {
   </section>`;
 }
 
-function dressCode(c) {
-  const d = c.dressCode;
-  return `
-  <section class="section s-paper s-dress" data-section="dress">
-    <div class="bg"></div>
-    <div class="wash"></div>
-    <span class="caps-serif eyebrow" ${r(0)}>${esc(d.eyebrow)}</span>
-    <h2 class="script dress__title" ${r(1)}>${esc(d.title)}</h2>
-    ${ornament(2)}
-    <div class="dress__figs" ${r(3, "card")}>
-      <img class="dress__groom" src="${d.groomArt}" alt="" loading="lazy" decoding="async" />
-      <img class="dress__bride" src="${d.brideArt}" alt="" loading="lazy" decoding="async" />
-    </div>
-    <div class="dress__card" ${r(4)}>
-      <div class="caps-serif dress__attire">${esc(d.attire)}</div>
-      <p class="dress__note">${lines(d.note)}</p>
-    </div>
-  </section>`;
-}
-
 function letter(c) {
   const l = c.letter, cp = c.couple;
   return `
@@ -185,7 +165,7 @@ function closing(c) {
 }
 
 export function renderSections(c) {
-  return [opening, letter, countdown, schedule, venue, dressCode, closing]
+  return [opening, letter, countdown, schedule, venue, closing]
     .map((fn) => fn(c))
     .join("");
 }

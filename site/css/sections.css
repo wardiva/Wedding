@@ -161,12 +161,9 @@
   .hero__text [data-reveal] { transition-delay: 0s; }
 }
 
-/* ═════════════════════════ Shared: paper screens ═════════════════════════
-   Ivory paper (assets/card/paper.webp) with a sage watercolour wash. */
-.s-paper .bg { background: #f2ece2 url("../assets/card/paper.webp") 0 0 / 256px 256px; }
-.s-paper .wash, .s-venue .wash { background: url("../assets/card/wash.svg") 0 0 / 100% 100% no-repeat; }
-.s-paper.is-active .wash { opacity: 0.9; }
-.s-paper > *, .s-venue > * { flex-shrink: 0; }
+/* ═════════════════════════ Venue: sage watercolour wash ═════════════════════════ */
+.s-venue .wash { background: url("../assets/card/wash.svg") 0 0 / 100% 100% no-repeat; }
+.s-venue > * { flex-shrink: 0; }
 
 .caps-serif {
   font-family: var(--font-serif);
@@ -339,23 +336,6 @@
 }
 .tl__what { font-weight: 600; font-size: calc(25 * var(--u)); line-height: 1.2; color: var(--ink); padding-left: calc(4 * var(--u)); text-wrap: balance; }
 
-/* ═════════════════════════ 6 · Dress code ═════════════════════════ */
-.dress__title { font-size: calc(84.6 * var(--u)); line-height: 1.1; margin: calc(2.5 * var(--u)) 0 0; font-weight: 400; }
-.dress__figs { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: calc(43.6 * var(--u)); height: calc(336 * var(--u)); margin-top: calc(23 * var(--u)); }
-.dress__figs::after {
-  content: "";
-  position: absolute;
-  left: 50%; bottom: calc(-7.7 * var(--u));
-  width: calc(295 * var(--u)); height: calc(33 * var(--u));
-  transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, rgba(90, 70, 45, 0.22), transparent 70%);
-}
-.dress__figs img { position: relative; z-index: 1; height: 100%; width: auto; }
-.dress__figs .dress__bride { height: 88%; }
-.dress__card { margin-top: calc(38.5 * var(--u)); width: calc(372 * var(--u)); max-width: 100%; padding: calc(23 * var(--u)) calc(20.5 * var(--u)); border-top: 1px solid rgba(166, 134, 87, 0.45); border-bottom: 1px solid rgba(166, 134, 87, 0.45); text-align: center; }
-.dress__attire { font-size: calc(38.5 * var(--u)); letter-spacing: 0.26em; margin-right: -0.26em; color: var(--ink); line-height: 1.1; }
-.dress__note { font-size: calc(23 * var(--u)); line-height: 1.4; color: var(--ink-2); margin: calc(10 * var(--u)) 0 0; }
-
 /* ═════════════════════════ 2 · Letter ═════════════════════════ */
 .s-floral .bg { background-image: var(--bg); }
 .s-floral .wash { background: none; }
@@ -421,7 +401,7 @@
 }
 .fine-rule--after-names { margin-top: calc(22 * var(--u)); margin-bottom: calc(12 * var(--u)); }
 
-/* ═════════════════════════ 8 · Closing ═════════════════════════ */
+/* ═════════════════════════ 6 · Closing ═════════════════════════ */
 .closing-card {
   padding: calc(30 * var(--u)) calc(26 * var(--u)) calc(20 * var(--u));
   margin-top: calc(10 * var(--u));

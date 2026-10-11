@@ -13,8 +13,7 @@
  *    3. Countdown  — the date and a live countdown (petals on arrival).
  *    4. Schedule   — timeline built from the `schedule.items` list.
  *    5. Venue      — arch card with Open Location and Add to Calendar.
- *    6. Dress code — groom and bride illustrations with a guidance line.
- *    7. Closing    — names and a Quranic verse.
+ *    6. Closing    — names and a Quranic verse.
  *
  *  • Text supports plain strings only (no HTML).
  *  • Media paths are relative to the /site folder. Keep the same aspect
@@ -95,17 +94,6 @@ export default {
     ],
   },
 
-  /* 6 — Dress code */
-  dressCode: {
-    eyebrow: "Dress Code",
-    title: "Formal Wear", // large script
-    attire: "Formal", // spaced capitals
-    // Each entry is one line of the guidance.
-    note: ["Traditional or western formal attire,", "whichever you feel your finest in."],
-    groomArt: "assets/images/groom.webp", // transparent cut-out, ~1:2.1
-    brideArt: "assets/images/bride.webp", // transparent cut-out, ~1:1.6
-  },
-
   /* 2 — Letter to guests, right after the hero: Bismillah, the invitation
          with the couple's names (from `couple`), and a Quranic verse. */
   letter: {
@@ -119,7 +107,7 @@ export default {
     verseArabic: "وَخَلَقْنَاكُمْ أَزْوَاجًا",
     verseReference: "(Quran 78:8)",
   },
-  /* 7 — Closing (names come from `couple`) */
+  /* 6 — Closing (names come from `couple`) */
   closing: {
     line: "We cannot wait to see you there.",
     verseArabic: "وَخَلَقْنَاكُمْ أَزْوَاجًا",
@@ -155,7 +143,7 @@ export default {
     // Photo backdrops (portrait, ~5:8).
     tentLight: "assets/images/tent-light.jpg", // countdown (and the desktop backdrop)
     floralTent: "assets/images/floral-tent.jpg?v=2", // letter and closing
-    // Invitation, venue, schedule and dress code use the paper art in
-    // assets/card (paper.webp, wash.svg, sprigs, ornament), set in css/sections.css.
+    // The venue uses the paper art in assets/card (paper.webp, wash.svg,
+    // ornament), set in css/sections.css.
   },
 };
