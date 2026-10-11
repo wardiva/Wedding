@@ -124,11 +124,10 @@
 /* "Hamza & Komal" on one line, the ampersand centred between the names */
 .hero__names { display: flex; align-items: center; justify-content: center; gap: calc(12 * var(--u)); white-space: nowrap; }
 .hero__name {
-  /* the hero names are set in the body serif, not the script */
-  font-family: var(--font-serif);
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  font-size: calc(54 * var(--u));
+  /* the hero names use their own face, Bleury Saint */
+  font-family: "Bleury Saint", var(--font-serif);
+  font-weight: 400;
+  font-size: calc(48 * var(--u));
   line-height: 1.05;
   background: none;
   color: #fbf3e2;
