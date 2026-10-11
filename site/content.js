@@ -72,14 +72,13 @@ export default {
 
 
   /* 4 — Schedule, right after the countdown. Add, remove or reorder rows
-         freely. time + period → "1:00" over "PM"; `highlight: true` marks
-         the key moment with a solid gold diamond. */
+         freely. time + period → "1:00" over "PM". */
   schedule: {
     eyebrow: "The Day",
     title: "Schedule",
     items: [
-      { time: "1:00", period: "PM", title: "Guests Arrival & Welcome" },
-      { time: "1:30", period: "PM", title: "Nikah", highlight: true },
+      { time: "1:00", period: "PM", title: "Guests Arrival" },
+      { time: "1:30", period: "PM", title: "Nikah" },
       { time: "2:00", period: "PM", title: "Lunch" },
       { time: "3:30", period: "PM", title: "Rukhsati & Dua" },
       { time: "4:00", period: "PM", title: "End" },

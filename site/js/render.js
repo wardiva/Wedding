@@ -94,7 +94,7 @@ function venue(c) {
 function schedule(c) {
   const s = c.schedule;
   const row = (it, i) => `
-        <li class="tl__row${it.highlight ? " is-key" : ""}" ${r(4 + i)}>
+        <li class="tl__row" ${r(4 + i)}>
           <span class="tl__time">${esc(it.time)}${it.period ? `<small>${esc(it.period)}</small>` : ""}</span>
           <span class="tl__node" aria-hidden="true"></span>
           <span class="tl__what">${esc(it.title)}</span>

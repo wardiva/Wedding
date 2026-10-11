@@ -17,8 +17,7 @@ the hero lines, the letter's wording, countdown target, venue, schedule,
 letter and every media path live there. Change values and refresh; no
 other file needs to change (except the link-preview tags, below).
 
-- `schedule.items` is a list: add, remove or reorder rows. `highlight: true`
-  gives a row the solid gold marker (used for the Nikah).
+- `schedule.items` is a list: add, remove or reorder rows.
 - `letter.lines` is a list, one entry per line.
 - `countdown.target` is an ISO date with the venue's UTC offset, e.g.
   `2026-11-27T13:00:00+05:00`.
