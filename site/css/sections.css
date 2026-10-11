@@ -280,11 +280,15 @@
 }
 .tl__time { text-align: right; font-family: var(--font-serif); font-weight: 600; font-size: calc(32 * var(--u)); line-height: 1; color: var(--ink); font-variant-numeric: lining-nums tabular-nums; }
 .tl__time small { display: block; font-family: var(--font-serif); font-weight: 600; font-size: calc(11.5 * var(--u)); letter-spacing: 0.3em; margin-right: -0.3em; color: var(--gold-deep); margin-top: calc(5 * var(--u)); }
-.tl__node { justify-self: center; position: relative; width: calc(9 * var(--u)); height: calc(9 * var(--u)); transform: rotate(45deg); background: #fbf7f0; border: 1px solid var(--gold); }
+/* Solid gold diamonds; the key moment (Nikah) is a little larger, with a glow */
+.tl__node {
+  justify-self: center; position: relative;
+  width: calc(10 * var(--u)); height: calc(10 * var(--u));
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, #e2c98f, #b8924f 55%, #9c7840);
+}
 .tl__row.is-key .tl__node {
   width: calc(13 * var(--u)); height: calc(13 * var(--u));
-  border: 0;
-  background: linear-gradient(135deg, #e2c98f, #b8924f 55%, #9c7840);
   box-shadow: 0 0 0 calc(4 * var(--u)) rgba(216, 191, 140, 0.3);
 }
 .tl__what { font-weight: 600; font-size: calc(25 * var(--u)); line-height: 1.2; color: var(--ink); padding-left: calc(4 * var(--u)); text-wrap: balance; }
