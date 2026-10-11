@@ -8,8 +8,8 @@
     <style>
       body { margin: 0; background: #efe7da; }
       #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
-      /* Source frames are 1008x1608; anchoring to the bottom trims the
-         recording's dark status line from the top edge. */
+      /* Source frames are the restored 1008x1600 plates (Real-ESRGAN, see
+         ../README.md); bottom anchoring also trims older 1008x1608 sources. */
       #curtain {
         position: absolute; inset: 0; width: 100%; height: 100%;
         object-fit: cover; object-position: 50% 100%;

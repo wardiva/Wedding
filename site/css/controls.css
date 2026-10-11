@@ -31,12 +31,11 @@
   position: absolute;
   z-index: 30;
   left: 50%;
-  bottom: calc(10 * var(--u) + var(--safe-b));
+  bottom: calc(20 * var(--u) + var(--safe-b));
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: calc(7 * var(--u));
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.6s var(--ease-soft), visibility 0s linear 0.6s;
@@ -46,35 +45,39 @@
   visibility: visible;
   transition: opacity 0.8s var(--ease-soft) 0.2s, visibility 0s;
 }
+/* Frosted ivory disc in the same material as "Tap to Open" */
 .scroll-cue__btn {
   position: relative;
-  width: calc(58 * var(--u));
-  height: calc(58 * var(--u));
+  width: calc(56 * var(--u));
+  height: calc(56 * var(--u));
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: radial-gradient(circle at 50% 35%, #5e5048 0%, #3a302a 70%, #2c241f 100%);
+  background: linear-gradient(180deg, rgba(255, 254, 251, 0.82), rgba(251, 246, 238, 0.74));
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
   box-shadow:
-    0 0 0 calc(1.5 * var(--u)) rgba(222, 200, 160, 0.55),
-    0 calc(4 * var(--u)) calc(12 * var(--u)) rgba(25, 18, 12, 0.35);
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    0 0 0 1px rgba(166, 134, 87, 0.28),
+    0 calc(8 * var(--u)) calc(22 * var(--u)) rgba(60, 42, 24, 0.22);
+  transition: transform 0.15s ease;
 }
-/* Soft translucent ring that breathes around the button */
+/* Soft white ring that breathes outward from the disc */
 .scroll-cue__halo {
   position: absolute;
-  inset: calc(-11 * var(--u));
+  inset: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.16);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
-  animation: halo 2.6s ease-in-out infinite;
-  z-index: -1;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.85);
+  animation: halo 2.6s var(--ease-out) infinite 1s;
+  pointer-events: none;
 }
 @keyframes halo {
-  0%, 100% { transform: scale(0.92); opacity: 0.55; }
-  50% { transform: scale(1.04); opacity: 1; }
+  0% { opacity: 0.9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.45); }
 }
 .scroll-cue__chev {
   width: 52%; height: 52%;
-  fill: none; stroke: #f3ead9; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  fill: none; stroke: #4a3a2c; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
 }
 /* The two chevrons take turns sliding down, as in the reference */
 .scroll-cue__chev .c1 { animation: chev 1.6s ease-in-out infinite; }
@@ -84,19 +87,6 @@
   35% { opacity: 1; }
   70% { opacity: 1; transform: translateY(2px); }
   100% { opacity: 0; transform: translateY(4px); }
-}
-.scroll-cue__label {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: calc(11.5 * var(--u));
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #fff;
-  padding: calc(4 * var(--u)) calc(18 * var(--u)) calc(4 * var(--u)) calc(20 * var(--u));
-  border-radius: 999px;
-  background: rgba(70, 60, 54, 0.82);
-  line-height: 1.2;
-  white-space: nowrap;
 }
 .scroll-cue:active .scroll-cue__btn { transform: scale(0.94); }
 

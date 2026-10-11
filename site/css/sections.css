@@ -89,42 +89,18 @@
   100% { opacity: 0; transform: scale(1.18, 1.5); }
 }
 
-/* ── Hero: after the curtains part, the couple video takes over this screen ──
-   The poster (= first frame) cross-fades in over the curtain's end frame and
-   the video fades in on top as soon as it is playing. If the video can't play,
-   the poster simply stays. */
+/* ── Hero: the couple video carries on from the curtain clip's last frame ──
+   The poster is that same frame, and the video (already at that moment)
+   takes over as soon as it is playing. If it can't play, the poster stays. */
 .s-opening .hero__poster,
-.s-opening .hero__video { opacity: 0; transition: opacity 0.9s var(--ease-soft); }
+.s-opening .hero__video { opacity: 0; transition: opacity 0.2s linear; }
 .s-opening.is-opened .hero__poster,
 .s-opening.is-opened.hero-playing .hero__video { opacity: 1; }
-
-/* Legibility: a soft blur and a warm-dark scrim over the canopy only, so the
-   couple stays sharp and unobstructed. (Opacity is set on each layer, not a
-   wrapper, so the backdrop blur keeps seeing the video while it fades in.) */
-.hero__blur, .hero__scrim {
-  position: absolute; inset: 0; z-index: 1;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.8s var(--ease-soft);
-}
-.s-opening.is-opened .hero__blur,
-.s-opening.is-opened .hero__scrim { opacity: 1; }
-.hero__blur {
-  -webkit-backdrop-filter: blur(7px);
-  backdrop-filter: blur(7px);
-  -webkit-mask: linear-gradient(to bottom, #000 0%, #000 18%, transparent 38%);
-  mask: linear-gradient(to bottom, #000 0%, #000 18%, transparent 38%);
-}
-.hero__scrim {
-  background: linear-gradient(to bottom,
-    rgba(24, 17, 12, 0.82) 0%, rgba(24, 17, 12, 0.62) 22%, rgba(24, 17, 12, 0) 44%,
-    rgba(24, 17, 12, 0) 80%, rgba(24, 17, 12, 0.35) 100%);
-}
 
 .hero__text {
   position: absolute;
   left: 0; right: 0;
-  top: calc(8.5% + var(--safe-t));
+  top: calc(7% + var(--safe-t));
   z-index: 2;
   margin: 0;
   display: flex;
@@ -135,44 +111,25 @@
   pointer-events: none;
 }
 .s-opening:not(.is-opened) .hero__text { visibility: hidden; }
-/* starts ~0.6s into the clip, 150 ms apart */
-.hero__text [data-reveal] { transition-delay: calc(var(--i, 0) * 0.15s + 0.6s); }
-.hero__eyebrow {
-  font-size: calc(14 * var(--u));
-  color: var(--gold-light);
-  letter-spacing: 0.42em;
-  margin-right: -0.42em;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
-}
-.hero__name {
-  font-size: calc(59 * var(--u));
-  line-height: 1.05;
-  background: none;
-  color: #f7ecd6;
-  -webkit-text-fill-color: #f7ecd6;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
-}
-.hero__eyebrow + .hero__name { margin-top: calc(8 * var(--u)); }
-.hero__amp {
-  font-family: var(--font-script);
-  font-size: calc(38.5 * var(--u));
-  line-height: 0.9;
-  color: var(--gold-light);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
-}
-.hero__rule { display: flex; align-items: center; gap: calc(15 * var(--u)); margin: calc(18 * var(--u)) 0 calc(15 * var(--u)); }
-.hero__rule i { display: block; width: calc(82 * var(--u)); height: 1px; background: linear-gradient(90deg, transparent, rgba(216, 191, 140, 0.85)); }
-.hero__rule i:last-child { transform: scaleX(-1); }
-.hero__rule b { display: block; width: calc(7.5 * var(--u)); height: calc(7.5 * var(--u)); transform: rotate(45deg); border: 1px solid var(--gold-light); }
-.hero__date {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: calc(32 * var(--u));
-  letter-spacing: 0.32em;
-  margin-right: -0.32em;
-  color: #fdf8ee;
-  font-variant-numeric: lining-nums;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
+/* the title settles in just after the curtains have gone */
+.hero__text [data-reveal] { transition-delay: 0.4s; }
+/* One line over the canopy on a frosted ivory plaque, the same material as
+   the buttons, so it reads over the bright drapes and chandeliers alike. */
+.hero__title {
+  font-size: calc(46 * var(--u));
+  line-height: 1.15;
+  padding: calc(8 * var(--u)) calc(34 * var(--u)) calc(10 * var(--u));
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 254, 251, 0.84), rgba(251, 246, 238, 0.76));
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    0 0 0 1px rgba(166, 134, 87, 0.28),
+    0 calc(10 * var(--u)) calc(28 * var(--u)) rgba(40, 26, 12, 0.28);
+  color: #4a3a2c;
+  -webkit-text-fill-color: #4a3a2c;
+  white-space: nowrap;
 }
 @media (prefers-reduced-motion: reduce) {
   .hero__text [data-reveal] { transition-delay: 0s; }

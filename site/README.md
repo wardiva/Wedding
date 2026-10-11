@@ -1,9 +1,9 @@
 # Barat invitation (mobile-first)
 
 A cinematic, phone-first digital invitation for the Barat of Hamza Shafi &
-Komal Naveed: closed curtains → tap → the bow unties and the drapes part → the
-same screen becomes the hero (the couple walking, with their names and the
-date over the canopy) → the invitation, a scratch-to-reveal countdown with a
+Komal Naveed: closed curtains → tap → the bow unties and the drapes part over
+the couple walking down the aisle, which carries on as the hero ("Barat
+Invitation" over the canopy) → the invitation, a scratch-to-reveal countdown with a
 petal shower, the venue, the day's schedule, the dress code, a letter to
 guests and a closing card.
 
@@ -32,10 +32,10 @@ Drop new files into `assets/` and point `content.js` at them. Keep the shapes:
 
 | Asset | Used for | Shape |
 | --- | --- | --- |
-| `images/curtain-closed.jpg` | "Tap to Open" screen (= first video frame) | 1008×1600 portrait |
-| `video/curtain-opening.mp4` + `.webm` | the opening sequence, ~4.7 s, silent | 1008×1600 |
-| `images/tent-open.jpg` | the curtain's last frame, under the hero | 1008×1600 |
-| `video/walima-walk.mp4` + `.webm`, `images/walima-walk.jpg` | Hero: the couple walking down the aisle (client footage, audio removed; poster = first frame). Plays once and holds the last frame. Rendered from the Remotion composition `WalimaVenue` in `/video` (`npm run render:walima`) | 1008×1792, 10 s |
+| `images/curtain-closed.jpg` | "Tap to Open" screen (= first frame of the reveal) | 1008×1792 |
+| `video/curtain-reveal.mp4` + `.webm` | the opening: the drapes part over the couple, 4.7 s, silent. Rendered with HyperFrames (`tools/media/hyperframes/compositions/reveal.html`) | 1008×1792 |
+| `images/hero-start.jpg` | the reveal's last frame = the hero clip at `heroStart` (hero poster) | 1008×1792 |
+| `video/walima-walk.mp4` + `.webm` | Hero: the couple walking down the aisle (client footage, audio removed). Continues from `heroStart`, plays once and holds the last frame. Rendered from the Remotion composition `WalimaVenue` in `/video` (`npm run render:walima`) | 1008×1792, 10 s |
 | `images/tent-light.jpg` | countdown backdrop (and the blurred desktop backdrop) | ~5:8 portrait |
 | `images/floral-tent.jpg` | letter and closing backdrop | ~5:8 portrait |
 | `images/groom.webp`, `images/bride.webp` | dress-code illustrations | transparent cut-outs |
@@ -45,9 +45,9 @@ Drop new files into `assets/` and point `content.js` at them. Keep the shapes:
 The other files in `assets/card` (arch, gold veins, seal, deckle mask) are
 artwork kept for a possible card redesign; the page doesn't load them.
 
-Keep the opening video's first and last frames identical to the two stills, so
-the hand-offs stay seamless; likewise the hero poster must be the clip's first
-frame. To make web-ready versions of a new clip:
+Keep the reveal's first and last frames identical to the two stills, and its
+last frame equal to the hero clip at `heroStart`, so the hand-offs stay
+seamless. If the hero clip changes, re-render the reveal. To make web-ready versions of a new clip:
 
 ```sh
 ffmpeg -i in.mp4 -c:v libx264 -crf 25 -preset slow -pix_fmt yuv420p -movflags +faststart -an out.mp4
@@ -118,7 +118,8 @@ site/
   and the opening video is muted, inline and starts from the tap. Music starts
   on that same tap, since browsers block audible autoplay.
 - **Loading:** the opening video preloads. The hero video and its poster start
-  downloading only once the curtain video is playing, and photo backdrops load
+  downloading only once the curtain video is playing (the hero is seeked to
+  `heroStart` meanwhile), and photo backdrops load
   one screen ahead. If the hero video can't play, its poster stays in place.
 - **Reduced motion:** with *Reduce Motion* on, the curtain cross-fades instead
   of playing, the hero shows its poster (the video isn't loaded) with the text

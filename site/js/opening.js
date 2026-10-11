@@ -1,4 +1,4 @@
-// Closed curtain → tap → bow unties, drapes part → the hero fades in.
+// Closed curtain → tap → bow unties, the drapes part over the couple → hero.
 //
 // The opening video's first frame is the poster shown behind "Tap to Open",
 // and its last frame sits under the hero, so the hand-offs are seamless.
@@ -6,7 +6,7 @@
 // failure) we cross-fade straight to the final frame instead of stalling.
 
 const START_TIMEOUT_MS = 2500;
-const HOLD_AFTER_END_MS = 350; // reference holds the open drapes briefly before the text
+const HOLD_AFTER_END_MS = 0; // the couple keep walking: hand straight over to the hero
 
 export function initOpening({ section, music, reducedMotion, onStart = () => {}, onOpened }) {
   const video = section.querySelector(".bg__video");

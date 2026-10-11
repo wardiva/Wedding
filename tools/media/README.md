@@ -29,6 +29,12 @@ final photography or footage is supplied.
    ffmpeg -framerate 30 -i work/venue/f_%04d.png   -c:v libx264 -crf 10 -pix_fmt yuv420p hyperframes/assets/venue_src.mp4
    ```
 
+   The opening frames are then restored with Real-ESRGAN
+   (`realesr-general-x4v3`, denoise 0.8): each cleaned frame is reduced to the
+   recording's 504×804, upscaled 4× and supersampled down to 1008×1600, which
+   removes the recording's compression blocks (`restore_opening.py`). The
+   poster stills are its first and last frames.
+
 2. **`hyperframes/`**: [HyperFrames](https://hyperframes.dev) compositions that
    frame the cleaned clips at 1008×1600, trim the recording's top status line,
    and render the master MP4s:
@@ -38,6 +44,19 @@ final photography or footage is supplied.
    npx hyperframes render . -o renders/opening.mp4 --quality delivery
    npx hyperframes render -c compositions/venue.html -o renders/venue.mp4 --quality delivery
    ```
+
+   The site's opening is `compositions/reveal.html`: the drapes part over the
+   couple clip. `build_reveal.py` bakes the parting into an alpha layer from the
+   restored frames, and the couple clip is the Remotion render below:
+
+   ```sh
+   python build_reveal.py work/opening_restored hyperframes/assets/curtain_alpha.webm
+   cp ../../video/out/walima-venue.mp4 hyperframes/assets/couple_src.mp4
+   cd hyperframes && npx hyperframes render -c compositions/reveal.html -o renders/reveal.mp4 --quality delivery
+   ```
+
+   Its first frame is `curtain-closed.jpg` and its last `hero-start.jpg`, which
+   equals the hero clip at `heroStart` (3.67 s) in `site/content.js`.
 
    The family illustrations were cut out with `npx hyperframes remove-background`.
 

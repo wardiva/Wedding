@@ -24,7 +24,6 @@ const byName = (n) => scroller.querySelector(`[data-section="${n}"]`);
 
 /* ── Controls ── */
 const cue = document.getElementById("scrollCue");
-cue.querySelector(".scroll-cue__label").textContent = content.ui.scrollDown;
 cue.setAttribute("aria-label", content.ui.scrollDown);
 
 const music = initMusic({
@@ -50,8 +49,8 @@ const bgObserver = new IntersectionObserver(
   { root: scroller, rootMargin: "120% 0px" }
 );
 
-/* ── Hero: the couple video in the opening section, after the curtains ── */
-const hero = initHero(byName("opening"), { reducedMotion });
+/* ── Hero: the couple video, continuing from the curtain clip's last frame ── */
+const hero = initHero(byName("opening"), { reducedMotion, start: content.media.heroStart });
 
 /* ── Active section: reveal content, manage the cue, play/pause the hero ── */
 let opened = false;
