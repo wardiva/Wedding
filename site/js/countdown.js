@@ -3,7 +3,7 @@
 export function initCountdown(root) {
   const target = Date.parse(root.dataset.target);
   const cells = {};
-  root.querySelectorAll(".arch").forEach((el) => (cells[el.dataset.unit] = el.querySelector("[data-num]")));
+  root.querySelectorAll("[data-unit]").forEach((el) => (cells[el.dataset.unit] = el.querySelector("[data-num]")));
   const pad = (n) => String(n).padStart(2, "0");
 
   const tick = () => {

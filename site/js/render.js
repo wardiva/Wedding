@@ -61,26 +61,17 @@ function countdown(c) {
   <section class="section s-tent s-countdown" data-section="countdown" data-bg="${c.media.tentLight}">
     <div class="bg"></div>
     <div class="wash"></div>
-    <div class="countdown" id="countdown" data-target="${esc(k.target)}">
-      <span class="caps countdown__eyebrow" ${r(0)}>${esc(k.eyebrow)}</span>
-      <span class="script countdown__title" ${r(1)}>${esc(k.title)}</span>
-      <span ${r(2, "fade")}>${icon.garland}</span>
-      <div class="arches" ${r(3)}>
-        ${units
-          .map(
-            (u) => `
-          <div class="arch" data-unit="${u}">
-            <div class="arch__face">
-              <span class="arch__num" data-num>00</span>
-              <span class="caps arch__label">${esc(k.labels[u])}</span>
-            </div>
-            <canvas class="arch__scratch" aria-hidden="true"></canvas>
-          </div>`
-          )
-          .join("")}
+    <div class="glass-card cd-card" id="countdown" data-target="${esc(k.target)}" ${r(0, "card")}>
+      <span class="card-eyebrow" ${r(1)}>${esc(k.eyebrow)}</span>
+      <span class="script card-title" ${r(2)}>${esc(k.title)}</span>
+      ${fineRule(3)}
+      <span class="cd__day" ${r(4)}>${esc(k.day)}</span>
+      <span class="cd__date" ${r(5)}>${esc(k.date)}</span>
+      <span class="cd__time" ${r(6)}>${esc(k.time)}</span>
+      ${fineRule(7, "fine-rule--wide")}
+      <div class="cd__count" ${r(8)}>
+        ${units.map((u) => `<div class="cd__cell" data-unit="${u}"><span class="cd__num" data-num>00</span><span class="cd__label">${esc(k.labels[u])}</span></div>`).join("")}
       </div>
-      <span class="caps countdown__hint" ${r(4)}>${esc(k.scratchHint)}</span>
-      <span class="countdown__date">${esc(k.revealedDateLine)}</span>
     </div>
   </section>`;
 }
@@ -114,20 +105,22 @@ function venue(c) {
 function schedule(c) {
   const s = c.schedule;
   const row = (it, i) => `
-        <li class="tl__row${it.highlight ? " is-key" : ""}" ${r(3 + i)}>
+        <li class="tl__row${it.highlight ? " is-key" : ""}" ${r(4 + i)}>
           <span class="tl__time">${esc(it.time)}${it.period ? `<small>${esc(it.period)}</small>` : ""}</span>
           <span class="tl__node" aria-hidden="true"></span>
-          <span class="tl__what">${esc(it.title)}${it.note ? `<em>${esc(it.note)}</em>` : ""}</span>
+          <span class="tl__what">${esc(it.title)}</span>
         </li>`;
   return `
-  <section class="section s-paper s-schedule" data-section="schedule">
+  <section class="section s-floral s-schedule" data-section="schedule" data-bg="${c.media.floralTent}">
     <div class="bg"></div>
     <div class="wash"></div>
-    <span class="caps-serif eyebrow" ${r(0)}>${esc(s.eyebrow)}</span>
-    <h2 class="script sched__title" ${r(1)}>${esc(s.title)}</h2>
-    ${ornament(2)}
-    <ol class="tl">${s.items.map(row).join("")}
-    </ol>
+    <div class="glass-card sched-card" ${r(0, "card")}>
+      <span class="card-eyebrow" ${r(1)}>${esc(s.eyebrow)}</span>
+      <h2 class="script card-title" ${r(2)}>${esc(s.title)}</h2>
+      ${fineRule(3)}
+      <ol class="tl">${s.items.map(row).join("")}
+      </ol>
+    </div>
   </section>`;
 }
 
@@ -192,7 +185,7 @@ function closing(c) {
 }
 
 export function renderSections(c) {
-  return [opening, letter, countdown, venue, schedule, dressCode, closing]
+  return [opening, letter, countdown, schedule, venue, dressCode, closing]
     .map((fn) => fn(c))
     .join("");
 }

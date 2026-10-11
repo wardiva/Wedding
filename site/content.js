@@ -10,9 +10,9 @@
  *                   couple video, which carries on as the HERO with the names
  *                   and "Are saying “Qabool Hai”" over the canopy.
  *    2. Letter     — a note to guests.
- *    3. Countdown  — live countdown with scratch-to-reveal cards and petals.
- *    4. Venue      — arch card with Open Location and Add to Calendar.
- *    5. Schedule   — timeline built from the `schedule.items` list.
+ *    3. Countdown  — the date and a live countdown (petals on arrival).
+ *    4. Schedule   — timeline built from the `schedule.items` list.
+ *    5. Venue      — arch card with Open Location and Add to Calendar.
  *    6. Dress code — groom and bride illustrations with a guidance line.
  *    7. Closing    — names and a Quranic verse.
  *
@@ -49,18 +49,19 @@ export default {
     vow: "“Qabool Hai”",
   },
 
-  /* 3 — Countdown with scratch-to-reveal */
+  /* 3 — Countdown: the date and a live count on a frosted card */
   countdown: {
-    eyebrow: "Until Barat",
+    eyebrow: "Until the Barat",
     title: "Countdown",
-    scratchHint: "Scratch to reveal the date",
+    day: "Friday", // spaced capitals
+    date: "27 November 2026",
+    time: "1:00 PM",
     // Target moment for the live countdown (event start, venue time).
     target: "2026-11-27T13:00:00+05:00",
-    revealedDateLine: "27 November 2026 · 1 PM",
     labels: { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds" },
   },
 
-  /* 4 — Venue */
+  /* 5 — Venue */
   venue: {
     eyebrow: "The Venue",
     name: "Grand Heaven", // large script; wraps onto two lines
@@ -79,17 +80,17 @@ export default {
     },
   },
 
-  /* 5 — Schedule. Add, remove or reorder rows freely.
-         time + period → "1:00" over "PM"; `note` is an optional smaller second
-         line; `highlight: true` marks the key moment with a solid gold node. */
+  /* 4 — Schedule, right after the countdown. Add, remove or reorder rows
+         freely. time + period → "1:00" over "PM"; `highlight: true` marks
+         the key moment with a solid gold diamond. */
   schedule: {
-    eyebrow: "Friday · 27 November",
+    eyebrow: "The Day",
     title: "Schedule",
     items: [
-      { time: "1:00", period: "PM", title: "Guests Arrival", note: "& Welcome" },
+      { time: "1:00", period: "PM", title: "Guests Arrival & Welcome" },
       { time: "1:30", period: "PM", title: "Nikah", highlight: true },
       { time: "2:00", period: "PM", title: "Lunch" },
-      { time: "3:30", period: "PM", title: "Rukhsati", note: "& Dua" },
+      { time: "3:30", period: "PM", title: "Rukhsati & Dua" },
       { time: "4:00", period: "PM", title: "End" },
     ],
   },

@@ -3,7 +3,6 @@ import { renderSections } from "./render.js";
 import { initOpening } from "./opening.js";
 import { initMusic } from "./music.js";
 import { initCountdown } from "./countdown.js";
-import { initScratch } from "./scratch.js";
 import { createPetals } from "./petals.js";
 import { downloadIcs } from "./calendar.js";
 import { initHero } from "./hero.js";
@@ -54,6 +53,7 @@ const hero = initHero(byName("opening"), { reducedMotion, start: content.media.h
 
 /* ── Active section: reveal content, manage the cue, play/pause the hero ── */
 let opened = false;
+let petalsShown = false;
 let current = sections[0];
 
 const setCurrent = (s) => {
@@ -64,6 +64,12 @@ const setCurrent = (s) => {
 
   if (opened && s.dataset.section === "opening") hero.play();
   else hero.pause();
+
+  // A soft petal shower the first time the countdown comes into view.
+  if (!petalsShown && s.dataset.section === "countdown") {
+    petalsShown = true;
+    setTimeout(() => petals.burst(), 500);
+  }
 };
 
 const activeObserver = new IntersectionObserver(
@@ -109,10 +115,8 @@ cue.addEventListener("click", () => {
   scroller.scrollTo({ top: target, behavior: reducedMotion ? "auto" : "smooth" });
 });
 
-/* ── Countdown + scratch reveal + petals ── */
-const countdownEl = document.getElementById("countdown");
-initCountdown(countdownEl);
-initScratch(countdownEl, { onReveal: () => petals.burst() });
+/* ── Countdown ── */
+initCountdown(document.getElementById("countdown"));
 
 /* ── Venue: add-to-calendar ── */
 scroller.addEventListener("click", (e) => {

@@ -4,8 +4,8 @@ A cinematic, phone-first digital invitation for the Barat of Hamza Shafi &
 Komal Naveed: closed curtains → tap → the bow unties and the drapes part over
 the couple walking down the aisle, which carries on as the hero (their names
 and "Are saying “Qabool Hai”" over the canopy) → a letter to guests (the
-invitation itself), a scratch-to-reveal countdown with a petal shower, the
-venue, the day's schedule, the dress code and a closing card.
+invitation itself), the date with a live countdown (petals fall on arrival),
+the day's schedule, the venue, the dress code and a closing card.
 
 It is a static site — plain HTML, CSS and ES modules, no build step.
 
@@ -16,9 +16,8 @@ the hero lines, the letter's wording, countdown target, venue, schedule, dress
 code, letter and every media path live there. Change values and refresh; no
 other file needs to change (except the link-preview tags, below).
 
-- `schedule.items` is a list: add, remove or reorder rows. `note` is an
-  optional smaller second line, and `highlight: true` gives a row the solid
-  gold marker (used for the Nikah).
+- `schedule.items` is a list: add, remove or reorder rows. `highlight: true`
+  gives a row the solid gold marker (used for the Nikah).
 - `letter.lines` and `dressCode.note` are lists, one entry per line.
 - `countdown.target` and `venue.calendar` use ISO dates with the venue's UTC
   offset, e.g. `2026-11-27T13:00:00+05:00`.
@@ -37,7 +36,7 @@ Drop new files into `assets/` and point `content.js` at them. Keep the shapes:
 | `images/hero-start.jpg` | the reveal's last frame = the hero clip at `heroStart` (hero poster) | 1008×1792 |
 | `video/walima-walk.mp4` + `.webm` | Hero: the couple walking down the aisle (client footage, audio removed). Continues from `heroStart`, plays once and holds the last frame. Rendered from the Remotion composition `WalimaVenue` in `/video` (`npm run render:walima`) | 1008×1792, 10 s |
 | `images/tent-light.jpg` | countdown backdrop (and the blurred desktop backdrop) | ~5:8 portrait |
-| `images/floral-tent.jpg` | letter and closing backdrop | ~5:8 portrait |
+| `images/floral-tent.jpg` | letter, schedule and closing backdrop | ~5:8 portrait |
 | `images/groom.webp`, `images/bride.webp` | dress-code illustrations | transparent cut-outs |
 | `card/paper.webp`, `card/wash.svg`, `card/ornament.svg` | paper, sage wash and gold ornaments on the venue, schedule and dress-code screens (set in `css/sections.css`; see `card/README.md`) | — |
 | `audio/background-music.mp3` | background music (loops) | — |
@@ -101,7 +100,6 @@ site/
   js/render.js        ← section templates (content → markup)
   js/opening.js       ← tap-to-open + curtain video hand-off with fallback
   js/hero.js          ← the couple video after the curtains (deferred load, poster fallback)
-  js/scratch.js       ← gold-foil scratch cards
   js/petals.js        ← petal shower (canvas)
   js/countdown.js     ← live countdown
   js/music.js         ← music start on first tap + toggle
