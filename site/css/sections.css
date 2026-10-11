@@ -263,23 +263,32 @@
 .btn:active { transform: scale(0.97); }
 
 /* ═════════════════════════ 4 · Schedule ═════════════════════════ */
-.tl { position: relative; list-style: none; margin: calc(4 * var(--u)) auto 0; padding: 0; width: 100%; }
+/* Each row reads on one line: "1:00 PM" ◆ event, sharing a baseline. The
+   right-aligned times form a clean column against the gold line. */
+.tl { position: relative; list-style: none; margin: calc(6 * var(--u)) auto 0; padding: 0; width: 100%; }
 .tl::before {
   content: "";
   position: absolute;
-  left: calc(126 * var(--u)); top: calc(30 * var(--u)); bottom: calc(30 * var(--u));
+  left: calc(152 * var(--u)); top: calc(26 * var(--u)); bottom: calc(26 * var(--u));
   width: 1px;
   background: linear-gradient(to bottom, rgba(166, 134, 87, 0), rgba(166, 134, 87, 0.7) 10%, rgba(166, 134, 87, 0.7) 90%, rgba(166, 134, 87, 0));
 }
 .tl__row {
   display: grid;
-  grid-template-columns: calc(108 * var(--u)) calc(36 * var(--u)) 1fr;
+  grid-template-columns: calc(134 * var(--u)) calc(36 * var(--u)) 1fr;
   align-items: center;
-  min-height: calc(76 * var(--u));
+  min-height: calc(68 * var(--u));
   text-align: left;
 }
-.tl__time { text-align: right; font-family: var(--font-serif); font-weight: 600; font-size: calc(32 * var(--u)); line-height: 1; color: var(--ink); font-variant-numeric: lining-nums tabular-nums; }
-.tl__time small { display: block; font-family: var(--font-serif); font-weight: 600; font-size: calc(11.5 * var(--u)); letter-spacing: 0.3em; margin-right: -0.3em; color: var(--gold-deep); margin-top: calc(5 * var(--u)); }
+.tl__time {
+  display: flex; align-items: baseline; justify-content: flex-end; gap: calc(6 * var(--u));
+  font-family: var(--font-serif); font-weight: 600; font-size: calc(30 * var(--u)); line-height: 1.2;
+  color: var(--ink); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap;
+}
+.tl__time small {
+  font-family: var(--font-serif); font-weight: 600; font-size: calc(15 * var(--u));
+  letter-spacing: 0.12em; margin-right: -0.12em; color: var(--gold-deep);
+}
 /* One solid gold diamond per row, all alike */
 .tl__node {
   justify-self: center; position: relative;
@@ -287,7 +296,7 @@
   transform: rotate(45deg);
   background: linear-gradient(135deg, #e2c98f, #b8924f 55%, #9c7840);
 }
-.tl__what { font-weight: 600; font-size: calc(25 * var(--u)); line-height: 1.2; color: var(--ink); padding-left: calc(4 * var(--u)); text-wrap: balance; }
+.tl__what { font-weight: 600; font-size: calc(26 * var(--u)); line-height: 1.2; color: var(--ink); padding-left: calc(2 * var(--u)); text-wrap: balance; }
 
 /* ═════════════════════════ 2 · Letter ═════════════════════════ */
 .s-floral .bg { background-image: var(--bg); }
