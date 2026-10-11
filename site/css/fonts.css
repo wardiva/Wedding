@@ -35,13 +35,13 @@
   /* its lowercase is tiny next to its capitals; scaled so names and titles read at their designed size */
   size-adjust: 150%;
 }
-/* Prestige Signature Script by Fontsgood (demo, personal use only) — the hero names only */
+/* Signerica Fat by Måns Grebäck (personal use only) — the hero names only */
 @font-face {
-  font-family: 'Prestige Signature Script';
+  font-family: 'Signerica';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../assets/fonts/prestige-signature-400.woff2) format('woff2');
+  src: url(../assets/fonts/signerica-fat.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Great Vibes';
