@@ -24,7 +24,10 @@
 
   --font-script: "Sweet Hipster", "Great Vibes", "Pinyon Script", cursive;
   --font-serif: "Cormorant Garamond", "Cormorant", Garamond, Georgia, serif;
-  --font-sans: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+  /* Spaced-capital labels: two sizes and one tracking, never below 12px */
+  --fs-label: max(calc(15 * var(--u)), 12.5px);
+  --fs-caption: max(calc(13 * var(--u)), 12px);
+  --track-caps: 0.28em;
   --font-arabic: "Amiri", "Scheherazade New", "Traditional Arabic", serif;
 
   /* Layout unit: 1 reference pixel. The reference viewport is 504×804, so
@@ -53,6 +56,7 @@ html, body {
   color: var(--ink);
   font-family: var(--font-serif);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent;
@@ -151,11 +155,11 @@ img, video, canvas { display: block; }
 em, i, cite { font-style: normal; }
 
 .caps {
-  font-family: var(--font-sans);
-  font-weight: 500;
+  font-family: var(--font-serif);
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.3em;
-  margin-right: -0.3em; /* optically centre tracked text */
+  letter-spacing: var(--track-caps);
+  margin-right: calc(-1 * var(--track-caps)); /* optically centre tracked text */
 }
 .serif { font-family: var(--font-serif); }
 .arabic { font-family: var(--font-arabic); direction: rtl; unicode-bidi: isolate; }

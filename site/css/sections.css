@@ -59,10 +59,7 @@
 }
 .intro__tap .caps {
   position: relative;
-  font-size: calc(15 * var(--u));
-  font-weight: 500;
-  letter-spacing: 0.32em;
-  margin-right: -0.32em; /* optical centring of tracked caps */
+  font-size: max(calc(17 * var(--u)), 13.5px);
   color: #4a3a2c;
   white-space: nowrap;
 }
@@ -132,10 +129,11 @@
   text-shadow: var(--hero-shadow);
 }
 .hero__amp {
-  font-family: "Great Vibes", var(--font-script);
-  font-size: calc(62 * var(--u));
-  line-height: 0.8;
-  margin: calc(2 * var(--u)) 0 calc(-2 * var(--u));
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: calc(40 * var(--u));
+  line-height: 1;
+  margin: calc(2 * var(--u)) 0;
   color: var(--gold-light);
   text-shadow: var(--hero-shadow);
 }
@@ -144,8 +142,8 @@
   font-family: var(--font-serif);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  margin-right: -0.22em;
+  letter-spacing: var(--track-caps);
+  margin-right: calc(-1 * var(--track-caps));
   text-shadow: var(--hero-shadow);
 }
 .hero__saying { font-size: calc(19 * var(--u)); color: #fbf3e2; margin-top: calc(14 * var(--u)); }
@@ -163,9 +161,9 @@
   font-family: var(--font-serif);
   font-weight: 600;
   text-transform: uppercase;
-  font-size: calc(14.5 * var(--u));
-  letter-spacing: 0.36em;
-  margin-right: -0.36em;
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-caps);
+  margin-right: calc(-1 * var(--track-caps));
   color: var(--gold-deep);
 }
 .card-title { font-size: calc(72 * var(--u)); line-height: 1.1; margin: calc(2 * var(--u)) 0 0; font-weight: 400; }
@@ -175,9 +173,9 @@
   font-family: var(--font-serif);
   font-weight: 600;
   text-transform: uppercase;
-  font-size: calc(16 * var(--u));
-  letter-spacing: 0.4em;
-  margin-right: -0.4em;
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-caps);
+  margin-right: calc(-1 * var(--track-caps));
   color: var(--ink-2);
 }
 .cd__date {
@@ -218,9 +216,9 @@
   font-family: var(--font-serif);
   font-weight: 600;
   text-transform: uppercase;
-  font-size: calc(11.5 * var(--u));
-  letter-spacing: 0.24em;
-  margin-right: -0.24em;
+  font-size: var(--fs-caption);
+  letter-spacing: 0.08em; /* four labels share the card's width; MINUTES must fit at 320px */
+  margin-right: -0.08em;
   color: var(--gold-deep);
   margin-top: calc(10 * var(--u));
 }
@@ -234,9 +232,9 @@
   font-family: var(--font-serif);
   font-weight: 600;
   text-transform: uppercase;
-  font-size: calc(15 * var(--u));
-  letter-spacing: 0.4em;
-  margin-right: -0.4em;
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-caps);
+  margin-right: calc(-1 * var(--track-caps));
   color: var(--ink-2);
   margin-top: calc(6 * var(--u));
 }
@@ -246,14 +244,13 @@
   width: calc(303 * var(--u)); max-width: 100%;
   height: calc(59 * var(--u)); min-height: 44px;
   border-radius: 999px;
-  font-size: calc(14.75 * var(--u));
-  letter-spacing: 0.2em;
+  font-size: var(--fs-label);
   margin-right: 0;
   white-space: nowrap;
   text-decoration: none;
   transition: transform 0.2s var(--ease-out);
 }
-.btn span { margin-right: -0.2em; }
+.btn span { margin-right: calc(-1 * var(--track-caps)); }
 .btn svg { width: calc(19 * var(--u)); height: calc(19 * var(--u)); fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .btn--gold {
   color: #3a2c1c;
@@ -286,7 +283,7 @@
   color: var(--ink); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap;
 }
 .tl__time small {
-  font-family: var(--font-serif); font-weight: 600; font-size: calc(15 * var(--u));
+  font-family: var(--font-serif); font-weight: 600; font-size: var(--fs-caption);
   letter-spacing: 0.12em; margin-right: -0.12em; color: var(--gold-deep);
 }
 /* One solid gold diamond per row, all alike */
@@ -326,21 +323,22 @@
   font-family: var(--font-serif);
   font-weight: 600;
   text-transform: uppercase;
-  font-size: calc(14.5 * var(--u));
-  letter-spacing: 0.36em;
-  margin-right: -0.36em;
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-caps);
+  margin-right: calc(-1 * var(--track-caps));
   color: var(--gold-deep);
   margin-top: calc(20 * var(--u));
 }
 .letter-card__name { font-size: calc(60 * var(--u)); line-height: 1.12; }
 .letter-card__event + .letter-card__name { margin-top: calc(6 * var(--u)); }
 .letter-card__amp {
-  font-family: "Great Vibes", var(--font-script);
-  font-size: calc(36 * var(--u));
-  line-height: 0.9;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: calc(30 * var(--u));
+  line-height: 1;
   color: var(--gold);
 }
-.letter-card__ref { font-size: calc(11.5 * var(--u)); color: #6b5d55; letter-spacing: 0.3em; margin-right: -0.3em; margin-top: calc(4 * var(--u)); }
+.letter-card__ref { font-size: var(--fs-caption); color: #6b5d55; margin-top: calc(4 * var(--u)); }
 
 /* Fine rule: hairlines that taper to nothing, around a small gold diamond */
 .fine-rule {
