@@ -34,7 +34,7 @@ export default {
     lines: ["You are cordially invited to the"],
     eventTitle: "Barat",
     ceremonyLabel: "Ceremony of",
-    dateLine: "Friday · 27 November 2026",
+    dateLine: "Friday · November 27, 2026",
   },
 
   /* 3 — Countdown with scratch-to-reveal */

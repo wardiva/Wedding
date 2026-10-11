@@ -4,9 +4,8 @@
   z-index: 30;
   left: calc(20 * var(--u));
   bottom: calc(15 * var(--u) + var(--safe-b));
-  width: calc(48 * var(--u));
-  height: calc(48 * var(--u));
-  min-width: 40px; min-height: 40px;
+  width: max(44px, calc(48 * var(--u)));
+  height: max(44px, calc(48 * var(--u)));
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -31,7 +30,7 @@
   position: absolute;
   z-index: 30;
   left: 50%;
-  bottom: calc(10 * var(--u) + var(--safe-b));
+  bottom: calc(14 * var(--u) + var(--safe-b));
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -48,8 +47,8 @@
 }
 .scroll-cue__btn {
   position: relative;
-  width: calc(58 * var(--u));
-  height: calc(58 * var(--u));
+  width: max(44px, calc(58 * var(--u)));
+  height: max(44px, calc(58 * var(--u)));
   border-radius: 50%;
   display: grid;
   place-items: center;

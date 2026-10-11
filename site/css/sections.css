@@ -385,3 +385,24 @@
 /* On tall phones the venue card is taller than its content: share the spare
    height above the details and above the buttons. */
 .event-card__rule + .event-row { margin-top: auto; }
+
+/* ───────── Phone legibility: pixel floors, tap targets, contrast ───────── */
+.btn-gold, .btn-ghost { font-size: max(11px, calc(12.5 * var(--u))); height: max(44px, calc(50 * var(--u))); }
+.timeline__time { font-size: max(11px, calc(13.5 * var(--u))); letter-spacing: 0.14em; }
+.dress__title { font-size: max(10.5px, calc(12.5 * var(--u))); color: var(--gold-deep); }
+.closing__ref, .invite__ceremony, .invite__date, .countdown__hint, .countdown__eyebrow { font-size: max(10.5px, calc(13 * var(--u))); }
+.arch__label { font-size: max(9.5px, calc(11 * var(--u))); }
+.event-row__sub { font-size: max(13px, calc(17.5 * var(--u))); color: rgba(255, 248, 238, 0.88); }
+.event-row svg { width: max(14px, calc(17 * var(--u))); height: max(14px, calc(17 * var(--u))); }
+.event-row { grid-template-columns: max(24px, calc(32 * var(--u))) 1fr; }
+.invite { text-shadow: 0 0 14px rgba(255, 248, 236, 0.75); }
+.invite__ceremony { color: var(--gold-deep); }
+.invite__date { margin-top: calc(12 * var(--u)); }
+.countdown__eyebrow, .countdown__hint { text-shadow: 0 0 10px rgba(255, 248, 236, 0.8); }
+.intro__amp { color: #7a6444; font-size: calc(34 * var(--u)); text-shadow: 0 0 8px rgba(255, 250, 240, 0.8); }
+.intro__line { color: var(--ink); text-shadow: 0 0 10px rgba(255, 248, 235, 0.85); }
+.intro__names .script { font-size: calc(54 * var(--u)); }
+@keyframes tap-breathe { 50% { opacity: 0.8; } }
+
+:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 3px; }
+.btn-gold:focus-visible, .btn-ghost:focus-visible { outline-color: #fff; }

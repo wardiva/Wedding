@@ -21,6 +21,9 @@ scroller.innerHTML = renderSections(content);
 const sections = [...scroller.querySelectorAll(".section")];
 const byName = (n) => scroller.querySelector(`[data-section="${n}"]`);
 
+/* Later screens stay out of the tab order until the curtain has opened */
+sections.slice(1).forEach((s) => s.setAttribute("inert", ""));
+
 /* ── Controls ── */
 const cue = document.getElementById("scrollCue");
 cue.querySelector(".scroll-cue__label").textContent = content.ui.scrollDown;
@@ -71,7 +74,7 @@ const setCurrent = (s) => {
   if (v) {
     if (s === venue) {
       if (v.ended) v.currentTime = 0;
-      v.play().catch(() => {});
+      if (!reducedMotion) v.play().catch(() => {});
     } else if (!v.paused) v.pause();
   }
 };
@@ -97,6 +100,7 @@ initOpening({
   reducedMotion,
   onOpened() {
     opened = true;
+    sections.forEach((s) => s.removeAttribute("inert"));
     scroller.classList.remove("is-locked");
     sections.forEach((s) => { bgObserver.observe(s); activeObserver.observe(s); midObserver.observe(s); });
     setCurrent(byName("opening"));
