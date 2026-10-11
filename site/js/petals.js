@@ -1,4 +1,4 @@
-// Petal shower: ivory, rose-red and sage petals tumble down over the whole column after
+// Petal shower: ivory and sage petals tumble down over the whole column after
 // the date is revealed, carrying on as the guest scrolls to the venue card.
 
 const IVORY = [
@@ -7,17 +7,12 @@ const IVORY = [
   ["#ffffff", "#efe8dc"],
   ["#f6f1e8", "#ddd2c1"],
 ];
-const RED = [ // rose-red to maroon, like the bridal lehenga
-  ["#c0303f", "#7e1424"],
-  ["#a8202f", "#64101c"],
-  ["#d2485a", "#93202f"],
-];
 const SAGE = [
   ["#cfdccc", "#9fb59f"],
   ["#bccdb9", "#8fa690"],
 ];
 const pick = (a) => a[Math.floor(Math.random() * a.length)];
-const colour = () => { const r = Math.random(); return pick(r < 0.4 ? RED : r < 0.55 ? SAGE : IVORY); };
+const colour = () => pick(Math.random() < 0.2 ? SAGE : IVORY);
 
 export function createPetals(canvas, { reducedMotion = false } = {}) {
   const ctx = canvas.getContext("2d");
@@ -107,7 +102,7 @@ export function createPetals(canvas, { reducedMotion = false } = {}) {
     burst() {
       resize();
       // a light scatter, not a blizzard: few petals, spread out in time
-      spawn(reducedMotion ? 8 : 32, reducedMotion ? 1.5 : 3);
+      spawn(reducedMotion ? 10 : 44, reducedMotion ? 1.5 : 3);
       if (!raf) {
         t0 = prev = performance.now();
         raf = requestAnimationFrame(frame);
