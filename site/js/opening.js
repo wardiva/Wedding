@@ -1,14 +1,14 @@
-// Closed curtain → tap → bow unties, drapes part → invitation fades in.
+// Closed curtain → tap → bow unties, drapes part → the hero fades in.
 //
 // The opening video's first frame is the poster shown behind "Tap to Open",
-// and its last frame is the invitation backdrop, so the hand-offs are seamless.
+// and its last frame sits under the hero, so the hand-offs are seamless.
 // If the video can't start promptly (slow network, data saver, decoding
 // failure) we cross-fade straight to the final frame instead of stalling.
 
 const START_TIMEOUT_MS = 2500;
 const HOLD_AFTER_END_MS = 350; // reference holds the open drapes briefly before the text
 
-export function initOpening({ section, music, reducedMotion, onOpened }) {
+export function initOpening({ section, music, reducedMotion, onStart = () => {}, onOpened }) {
   const video = section.querySelector(".bg__video");
   const tap = section.querySelector("#tapToOpen");
   let started = false;
@@ -24,12 +24,14 @@ export function initOpening({ section, music, reducedMotion, onOpened }) {
   };
 
   const fallback = () => {
+    onStart();
     try { video.pause(); } catch {}
     section.classList.add("use-end-frame");
     finish(1100);
   };
 
-  video.addEventListener("playing", () => section.classList.add("is-playing"), { once: true });
+  // onStart lets the next media begin loading only once the curtain is moving.
+  video.addEventListener("playing", () => { section.classList.add("is-playing"); onStart(); }, { once: true });
   video.addEventListener("ended", () => finish());
   // With <source> children, a load failure is reported on the last source.
   // A failure before the tap is remembered so the tap can fall back at once.

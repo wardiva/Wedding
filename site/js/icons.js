@@ -42,20 +42,8 @@ export const calendar = `
 export const calendarPlus = `
 <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="2.5"/><path d="M3.5 9.5h17M8.5 13.5v4M6.5 15.5h4"/></svg>`;
 
+export const clock = `
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>`;
+
 export const pin = `
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>`;
-
-/* Faint rosette that peeks in at the top of the paper sections */
-export const medallion = `
-<svg class="medallion" viewBox="0 0 110 110" aria-hidden="true">
-  <g fill="none" stroke="currentColor" stroke-width="1.4">
-    <circle cx="55" cy="55" r="52" />
-    <circle cx="55" cy="55" r="44" />
-    ${Array.from({ length: 12 }, (_, i) => {
-      const a = (i * Math.PI) / 6;
-      const x = 55 + Math.cos(a) * 30, y = 55 + Math.sin(a) * 30;
-      return `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="13" ry="6" transform="rotate(${(i * 30).toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})" />`;
-    }).join("")}
-    <circle cx="55" cy="55" r="9" />
-  </g>
-</svg>`;

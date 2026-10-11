@@ -3,21 +3,22 @@
 const stamp = (iso) => new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 const escIcs = (s = "") => String(s).replace(/([,;\\])/g, "\\$1").replace(/\n/g, "\\n");
 
+/** event: { title, start, end, location, description, url } (ISO dates with offset) */
 export function downloadIcs(event) {
-  const cal = event.calendar || {};
   const ics = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
     "PRODID:-//Wedding Invitation//EN",
     "CALSCALE:GREGORIAN",
     "BEGIN:VEVENT",
-    `UID:${stamp(cal.start)}-${Math.random().toString(36).slice(2)}@invitation`,
+    `UID:${stamp(event.start)}-${Math.random().toString(36).slice(2)}@invitation`,
     `DTSTAMP:${stamp(new Date().toISOString())}`,
-    `DTSTART:${stamp(cal.start)}`,
-    `DTEND:${stamp(cal.end || cal.start)}`,
-    `SUMMARY:${escIcs(cal.title || event.title)}`,
-    `LOCATION:${escIcs(`${event.venue}, ${event.address}`)}`,
-    `DESCRIPTION:${escIcs(`${event.dateLine} — ${event.timeLine}`)}`,
+    `DTSTART:${stamp(event.start)}`,
+    `DTEND:${stamp(event.end || event.start)}`,
+    `SUMMARY:${escIcs(event.title)}`,
+    `LOCATION:${escIcs(event.location)}`,
+    `DESCRIPTION:${escIcs(event.description)}`,
+    ...(event.url ? [`URL:${event.url}`] : []),
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
@@ -32,7 +33,7 @@ export function downloadIcs(event) {
   const url = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
   const a = Object.assign(document.createElement("a"), {
     href: url,
-    download: `${(event.title || "event").toLowerCase().replace(/\s+/g, "-")}.ics`,
+    download: `${(event.title || "event").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}.ics`,
   });
   document.body.appendChild(a);
   a.click();

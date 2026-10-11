@@ -6,6 +6,7 @@ import { initCountdown } from "./countdown.js";
 import { initScratch } from "./scratch.js";
 import { createPetals } from "./petals.js";
 import { downloadIcs } from "./calendar.js";
+import { initHero } from "./hero.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -43,20 +44,16 @@ const bgObserver = new IntersectionObserver(
       const s = e.target;
       const bg = s.querySelector(".bg");
       if (s.dataset.bg && bg) bg.style.backgroundImage = `url("${s.dataset.bg}")`;
-      const v = s.querySelector("video[data-lazy]");
-      if (v) {
-        v.querySelectorAll("source[data-src]").forEach((src) => (src.src = src.dataset.src));
-        v.removeAttribute("data-lazy");
-        v.preload = "auto";
-        v.load();
-      }
       bgObserver.unobserve(s);
     }
   },
   { root: scroller, rootMargin: "120% 0px" }
 );
 
-/* ── Active section: reveal content, manage the cue, play/pause videos ── */
+/* ── Hero: the couple video in the opening section, after the curtains ── */
+const hero = initHero(byName("opening"), { reducedMotion });
+
+/* ── Active section: reveal content, manage the cue, play/pause the hero ── */
 let opened = false;
 let current = sections[0];
 
@@ -66,14 +63,8 @@ const setCurrent = (s) => {
   const isLast = s === sections[sections.length - 1];
   cue.classList.toggle("is-visible", opened && !isLast);
 
-  const venue = byName("events");
-  const v = venue?.querySelector("video");
-  if (v) {
-    if (s === venue) {
-      if (v.ended) v.currentTime = 0;
-      v.play().catch(() => {});
-    } else if (!v.paused) v.pause();
-  }
+  if (opened && s.dataset.section === "opening") hero.play();
+  else hero.pause();
 };
 
 const activeObserver = new IntersectionObserver(
@@ -95,6 +86,7 @@ initOpening({
   section: byName("opening"),
   music,
   reducedMotion,
+  onStart: hero.prime,
   onOpened() {
     opened = true;
     scroller.classList.remove("is-locked");
@@ -121,34 +113,17 @@ const countdownEl = document.getElementById("countdown");
 initCountdown(countdownEl);
 initScratch(countdownEl, { onReveal: () => petals.burst() });
 
-/* ── Events: add-to-calendar + carousel dots ── */
+/* ── Venue: add-to-calendar ── */
 scroller.addEventListener("click", (e) => {
-  const btn = e.target.closest("[data-ics]");
-  if (btn) downloadIcs(content.events[Number(btn.dataset.ics)]);
-});
-const track = document.getElementById("eventsTrack");
-const dots = byName("events")?.querySelectorAll(".events-dots span");
-if (track && dots?.length) {
-  track.addEventListener("scroll", () => {
-    const i = Math.round(track.scrollLeft / track.clientWidth);
-    dots.forEach((d, j) => d.classList.toggle("is-current", i === j));
-  }, { passive: true });
-}
-
-/* ── FAQ accordion (one open at a time) ── */
-scroller.addEventListener("click", (e) => {
-  const q = e.target.closest(".faq-item__q");
-  if (!q) return;
-  const item = q.parentElement;
-  const willOpen = !item.classList.contains("is-open");
-  item.parentElement.querySelectorAll(".faq-item").forEach((it) => {
-    it.classList.remove("is-open");
-    it.querySelector(".faq-item__q").setAttribute("aria-expanded", "false");
+  if (!e.target.closest("[data-ics]")) return;
+  const v = content.venue;
+  downloadIcs({
+    title: v.calendar.title,
+    location: `${v.name}, ${v.address}, ${v.city}`,
+    description: `${v.dateLine}, ${v.timeLine}`,
+    url: v.mapsUrl,
+    ...v.calendar,
   });
-  if (willOpen) {
-    item.classList.add("is-open");
-    q.setAttribute("aria-expanded", "true");
-  }
 });
 
 /* ── Keep the column sized to the visible viewport on mobile browsers ── */
