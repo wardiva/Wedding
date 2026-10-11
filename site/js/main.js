@@ -4,7 +4,6 @@ import { initOpening } from "./opening.js";
 import { initMusic } from "./music.js";
 import { initCountdown } from "./countdown.js";
 import { createPetals } from "./petals.js";
-import { downloadIcs } from "./calendar.js";
 import { initHero } from "./hero.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -117,19 +116,6 @@ cue.addEventListener("click", () => {
 
 /* ── Countdown ── */
 initCountdown(document.getElementById("countdown"));
-
-/* ── Venue: add-to-calendar ── */
-scroller.addEventListener("click", (e) => {
-  if (!e.target.closest("[data-ics]")) return;
-  const v = content.venue;
-  downloadIcs({
-    title: v.calendar.title,
-    location: `${v.name}, ${v.address}, ${v.city}`,
-    description: `${v.dateLine}, ${v.timeLine}`,
-    url: v.mapsUrl,
-    ...v.calendar,
-  });
-});
 
 /* ── Keep the column sized to the visible viewport on mobile browsers ── */
 const syncHeight = () => {

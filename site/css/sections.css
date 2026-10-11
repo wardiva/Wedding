@@ -161,25 +161,7 @@
   .hero__text [data-reveal] { transition-delay: 0s; }
 }
 
-/* ═════════════════════════ Venue: sage watercolour wash ═════════════════════════ */
-.s-venue .wash { background: url("../assets/card/wash.svg") 0 0 / 100% 100% no-repeat; }
-.s-venue > * { flex-shrink: 0; }
 
-.caps-serif {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  margin-right: -0.28em;
-}
-.eyebrow { font-size: calc(14.75 * var(--u)); color: var(--gold-deep); letter-spacing: 0.42em; margin-right: -0.42em; }
-.ornament {
-  display: block;
-  width: calc(151 * var(--u));
-  height: calc(26 * var(--u));
-  background: url("../assets/card/ornament.svg") center / contain no-repeat;
-}
-/* line · gold star · line */
 /* ═════════════════════════ 3 · Countdown ═════════════════════════ */
 .s-countdown .wash { background: none; }
 
@@ -251,42 +233,21 @@
 }
 
 /* ═════════════════════════ 5 · Venue ═════════════════════════ */
-.s-venue {
-  --card-r: calc(var(--app-w) / 2 - 33 * var(--u)); /* full semicircle top */
-  padding: calc(74 * var(--u) + var(--safe-t)) calc(33 * var(--u)) calc(118 * var(--u) + var(--safe-b));
+.s-venue .wash { background: none; }
+.venue-card { padding: calc(36 * var(--u)) calc(30 * var(--u)) calc(38 * var(--u)); }
+.venue__name { white-space: normal; max-width: calc(330 * var(--u)); }
+.venue__addr { font-weight: 500; font-size: calc(26 * var(--u)); line-height: 1.35; color: var(--ink); }
+.venue__city {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: calc(15 * var(--u));
+  letter-spacing: 0.4em;
+  margin-right: -0.4em;
+  color: var(--ink-2);
+  margin-top: calc(6 * var(--u));
 }
-.s-venue .bg { background: linear-gradient(180deg, #e9e3d6, #e3dccc); }
-.s-venue.is-active .wash { opacity: 0.7; }
-.venue-card {
-  position: relative;
-  flex: 1 1 auto;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  border-radius: var(--card-r) var(--card-r) calc(13 * var(--u)) calc(13 * var(--u));
-  background: #f2ece2 url("../assets/card/paper.webp") 0 0 / 256px 256px;
-  box-shadow: 0 calc(23 * var(--u)) calc(51 * var(--u)) calc(-23 * var(--u)) rgba(60, 44, 28, 0.35), 0 calc(2.5 * var(--u)) calc(7.7 * var(--u)) rgba(60, 44, 28, 0.08);
-}
-.venue-card::before {
-  content: "";
-  position: absolute;
-  inset: calc(11.5 * var(--u));
-  border-radius: calc(var(--card-r) - 11.5 * var(--u)) calc(var(--card-r) - 11.5 * var(--u)) calc(6.4 * var(--u)) calc(6.4 * var(--u));
-  border: 1px solid rgba(166, 134, 87, 0.5);
-  pointer-events: none;
-}
-.venue-card__in { position: relative; display: flex; flex-direction: column; align-items: center; padding: calc(51 * var(--u)) calc(33 * var(--u)) calc(13 * var(--u)); }
-.venue__name { font-size: calc(79.5 * var(--u)); line-height: 1.02; white-space: normal; max-width: calc(300 * var(--u)); margin-top: calc(7.7 * var(--u)); }
-.venue-card .ornament { margin-top: calc(2.5 * var(--u)); }
-.venue__addr { font-weight: 500; font-size: calc(27 * var(--u)); line-height: 1.35; color: var(--ink-2); margin-top: calc(15 * var(--u)); }
-.venue__city { font-size: calc(15.4 * var(--u)); letter-spacing: 0.38em; margin-right: -0.38em; color: var(--ink); margin-top: calc(7.7 * var(--u)); }
-.facts { margin: calc(28 * var(--u)) auto 0; width: calc(318 * var(--u)); max-width: 100%; border-top: 1px solid rgba(166, 134, 87, 0.35); }
-.fact { display: grid; grid-template-columns: calc(38.5 * var(--u)) 1fr; align-items: center; text-align: left; padding: calc(14 * var(--u)) 0; border-bottom: 1px solid rgba(166, 134, 87, 0.35); }
-.fact svg { width: calc(23 * var(--u)); height: calc(23 * var(--u)); fill: none; stroke: var(--gold-deep); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.fact span { font-weight: 600; font-size: calc(23.7 * var(--u)); color: var(--ink); font-variant-numeric: lining-nums; }
-.venue__btns { display: flex; flex-direction: column; gap: calc(15.4 * var(--u)); align-items: center; margin-top: calc(41 * var(--u)); }
+.venue-card .btn { margin-top: calc(30 * var(--u)); }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: calc(11.5 * var(--u));
   width: calc(303 * var(--u)); max-width: 100%;
@@ -306,7 +267,6 @@
   background: linear-gradient(100deg, #e8d5aa 0%, #d8bb83 45%, #c6a467 100%);
   box-shadow: 0 calc(7.7 * var(--u)) calc(20.5 * var(--u)) calc(-7.7 * var(--u)) rgba(140, 105, 55, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
-.btn--ghost { color: var(--ink); background: rgba(255, 253, 249, 0.4); box-shadow: inset 0 0 0 1px rgba(139, 106, 61, 0.6); }
 .btn:active { transform: scale(0.97); }
 
 /* ═════════════════════════ 4 · Schedule ═════════════════════════ */

@@ -19,8 +19,8 @@ other file needs to change (except the link-preview tags, below).
 - `schedule.items` is a list: add, remove or reorder rows. `highlight: true`
   gives a row the solid gold marker (used for the Nikah).
 - `letter.lines` is a list, one entry per line.
-- `countdown.target` and `venue.calendar` use ISO dates with the venue's UTC
-  offset, e.g. `2026-11-27T13:00:00+05:00`.
+- `countdown.target` is an ISO date with the venue's UTC offset, e.g.
+  `2026-11-27T13:00:00+05:00`.
 - Link previews (WhatsApp, iMessage) are read from `index.html` (`<title>`,
   `og:title`, `og:description`), because crawlers don't run JavaScript. Edit
   those by hand if the names or the date change.
@@ -35,14 +35,13 @@ Drop new files into `assets/` and point `content.js` at them. Keep the shapes:
 | `video/curtain-reveal.mp4` + `.webm` | the opening: the drapes part over the couple, 4.7 s, silent. Rendered with HyperFrames (`tools/media/hyperframes/compositions/reveal.html`) | 1008×1792 |
 | `images/hero-start.jpg` | the reveal's last frame = the hero clip at `heroStart` (hero poster) | 1008×1792 |
 | `video/walima-walk.mp4` + `.webm` | Hero: the couple walking down the aisle (client footage, audio removed). Continues from `heroStart`, plays once and holds the last frame. Rendered from the Remotion composition `WalimaVenue` in `/video` (`npm run render:walima`) | 1008×1792, 10 s |
-| `images/tent-light.jpg` | countdown backdrop (and the blurred desktop backdrop) | ~5:8 portrait |
+| `images/tent-light.jpg` | countdown and venue backdrop (and the blurred desktop backdrop) | ~5:8 portrait |
 | `images/floral-tent.jpg` | letter, schedule and closing backdrop | ~5:8 portrait |
-| `card/paper.webp`, `card/wash.svg`, `card/ornament.svg` | paper, sage wash and gold ornaments on the venue screen (set in `css/sections.css`; see `card/README.md`) | — |
 | `audio/background-music.mp3` | background music (loops) | — |
 
-The other files in `assets/card` (arch, gold veins, seal, deckle mask,
-botanical sprigs, star) are artwork kept for a possible redesign; the page
-doesn't load them.
+The files in `assets/card` (paper, washes, ornaments, arch, gold veins,
+seal, deckle mask, botanical sprigs, star) are artwork kept for a possible
+redesign; the page doesn't load them.
 
 Keep the reveal's first and last frames identical to the two stills, and its
 last frame equal to the hero clip at `heroStart`, so the hand-offs stay
@@ -102,8 +101,7 @@ site/
   js/petals.js        ← petal shower (canvas)
   js/countdown.js     ← live countdown
   js/music.js         ← music start on first tap + toggle
-  js/calendar.js      ← "Add to calendar" (.ics)
-  js/main.js          ← wiring: section activation, lazy backdrops, hero play/pause, scroll cue, calendar
+  js/main.js          ← wiring: section activation, lazy backdrops, hero play/pause, scroll cue, petals
 ```
 
 - **Sizing:** every measurement is written in reference pixels:

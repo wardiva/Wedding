@@ -12,7 +12,7 @@
  *    2. Letter     — a note to guests.
  *    3. Countdown  — the date and a live countdown (petals on arrival).
  *    4. Schedule   — timeline built from the `schedule.items` list.
- *    5. Venue      — arch card with Open Location and Add to Calendar.
+ *    5. Venue      — the venue's name and address with Open Location.
  *    6. Closing    — names and a Quranic verse.
  *
  *  • Text supports plain strings only (no HTML).
@@ -63,21 +63,13 @@ export default {
   /* 5 — Venue */
   venue: {
     eyebrow: "The Venue",
-    name: "Grand Heaven", // large script; wraps onto two lines
+    name: "Grand Heaven", // large script
     address: "Water Supply Rd, 25 Block",
-    city: "Sargodha",
-    dateLine: "Friday, 27 November 2026",
-    timeLine: "1:00 PM – 4:00 PM",
+    city: "Sargodha", // spaced capitals
     mapsUrl: "https://maps.app.goo.gl/5LJZyDenC3rS6mEk7?g_st=awb",
     openLocation: "Open Location",
-    addToCalendar: "Add to Calendar",
-    // Used for the "Add to Calendar" (.ics) file.
-    calendar: {
-      start: "2026-11-27T13:00:00+05:00",
-      end: "2026-11-27T16:00:00+05:00",
-      title: "Barat — Hamza & Komal",
-    },
   },
+
 
   /* 4 — Schedule, right after the countdown. Add, remove or reorder rows
          freely. time + period → "1:00" over "PM"; `highlight: true` marks
@@ -141,9 +133,7 @@ export default {
     heroPoster: "assets/images/hero-start.jpg", // the frame at heroStart; shown if the video can't play
     heroStart: 3.67, // seconds into the hero clip where the opening leaves off
     // Photo backdrops (portrait, ~5:8).
-    tentLight: "assets/images/tent-light.jpg", // countdown (and the desktop backdrop)
+    tentLight: "assets/images/tent-light.jpg", // countdown and venue (and the desktop backdrop)
     floralTent: "assets/images/floral-tent.jpg?v=2", // letter and closing
-    // The venue uses the paper art in assets/card (paper.webp, wash.svg,
-    // ornament), set in css/sections.css.
   },
 };

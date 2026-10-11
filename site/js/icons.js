@@ -18,14 +18,5 @@ export const heart = `
   <path fill="currentColor" d="M12 21s-1.2-.9-3.1-2.5C4.3 14.6 0 11.1 0 6.4 0 2.8 2.7 0 6.2 0c2.2 0 4.3 1.1 5.8 3 1.5-1.9 3.6-3 5.8-3C21.3 0 24 2.8 24 6.4c0 4.7-4.3 8.2-8.9 12.1C13.2 20.1 12 21 12 21z"/>
 </svg>`;
 
-export const calendar = `
-<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>`;
-
-export const calendarPlus = `
-<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="2.5"/><path d="M3.5 9.5h17M8.5 13.5v4M6.5 15.5h4"/></svg>`;
-
-export const clock = `
-<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>`;
-
 export const pin = `
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>`;

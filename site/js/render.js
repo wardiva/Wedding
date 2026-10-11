@@ -11,8 +11,6 @@ const r = (i, kind = "") => `data-reveal${kind ? `="${kind}"` : ""} style="--i:$
 /** A string or a list of lines → escaped lines joined with <br> */
 const lines = (v) => (Array.isArray(v) ? v : [v]).map(esc).join("<br />");
 
-/* Gold ornament (assets/card/ornament.svg) */
-const ornament = (i) => `<span class="ornament" ${r(i, "fade")} aria-hidden="true"></span>`;
 // Hairlines tapering into a small gold diamond
 const fineRule = (i, cls = "") => `<span class="fine-rule ${cls}" ${r(i, "fade")} aria-hidden="true"><i></i><b></b><i></i></span>`;
 
@@ -79,26 +77,17 @@ function countdown(c) {
 function venue(c) {
   const v = c.venue;
   return `
-  <section class="section s-venue" data-section="venue">
+  <section class="section s-tent s-venue" data-section="venue" data-bg="${c.media.tentLight}">
     <div class="bg"></div>
     <div class="wash"></div>
-    <article class="venue-card" ${r(0, "card")}>
-      <div class="venue-card__in">
-        <span class="caps-serif eyebrow" ${r(1)}>${esc(v.eyebrow)}</span>
-        <span class="script venue__name" ${r(2)}>${esc(v.name)}</span>
-        ${ornament(3)}
-        <span class="venue__addr" ${r(4)}>${esc(v.address)}</span>
-        <span class="caps-serif venue__city" ${r(4)}>${esc(v.city)}</span>
-        <div class="facts" ${r(5)}>
-          <div class="fact">${icon.calendar}<span>${esc(v.dateLine)}</span></div>
-          <div class="fact">${icon.clock}<span>${esc(v.timeLine)}</span></div>
-        </div>
-        <div class="venue__btns" ${r(6)}>
-          <a class="caps btn btn--gold" href="${esc(v.mapsUrl)}" target="_blank" rel="noopener">${icon.pin}<span>${esc(v.openLocation)}</span></a>
-          <button class="caps btn btn--ghost" type="button" data-ics>${icon.calendarPlus}<span>${esc(v.addToCalendar)}</span></button>
-        </div>
-      </div>
-    </article>
+    <div class="glass-card venue-card" ${r(0, "card")}>
+      <span class="card-eyebrow" ${r(1)}>${esc(v.eyebrow)}</span>
+      <span class="script card-title venue__name" ${r(2)}>${esc(v.name)}</span>
+      ${fineRule(3)}
+      <span class="venue__addr" ${r(4)}>${esc(v.address)}</span>
+      <span class="venue__city" ${r(5)}>${esc(v.city)}</span>
+      <a class="caps btn btn--gold" href="${esc(v.mapsUrl)}" target="_blank" rel="noopener" ${r(6)}>${icon.pin}<span>${esc(v.openLocation)}</span></a>
+    </div>
   </section>`;
 }
 
