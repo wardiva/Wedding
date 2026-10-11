@@ -43,10 +43,11 @@ export default {
     tapToOpen: "Tap to Open",
   },
 
-  /* 1 — Hero: the couple video is the scene behind the curtains; this one
-         line settles in over the canopy once they have parted. */
+  /* 1 — Hero: the couple video is the scene behind the curtains. Over the
+         canopy: groom, "&", bride (from `couple`), then these two lines. */
   hero: {
-    title: "Barat Invitation",
+    saying: "Are saying",
+    vow: "“Qabool Hai”",
   },
 
   /* 2 — Invitation (plain paper card) */

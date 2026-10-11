@@ -101,7 +101,7 @@
 .hero__text {
   position: absolute;
   left: 0; right: 0;
-  top: calc(7% + var(--safe-t));
+  top: calc(5% + var(--safe-t));
   z-index: 2;
   margin: 0;
   display: flex;
@@ -112,26 +112,51 @@
   pointer-events: none;
 }
 .s-opening:not(.is-opened) .hero__text { visibility: hidden; }
-/* the title settles in just after the curtains have gone */
-.hero__text [data-reveal] { transition-delay: 0.4s; }
-/* One line over the canopy on a frosted ivory plaque, the same material as
-   the buttons, so it reads over the bright drapes and chandeliers alike. */
-.hero__title {
-  font-size: calc(46 * var(--u));
-  line-height: 1.15;
-  padding: calc(8 * var(--u)) calc(34 * var(--u)) calc(10 * var(--u));
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255, 254, 251, 0.84), rgba(251, 246, 238, 0.76));
-  -webkit-backdrop-filter: blur(10px) saturate(1.1);
-  backdrop-filter: blur(10px) saturate(1.1);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
-    0 0 0 1px rgba(166, 134, 87, 0.28),
-    0 calc(10 * var(--u)) calc(28 * var(--u)) rgba(40, 26, 12, 0.28);
-  color: #4a3a2c;
-  -webkit-text-fill-color: #4a3a2c;
-  white-space: nowrap;
+/* settles in just after the curtains have gone, 150 ms apart */
+.hero__text [data-reveal] { transition-delay: calc(var(--i, 0) * 0.15s + 0.4s); }
+/* A soft darkening over the canopy only (no blur: the video stays sharp),
+   so the names read over the chandeliers and drapes. */
+.hero__shade {
+  position: absolute; inset: 0; z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(22, 13, 6, 0.72) 0%, rgba(22, 13, 6, 0.58) 26%, rgba(22, 13, 6, 0.32) 36%, rgba(22, 13, 6, 0) 50%);
+  opacity: 0;
+  transition: opacity 0.9s var(--ease-soft) 0.2s;
 }
+.s-opening.is-opened .hero__shade { opacity: 1; }
+
+/* Names, a large gold "&", then "Are saying / “Qabool Hai”" in tracked serif
+   capitals, straight on the video: a soft warm shadow keeps them legible over
+   the canopy without any panel or blur. */
+.hero__text { --hero-shadow: 0 calc(2 * var(--u)) calc(5 * var(--u)) rgba(28, 16, 6, 0.6), 0 0 calc(24 * var(--u)) rgba(28, 16, 6, 0.5); }
+.hero__name {
+  font-size: calc(56 * var(--u));
+  line-height: 1.05;
+  background: none;
+  color: #fbf3e2;
+  -webkit-text-fill-color: #fbf3e2;
+  text-shadow: var(--hero-shadow);
+}
+.hero__amp {
+  font-family: "Great Vibes", var(--font-script);
+  font-size: calc(62 * var(--u));
+  line-height: 0.8;
+  margin: calc(2 * var(--u)) 0 calc(-2 * var(--u));
+  color: var(--gold-light);
+  text-shadow: var(--hero-shadow);
+}
+.hero__saying,
+.hero__vow {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  margin-right: -0.22em;
+  text-shadow: var(--hero-shadow);
+}
+.hero__saying { font-size: calc(19 * var(--u)); color: #fbf3e2; margin-top: calc(14 * var(--u)); }
+.hero__vow { font-size: calc(24 * var(--u)); color: var(--gold-light); margin-top: calc(3 * var(--u)); }
 @media (prefers-reduced-motion: reduce) {
   .hero__text [data-reveal] { transition-delay: 0s; }
 }

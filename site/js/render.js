@@ -16,7 +16,7 @@ const ornament = (i) => `<span class="ornament" ${r(i, "fade")} aria-hidden="tru
 const starRule = (i) => `<span class="star-rule" ${r(i, "fade")} aria-hidden="true"><i></i><b></b><i></i></span>`;
 
 function opening(c) {
-  const { hero: h, media: m } = c;
+  const { couple: cp, hero: h, media: m } = c;
   return `
   <section class="section s-opening is-intro" id="opening" data-section="opening">
     <div class="bg" style="background-image:url('${m.curtainPoster}')">
@@ -42,8 +42,13 @@ function opening(c) {
       </span>
     </button>
 
+    <div class="hero__shade" aria-hidden="true"></div>
     <h1 class="hero__text">
-      <span class="script hero__title" ${r(0)}>${esc(h.title)}</span>
+      <span class="script hero__name" ${r(0)}>${esc(cp.groom.name)}</span>
+      <span class="hero__amp" ${r(1)}>${esc(cp.joiner)}</span>
+      <span class="script hero__name" ${r(2)}>${esc(cp.bride.name)}</span>
+      <span class="hero__saying" ${r(3)}>${esc(h.saying)}</span>
+      <span class="hero__vow" ${r(4)}>${esc(h.vow)}</span>
     </h1>
   </section>`;
 }
