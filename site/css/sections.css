@@ -307,7 +307,10 @@
   padding-top: calc(118 * var(--u) + var(--safe-b));
 }
 .letter-card {
-  padding: calc(34 * var(--u)) calc(30 * var(--u)) calc(32 * var(--u));
+  /* four groups — Bismillah · invitation · names · verse — with one gap
+     between groups and tight spacing inside them */
+  --group-gap: calc(24 * var(--u));
+  padding: calc(34 * var(--u)) calc(30 * var(--u)) calc(34 * var(--u));
 }
 .letter-card__bismillah,
 .letter-card__verse {
@@ -318,13 +321,13 @@
   -webkit-text-fill-color: transparent;
   padding: 0 0.2em;
 }
-.letter-card__bismillah { font-size: calc(30 * var(--u)); }
-.letter-card__verse { font-size: calc(34 * var(--u)); }
+.letter-card__bismillah { font-size: calc(30 * var(--u)); line-height: 1.4; }
+.letter-card__verse { font-size: calc(32 * var(--u)); line-height: 1.4; margin-top: var(--group-gap); }
 .letter-card__lead {
   font-size: calc(23 * var(--u));
   line-height: 1.45;
   color: var(--ink-2);
-  margin: 0;
+  margin: var(--group-gap) 0 0;
 }
 .letter-card__event {
   font-family: var(--font-serif);
@@ -334,7 +337,7 @@
   letter-spacing: var(--track-caps);
   margin-right: calc(-1 * var(--track-caps));
   color: var(--gold-deep);
-  margin-top: calc(20 * var(--u));
+  margin-top: var(--group-gap);
 }
 .letter-card__name { font-size: calc(60 * var(--u)); line-height: 1.12; }
 .letter-card__event + .letter-card__name { margin-top: calc(6 * var(--u)); }
@@ -366,7 +369,6 @@
   background: #a68657;
   transform: rotate(45deg);
 }
-.fine-rule--after-names { margin-top: calc(22 * var(--u)); margin-bottom: calc(12 * var(--u)); }
 
 /* ═════════════════════════ 6 · Closing ═════════════════════════
    Frosted card under the swaying drapes. */

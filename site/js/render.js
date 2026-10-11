@@ -127,13 +127,11 @@ function letter(c) {
     <div class="wash"></div>
     <div class="glass-card letter-card" ${r(0, "card")}>
       <div class="arabic letter-card__bismillah" lang="ar" ${r(1)}>${esc(l.bismillah)}</div>
-      ${fineRule(2)}
       <p class="letter-card__lead" ${r(3)}>${lines(l.lines)}</p>
       <span class="letter-card__event" ${r(4)}>${esc(l.eventLine)}</span>
       <span class="script letter-card__name" ${r(5)}>${esc(cp.groom.name)}</span>
       <span class="letter-card__amp" ${r(6)}>${esc(cp.joiner)}</span>
       <span class="script letter-card__name" ${r(7)}>${esc(cp.bride.name)}</span>
-      ${fineRule(8, "fine-rule--after-names")}
       <div class="arabic letter-card__verse" lang="ar" ${r(9)}>${esc(l.verseArabic)}</div>
       <span class="caps letter-card__ref" ${r(10)}>${esc(l.verseReference)}</span>
     </div>
