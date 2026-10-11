@@ -47,12 +47,13 @@
 .intro__tap {
   position: absolute;
   left: 50%;
-  bottom: calc(118 * var(--u) + var(--safe-b));
+  bottom: calc(20 * var(--u) + var(--safe-b)); /* same line as the scroll cue */
   transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: calc(17 * var(--u)) calc(40 * var(--u));
+  height: calc(56 * var(--u));
+  padding: 0 calc(40 * var(--u));
   border-radius: 999px;
   background: linear-gradient(180deg, rgba(255, 254, 251, 0.82), rgba(251, 246, 238, 0.74));
   -webkit-backdrop-filter: blur(10px) saturate(1.1);

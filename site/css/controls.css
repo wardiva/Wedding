@@ -79,20 +79,17 @@
   width: 52%; height: 52%;
   fill: none; stroke: #4a3a2c; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
 }
-/* The two chevrons take turns sliding down, as in the reference */
-.scroll-cue__chev .c1 { animation: chev 1.6s ease-in-out infinite; }
-.scroll-cue__chev .c2 { animation: chev 1.6s ease-in-out infinite 0.8s; }
-@keyframes chev {
-  0% { opacity: 0; transform: translateY(-3px); }
-  35% { opacity: 1; }
-  70% { opacity: 1; transform: translateY(2px); }
-  100% { opacity: 0; transform: translateY(4px); }
+/* Both chevrons always shown (the upper one softer), bobbing down together */
+.scroll-cue__chev .c1 { opacity: 0.45; }
+.scroll-cue__chev { animation: chev-bob 1.8s ease-in-out infinite; }
+@keyframes chev-bob {
+  0%, 100% { transform: translateY(-1.5px); }
+  50% { transform: translateY(2px); }
 }
 .scroll-cue:active .scroll-cue__btn { transform: scale(0.94); }
 
 @media (prefers-reduced-motion: reduce) {
-  .scroll-cue__halo, .scroll-cue__chev path, .music-btn svg { animation: none !important; }
-  .scroll-cue__chev .c1 { opacity: 0; }
+  .scroll-cue__halo, .scroll-cue__chev, .music-btn svg { animation: none !important; }
 }
 
 /* ───────────────────────── Petals overlay ───────────────────────── */
