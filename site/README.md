@@ -31,7 +31,7 @@ Drop new files into `assets/` and point `content.js` at them. Keep the shapes:
 | `images/tent-open.jpg` | invitation backdrop (= last video frame) | 1008×1600 |
 | `images/tent-light.jpg` | invitation, families and countdown backdrop | ~5:8 portrait |
 | `images/floral-tent.jpg` | letter and closing backdrop | ~5:8 portrait |
-| `video/walima-couple.mp4` + `.webm`, `images/walima-couple.jpg` | Walima section: the couple walking down the aisle (poster = first frame). Rendered from the Remotion composition `WalimaVenue` in `/video` (`npm run render:walima`), with the outfits recoloured by `tools/media/recolor_outfits.py` | 1008×1600, 5.4 s |
+| `video/walima-walk.mp4` + `.webm`, `images/walima-walk.jpg` | Walima section: the couple walking down the aisle (client footage, audio removed; poster = first frame). Rendered from the Remotion composition `WalimaVenue` in `/video` (`npm run render:walima`) | 1008×1792, 10 s |
 | `images/couple-portrait.jpg` | arched portrait | ~3:4 portrait |
 | `images/groom.webp`, `images/bride.webp` | family illustrations | transparent cut-outs |
 | `audio/background-music.mp3` | background music (loops) | — |

@@ -3,8 +3,8 @@ import { AbsoluteFill, staticFile, useVideoConfig } from "remotion";
 import { z } from "zod";
 
 // Background of the invitation's Walima section: the couple walking down the
-// aisle (outfits recoloured by tools/media/recolor_outfits.py). The site
-// overlays its own event card, so the clip plays full-frame and untouched.
+// aisle (client-supplied footage, audio removed). The site overlays its own
+// event card, so the clip plays full-frame and untouched.
 export const walimaVenueSchema = z.object({
   // Path relative to `public/`, or an absolute http(s) URL.
   src: z.string(),

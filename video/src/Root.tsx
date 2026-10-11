@@ -58,12 +58,12 @@ export const RemotionRoot: React.FC = () => {
           id="WalimaVenue"
           component={WalimaVenue}
           schema={walimaVenueSchema}
-          durationInFrames={162}
-          fps={30}
+          durationInFrames={240}
+          fps={24}
           width={1008}
-          height={1600}
+          height={1792}
           defaultProps={{
-            src: "walima/couple-walk-maroon.mp4",
+            src: "walima/couple-walk.mp4",
           }}
         />
       </Folder>
