@@ -7,16 +7,25 @@
 
 const START_TIMEOUT_MS = 2500;
 const HOLD_AFTER_END_MS = 0; // the couple keep walking: hand straight over to the hero
+const TEXT_AT_S = 2.5; // the hero text arrives while the drapes are still parting
 
-export function initOpening({ section, music, reducedMotion, onStart = () => {}, onOpened }) {
+export function initOpening({ section, music, reducedMotion, onStart = () => {}, onText = () => {}, onOpened }) {
   const video = section.querySelector(".bg__video");
   const tap = section.querySelector("#tapToOpen");
   let started = false;
   let finished = false;
 
+  let texted = false;
+  const showText = () => {
+    if (texted) return;
+    texted = true;
+    onText();
+  };
+
   const finish = (delay = HOLD_AFTER_END_MS) => {
     if (finished) return;
     finished = true;
+    showText();
     setTimeout(() => {
       section.classList.add("is-opened");
       onOpened();
@@ -33,6 +42,7 @@ export function initOpening({ section, music, reducedMotion, onStart = () => {},
   // onStart lets the next media begin loading only once the curtain is moving.
   video.addEventListener("playing", () => { section.classList.add("is-playing"); onStart(); }, { once: true });
   video.addEventListener("ended", () => finish());
+  video.addEventListener("timeupdate", () => { if (video.currentTime >= TEXT_AT_S) showText(); });
   // With <source> children, a load failure is reported on the last source.
   // A failure before the tap is remembered so the tap can fall back at once.
   let failed = false;

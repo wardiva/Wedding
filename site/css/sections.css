@@ -62,7 +62,7 @@
     inset 0 0 0 1px rgba(255, 255, 255, 0.9),
     0 0 0 1px rgba(166, 134, 87, 0.28),
     0 calc(10 * var(--u)) calc(28 * var(--u)) rgba(90, 66, 40, 0.2);
-  animation: intro-in 1.6s var(--ease-out) both 0.5s;
+  animation: intro-in 0.8s var(--ease-out) both 0.1s;
 }
 .intro__tap .caps {
   position: relative;
@@ -79,7 +79,7 @@
   inset: 0;
   border-radius: inherit;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.85);
-  animation: tap-halo 2.6s var(--ease-out) infinite 2.1s;
+  animation: tap-halo 2.6s var(--ease-out) infinite 0.9s;
   pointer-events: none;
 }
 .intro:active .intro__tap { transform: translateX(-50%) scale(0.97); }
@@ -111,9 +111,9 @@
   font-weight: 400;
   pointer-events: none;
 }
-.s-opening:not(.is-opened) .hero__text { visibility: hidden; }
-/* settles in just after the curtains have gone, 150 ms apart */
-.hero__text [data-reveal] { transition-delay: calc(var(--i, 0) * 0.15s + 0.4s); }
+.s-opening:not(.show-text) .hero__text { visibility: hidden; }
+/* arrives while the drapes are still parting, 120 ms apart */
+.hero__text [data-reveal] { transition-delay: calc(var(--i, 0) * 0.12s); }
 /* A soft darkening over the canopy only (no blur: the video stays sharp),
    so the names read over the chandeliers and drapes. */
 .hero__shade {
@@ -122,9 +122,9 @@
   background: linear-gradient(to bottom,
     rgba(22, 13, 6, 0.72) 0%, rgba(22, 13, 6, 0.58) 26%, rgba(22, 13, 6, 0.32) 36%, rgba(22, 13, 6, 0) 50%);
   opacity: 0;
-  transition: opacity 0.9s var(--ease-soft) 0.2s;
+  transition: opacity 0.8s var(--ease-soft);
 }
-.s-opening.is-opened .hero__shade { opacity: 1; }
+.s-opening.show-text .hero__shade { opacity: 1; }
 
 /* Names, a large gold "&", then "Are saying / “Qabool Hai”" in tracked serif
    capitals, straight on the video: a soft warm shadow keeps them legible over

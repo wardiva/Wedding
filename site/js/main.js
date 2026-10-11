@@ -86,6 +86,8 @@ initOpening({
   music,
   reducedMotion,
   onStart: hero.prime,
+  // The names arrive over the couple before the curtain clip ends.
+  onText: () => byName("opening").classList.add("is-active", "show-text"),
   onOpened() {
     opened = true;
     scroller.classList.remove("is-locked");
