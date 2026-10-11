@@ -42,7 +42,7 @@ export default {
   },
 
   /* 1 — Hero: the couple video is the scene behind the curtains. Over the
-         canopy: groom, "&", bride (from `couple`), then these two lines. */
+         canopy: groom, "&", bride (first names, from `couple`), then these two lines. */
   hero: {
     saying: "Are saying",
     vow: "“Qabool Hai”",
