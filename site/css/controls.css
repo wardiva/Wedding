@@ -20,9 +20,9 @@
     inset 0 0 0 1px rgba(255, 255, 255, 0.9),
     0 0 0 1px rgba(166, 134, 87, 0.28),
     0 calc(6 * var(--u)) calc(18 * var(--u)) rgba(60, 42, 24, 0.2);
-  transition: transform 0.25s var(--ease-out);
+  transition: transform 0.12s var(--ease-out);
 }
-.music-btn:active { transform: scale(0.92); }
+.music-btn:active { transform: scale(0.95); }
 .music-btn svg {
   width: 46%; height: 46%;
   fill: none; stroke: #4a3a2c; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
@@ -66,7 +66,7 @@
     inset 0 0 0 1px rgba(255, 255, 255, 0.9),
     0 0 0 1px rgba(166, 134, 87, 0.28),
     0 calc(8 * var(--u)) calc(22 * var(--u)) rgba(60, 42, 24, 0.22);
-  transition: transform 0.15s ease;
+  transition: transform 0.12s var(--ease-out);
 }
 /* Soft white ring that breathes outward from the disc */
 .scroll-cue__halo {
@@ -94,7 +94,7 @@
   70% { opacity: 1; transform: translateY(2px); }
   100% { opacity: 0; transform: translateY(4px); }
 }
-.scroll-cue:active .scroll-cue__btn { transform: scale(0.94); }
+.scroll-cue:active .scroll-cue__btn { transform: scale(0.95); }
 
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue__halo, .scroll-cue__chev path, .music-btn svg { animation: none !important; }
