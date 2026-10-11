@@ -58,15 +58,16 @@ const bgObserver = new IntersectionObserver(
 const hero = initHero(byName("opening"), { reducedMotion, start: content.media.heroStart });
 
 /* ── Active section: reveal content, manage the cue, play/pause the hero ── */
-let opened = false;
+let opened = false;      // curtain clip finished: the hero video takes over
+let interactive = false; // names are up: scrolling and the cue are live
 let petalsShown = false;
 let current = sections[0];
 
 const setCurrent = (s) => {
   current = s;
-  if (s.dataset.section !== "opening" || opened) s.classList.add("is-active");
+  if (s.dataset.section !== "opening" || interactive) s.classList.add("is-active");
   const isLast = s === sections[sections.length - 1];
-  cue.classList.toggle("is-visible", opened && !isLast);
+  cue.classList.toggle("is-visible", interactive && !isLast);
 
   if (opened && s.dataset.section === "opening") hero.play();
   else hero.pause();
@@ -106,13 +107,18 @@ initOpening({
   music,
   reducedMotion,
   onStart: hero.prime,
-  // The names arrive over the couple before the curtain clip ends.
-  onText: () => byName("opening").classList.add("is-active", "show-text"),
-  onOpened() {
-    opened = true;
+  // The names arrive over the couple before the curtain clip ends; the
+  // invitation becomes scrollable (and the cue appears) at the same moment.
+  onText() {
+    byName("opening").classList.add("is-active", "show-text");
+    interactive = true;
     scroller.classList.remove("is-locked");
     sections.forEach((s) => { bgObserver.observe(s); activeObserver.observe(s); midObserver.observe(s); });
-    setCurrent(byName("opening"));
+    setCurrent(current);
+  },
+  onOpened() {
+    opened = true;
+    if (current === byName("opening")) hero.play();
   },
 });
 
