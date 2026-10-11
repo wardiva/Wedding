@@ -30,7 +30,7 @@ export function createPetals(canvas, { reducedMotion = false } = {}) {
     for (let i = 0; i < count; i++) {
       const sage = Math.random() < 0.2;
       const [c1, c2] = PALETTE[sage ? 4 + (Math.random() < 0.5 ? 0 : 1) : Math.floor(Math.random() * 4)];
-      const size = (12 + Math.random() * 22) * unit;
+      const size = (10 + Math.random() * 14) * unit;
       petals.push({
         x: Math.random() * w,
         y: -20 - Math.random() * h * 0.35,
@@ -95,7 +95,8 @@ export function createPetals(canvas, { reducedMotion = false } = {}) {
   return {
     burst() {
       resize();
-      spawn(reducedMotion ? 26 : 130, reducedMotion ? 1.5 : 2.6);
+      // a light scatter, not a blizzard: few petals, spread out in time
+      spawn(reducedMotion ? 8 : 32, reducedMotion ? 2 : 4);
       if (!raf) {
         t0 = prev = performance.now();
         raf = requestAnimationFrame(frame);
