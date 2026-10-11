@@ -4,6 +4,7 @@ import { initOpening } from "./opening.js";
 import { initMusic } from "./music.js";
 import { initCountdown } from "./countdown.js";
 import { createPetals } from "./petals.js";
+import { initScratch } from "./scratch.js";
 import { initHero } from "./hero.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -60,7 +61,6 @@ const hero = initHero(byName("opening"), { reducedMotion, start: content.media.h
 /* ── Active section: reveal content, manage the cue, play/pause the hero ── */
 let opened = false;      // curtain clip finished: the hero video takes over
 let interactive = false; // names are up: scrolling and the cue are live
-let petalsShown = false;
 let current = sections[0];
 
 const setCurrent = (s) => {
@@ -80,11 +80,6 @@ const setCurrent = (s) => {
     } else if (!v.paused) v.pause();
   }
 
-  // A soft petal shower the first time the countdown comes into view.
-  if (!petalsShown && s.dataset.section === "countdown") {
-    petalsShown = true;
-    setTimeout(() => petals.burst(), 500);
-  }
 };
 
 const activeObserver = new IntersectionObserver(
@@ -135,8 +130,10 @@ cue.addEventListener("click", () => {
   scroller.scrollTo({ top: target, behavior: reducedMotion ? "auto" : "smooth" });
 });
 
-/* ── Countdown ── */
-initCountdown(document.getElementById("countdown"));
+/* ── Countdown, with the date under scratch-off gold foil (petals on reveal) ── */
+const countdownEl = document.getElementById("countdown");
+initCountdown(countdownEl);
+initScratch(countdownEl, { reducedMotion, onReveal: () => petals.burst() });
 
 /* ── Keep the column sized to the visible viewport on mobile browsers ── */
 const syncHeight = () => {

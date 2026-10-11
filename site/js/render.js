@@ -67,9 +67,12 @@ function countdown(c) {
     <div class="glass-card cd-card" id="countdown" data-target="${esc(k.target)}" ${r(0, "card")}>
       <span class="card-eyebrow" ${r(1)}>${esc(k.eyebrow)}</span>
       <span class="script card-title" ${r(2)}>${esc(k.title)}</span>
-      <span class="cd__day" ${r(4)}>${esc(k.day)}</span>
-      <span class="cd__date" ${r(5)}>${esc(k.date)}</span>
-      <span class="cd__time" ${r(6)}>${esc(k.time)}</span>
+      <div class="cd__when" data-hint="${esc(k.scratchHint)}" ${r(4)}>
+        <span class="cd__day">${esc(k.day)}</span>
+        <span class="cd__date">${esc(k.date)}</span>
+        <span class="cd__time">${esc(k.time)}</span>
+        <canvas class="cd__foil" aria-hidden="true"></canvas>
+      </div>
       <div class="cd__count" ${r(8)}>
         ${units.map((u) => `<div class="cd__cell" data-unit="${u}"><span class="cd__num" data-num>00</span><span class="cd__label">${esc(k.labels[u])}</span></div>`).join("")}
       </div>

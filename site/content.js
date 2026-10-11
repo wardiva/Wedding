@@ -53,8 +53,9 @@ export default {
     eyebrow: "Until the Barat",
     title: "Countdown",
     day: "Friday", // spaced capitals
-    date: "27 November 2026",
+    date: "27 Nov 2026",
     time: "1:00 PM",
+    scratchHint: "Scratch to reveal", // printed on the gold foil over the date
     // Target moment for the live countdown (event start, venue time).
     target: "2026-11-27T13:00:00+05:00",
     labels: { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds" },
