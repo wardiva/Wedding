@@ -57,7 +57,7 @@
         }
       ],
       "destination": "https://hamza-and-komal-barat-invitation.vercel.app/$1",
-      "permanent": true
+      "statusCode": 301
     }
   ]
 }
