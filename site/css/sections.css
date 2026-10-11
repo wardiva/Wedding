@@ -409,41 +409,51 @@
 .dress__attire { font-size: calc(38.5 * var(--u)); letter-spacing: 0.26em; margin-right: -0.26em; color: var(--ink); line-height: 1.1; }
 .dress__note { font-size: calc(23 * var(--u)); line-height: 1.4; color: var(--ink-2); margin: calc(10 * var(--u)) 0 0; }
 
-/* ═════════════════════════ 7 · Letter ═════════════════════════ */
+/* ═════════════════════════ 2 · Letter ═════════════════════════ */
 .s-floral .bg { background-image: var(--bg); }
 .s-floral .wash { background: none; }
 .letter-card {
-  padding: calc(36 * var(--u)) calc(34 * var(--u)) calc(48 * var(--u));
-  margin-top: calc(50 * var(--u));
+  padding: calc(34 * var(--u)) calc(30 * var(--u)) calc(32 * var(--u));
+  margin-top: calc(24 * var(--u));
 }
-.letter-card__from { font-size: calc(14 * var(--u)); color: var(--ink-2); display: inline-flex; align-items: center; gap: calc(14 * var(--u)); }
-.letter-card__from svg { width: calc(18 * var(--u)); height: calc(16 * var(--u)); color: #9b7841; }
-.letter-card__salutation {
-  font-size: calc(64 * var(--u));
-  line-height: calc(72 * var(--u));
-  white-space: normal;
-  max-width: calc(400 * var(--u));
-  margin-top: calc(15 * var(--u));
+.letter-card__bismillah,
+.letter-card__verse {
+  line-height: 1.6;
+  color: var(--gold-2);
+  background: var(--gold-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 0.2em;
 }
-.letter-card .divider { margin: calc(22 * var(--u)) auto calc(18 * var(--u)); }
-.letter-card__body {
-  font-size: calc(23.5 * var(--u));
-  line-height: calc(35 * var(--u));
+.letter-card__bismillah { font-size: calc(32 * var(--u)); }
+.letter-card .divider { margin: calc(12 * var(--u)) auto calc(16 * var(--u)); }
+.letter-card__lead {
+  font-size: calc(23 * var(--u));
+  line-height: 1.45;
   color: var(--ink-2);
-  margin: 0 auto;
-  max-width: calc(385 * var(--u));
+  margin: 0;
 }
-.tag-pill {
-  display: inline-block;
-  margin-top: calc(28 * var(--u));
-  padding: calc(12 * var(--u)) calc(20 * var(--u));
-  border-radius: 999px;
-  background: rgba(255, 253, 249, 0.75);
-  box-shadow: inset 0 0 0 1px rgba(196, 170, 130, 0.55), 0 2px 6px rgba(120, 95, 60, 0.08);
-  font-size: calc(13 * var(--u));
-  color: var(--ink-2);
-  letter-spacing: 0.22em;
+.letter-card__event {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: calc(15 * var(--u));
+  letter-spacing: 0.34em;
+  margin-right: -0.34em;
+  color: var(--gold-deep);
+  margin-top: calc(18 * var(--u));
 }
+.letter-card__name { font-size: calc(60 * var(--u)); line-height: 1.1; }
+.letter-card__event + .letter-card__name { margin-top: calc(8 * var(--u)); }
+.letter-card__amp {
+  font-family: "Great Vibes", var(--font-script);
+  font-size: calc(38 * var(--u));
+  line-height: 0.9;
+  color: var(--gold);
+}
+.letter-card__rule .divider { margin-top: calc(20 * var(--u)); margin-bottom: calc(10 * var(--u)); }
+.letter-card__verse { font-size: calc(30 * var(--u)); }
+.letter-card__ref { font-size: calc(12 * var(--u)); color: #6b5d55; letter-spacing: 0.26em; margin-top: calc(2 * var(--u)); }
 
 /* ═════════════════════════ 8 · Closing ═════════════════════════ */
 .closing-card {

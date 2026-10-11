@@ -176,18 +176,22 @@ function dressCode(c) {
 }
 
 function letter(c) {
-  const l = c.letter;
-  const [a, b] = Array.isArray(l.from) ? l.from : [l.from];
+  const l = c.letter, cp = c.couple;
   return `
   <section class="section s-floral s-letter" data-section="letter" data-bg="${c.media.floralTent}">
     <div class="bg"></div>
     <div class="wash"></div>
     <div class="glass-card letter-card" ${r(0, "card")}>
-      <span class="caps letter-card__from" ${r(1)}>${esc(a)} ${icon.heart}${b ? ` ${esc(b)}` : ""}</span>
-      <span class="script letter-card__salutation" ${r(3)}>${esc(l.salutation)}</span>
-      <span ${r(4, "fade")}>${icon.divider}</span>
-      <p class="letter-card__body" ${r(5)}>${esc(l.body)}</p>
-      <span class="caps tag-pill" ${r(6)}>${esc(l.tag)}</span>
+      <div class="arabic letter-card__bismillah" lang="ar" ${r(1)}>${esc(l.bismillah)}</div>
+      <span ${r(2, "fade")}>${icon.divider}</span>
+      <p class="letter-card__lead" ${r(3)}>${lines(l.lines)}</p>
+      <span class="letter-card__event" ${r(4)}>${esc(l.eventLine)}</span>
+      <span class="script script--gold letter-card__name" ${r(5)}>${esc(cp.groom.name)}</span>
+      <span class="letter-card__amp" ${r(6)}>${esc(cp.joiner)}</span>
+      <span class="script script--gold letter-card__name" ${r(7)}>${esc(cp.bride.name)}</span>
+      <span class="letter-card__rule" ${r(8, "fade")}>${icon.divider}</span>
+      <div class="arabic letter-card__verse" lang="ar" ${r(9)}>${esc(l.verseArabic)}</div>
+      <span class="caps letter-card__ref" ${r(10)}>${esc(l.verseReference)}</span>
     </div>
   </section>`;
 }

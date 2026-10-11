@@ -121,14 +121,19 @@ export default {
     brideArt: "assets/images/bride.webp", // transparent cut-out, ~1:1.6
   },
 
-  /* 2 — Letter to guests, right after the hero. Header reads "HAMZA ♥ KOMAL". */
+  /* 2 — Letter to guests, right after the hero: Bismillah, the invitation
+         with the couple's names (from `couple`), and a Quranic verse. */
   letter: {
-    from: ["Hamza", "Komal"],
-    salutation: "Dear Family & Friends,",
-    body: "With hearts full of joy, we invite you to join us in the celebration of our Barat. Your presence will make our happiness even more special.",
-    tag: "Barat",
+    bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+    // Each entry is one line.
+    lines: [
+      "Together with your family,",
+      "you are cordially invited to the",
+    ],
+    eventLine: "Barat Ceremony of", // spaced capitals, above the names
+    verseArabic: "وَخَلَقْنَاكُمْ أَزْوَاجًا",
+    verseReference: "(Quran 78:8)",
   },
-
   /* 8 — Closing (names come from `couple`) */
   closing: {
     line: "We cannot wait to see you there.",
